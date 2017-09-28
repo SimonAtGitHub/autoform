@@ -37,7 +37,7 @@
                                         <vddl-list class="drop-layout-body" :list="list" :inserted="inserted" effect-allowed="move" :external-sources="true">
                                              <el-row :gutter="cGutter">
                                             <el-col :span="item.templateOptions.span" v-for="(item, index) in list" :key="item.id" style="border:1px dashed #ccc;" v-bind:class="{'selected': selectedItem === item}">
-                                                <span>{{item.key}}/{{item.label||'-'}}</span>
+                                                <span>{{item.key}}/{{item.templateOptions.label||'请设置label'}}</span>
                                                 <vddl-draggable :horizontal="true" :draggable="item" :wrapper="list" :index="index" :item="item" :selected.stop="handleSelected" :selected-item="selectedItem">
                                                     <div class="drop-layout-component">
                                                         {{item.type}}
