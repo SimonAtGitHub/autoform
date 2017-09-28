@@ -35,16 +35,16 @@
                                 <el-tabs v-model="activeName">
                                     <el-tab-pane :label="zone" :name="zone" v-for="(list, zone) in tabForm" :key="zone">
                                         <vddl-list class="drop-layout-body" :list="list" :inserted="inserted" effect-allowed="move" :external-sources="true">
-                                            <!-- <el-row :gutter="cGutter"> -->
+                                             <el-row :gutter="cGutter">
                                             <el-col :span="item.templateOptions.span" v-for="(item, index) in list" :key="item.id" style="border:1px dashed #ccc;" v-bind:class="{'selected': selectedItem === item}">
-                                                <span>{{item.key}}</span>
+                                                <span>{{item.key}}/{{item.label||'-'}}</span>
                                                 <vddl-draggable :horizontal="true" :draggable="item" :wrapper="list" :index="index" :item="item" :selected.stop="handleSelected" :selected-item="selectedItem">
                                                     <div class="drop-layout-component">
                                                         {{item.type}}
                                                     </div>
                                                 </vddl-draggable>
                                             </el-col>
-                                            <!-- </el-row> -->
+                                             </el-row>
                                         </vddl-list>
                                     </el-tab-pane>
                                 </el-tabs>
@@ -84,6 +84,9 @@
                                 <div v-if="!selectedItem">
                                     <!-- <span> 属性 </span> -->
                                     <el-form ref="form" :model="formOptions" label-width="100px">
+                                        <el-form-item label="分栏">
+                                            <el-slider v-model="formOptions.span" :min="1" :max="24" :step="1" @change="handleSpanChange"></el-slider>
+                                        </el-form-item>
                                         <el-form-item label="间隔">
                                             <el-input v-model="formOptions.gutter"></el-input>
                                         </el-form-item>
@@ -116,7 +119,6 @@
                                     <div slot="header" class="clearfix">
                                         <span>Tab管理</span>
                                     </div>
-
                                 </el-card>
                             </div>
                         </div>
@@ -162,12 +164,16 @@
 
 import Vue from 'vue';
 
-// import list from './vddlComponent.vue';
 // require active-line.js
 require('codemirror/addon/selection/active-line.js')
 // styleSelectedText
 require('codemirror/addon/selection/mark-selection.js')
 require('codemirror/addon/search/searchcursor.js')
+// hint
+require('codemirror/addon/hint/show-hint.js')
+require('codemirror/addon/hint/show-hint.css')
+require('codemirror/addon/hint/javascript-hint.js')
+require('codemirror/addon/selection/active-line.js')
 // highlightSelectionMatches
 require('codemirror/addon/scroll/annotatescrollbar.js')
 require('codemirror/addon/search/matchesonscrollbar.js')
@@ -193,6 +199,7 @@ require('codemirror/addon/fold/markdown-fold.js')
 require('codemirror/addon/fold/xml-fold.js')
 
 
+
 export default {
     computed: {
         cGutter() {
@@ -207,23 +214,16 @@ export default {
             code: '',
             editorOption: {
                 tabSize: 4,
-                foldGutter: true,
                 styleActiveLine: true,
                 lineNumbers: true,
                 line: true,
-                keyMap: "sublime",
+                // mode: 'text/javascript',
                 mode: {
-                    ext: 'vue'
+                    name: "javascript",
+                    json: true
                 },
-                theme: 'base16-dark',
-                extraKeys: {
-                    'F11'(cm) {
-                        cm.setOption("fullScreen", !cm.getOption("fullScreen"))
-                    },
-                    'Esc'(cm) {
-                        if (cm.getOption("fullScreen")) cm.setOption("fullScreen", false)
-                    }
-                }
+                lineWrapping: true,
+                theme: 'base16-dark'
             },
             layout:{},
             selectedItem: null,
@@ -243,97 +243,24 @@ export default {
             Gallery: [],
             CmpntType: [],
             activeName: 'Default',
-            // inputMockList: [
-            //     {
-            //         key: 'key',
-            //         type: 'input',
-            //         templateOptions: {
-            //             label: '',
-            //             options: []
-            //         },
-            //         validators: [],
-            //         id: 1
-            //     },
-            //     {
-            //         key: 'key',
-            //         type: 'select',
-            //         templateOptions: {
-            //             label: '',
-            //             options: []
-            //         },
-            //         validators: [],
-            //         id: 2
-            //     },
-            //     {
-            //         key: 'key',
-            //         type: 'radio',
-            //         templateOptions: {
-            //             label: '',
-            //             options: []
-            //         },
-            //         validators: [],
-            //         id: 3
-            //     },
-            //     {
-            //         key: 'key',
-            //         type: 'checkbox',
-            //         templateOptions: {
-            //             label: '',
-            //             options: []
-            //         },
-            //         validators: [],
-            //         id: 4
-            //     },
-            //     {
-            //         key: 'key',
-            //         type: 'textarea',
-            //         templateOptions: {
-            //             label: '',
-            //             options: []
-            //         },
-            //         validators: [],
-            //         id: 5
-            //     },
-            //     {
-            //         key: 'key',
-            //         type: 'datepicker',
-            //         templateOptions: {
-            //             label: '',
-            //             options: []
-            //         },
-            //         validators: [],
-            //         id: 6
-            //     },
-            //     {
-            //         key: 'key',
-            //         type: 'timepicker',
-            //         templateOptions: {
-            //             label: '',
-            //             options: []
-            //         },
-            //         validators: [],
-            //         id: 7
-            //     }
-            // ],
-            // typeList: [
-            //     "input",
-            //     "select",
-            //     "radio",
-            //     "checkbox",
-            //     "textarea",
-            //     "datepicker",
-            //     "timepicker"
-            // ],
             model: {},
             optionString: ""
         };
+    },
+    watch: {
+        tabForm: {
+            handler(val, oldVal) {
+                console.log(this);
+                this.code = JSON.stringify(val,null,4);
+            },
+            deep: true
+        }
     },
     methods: {
         copied(item) {
             item.id++;
         },
         inserted(data) {
-            console.log(data);
         },
         // toggleDisable() {
         //     this.disable = !this.disable;
@@ -347,10 +274,12 @@ export default {
         },
         handleOptionStrChange(input, item) {
             let options = input.split(/[\r\n]/).map(optionItem => {
-                let arr = optionItem.split(/[,，]/);
-                return {
-                    label: arr[0],
-                    value: arr[1]
+                if(optionItem) {
+                    let arr = optionItem.split(/[,，]/);
+                    return {
+                        label: arr[0],
+                        value: arr[1]
+                    }
                 }
             });
             item.templateOptions.options = options;
@@ -391,6 +320,11 @@ export default {
             } catch (err) {
                 console.log(err);
             }
+        },
+        handleSpanChange() {
+            this.tabForm.Default.forEach(item => {
+                item.templateOptions.span = this.formOptions.span;
+            })
         }
     },
     components: {
@@ -446,15 +380,11 @@ header {
     left: 0;
     width: 100%;
     line-height: 60px;
-    overflow: hidden;
     z-index: 100;
     position: relative;
     margin-bottom: 15px;
     padding: 0 15px;
-    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .12), 0 0 6px 0 rgba(0, 0, 0, .04);
-    h3{
-        line-height: 30px;
-    }
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .12), 0 0 6px 0 rgba(0, 0, 0, .04)
 }
 
 .wrapper {
