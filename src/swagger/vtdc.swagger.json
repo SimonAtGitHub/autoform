@@ -1,0 +1,4460 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "接口文档",
+        "version": "1.0.0",
+        "title": "房型管理平台",
+        "contact": {
+            "name": "wangrui37",
+            "email": "wangrui37@meituan.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        }
+    },
+    "host": "10.4.234.137:8420",
+    "basePath": "/",
+    "tags": [
+        {
+            "name": "real-room-relation-stat-controller-v-2",
+            "description": "Real Room Relation Stat Controller V 2"
+        },
+        {
+            "name": "api-alive-controller",
+            "description": "Api Alive Controller"
+        },
+        {
+            "name": "room-aggregation-log-controller",
+            "description": "Room Aggregation Log Controller"
+        },
+        {
+            "name": "dictionary-version-controller",
+            "description": "Dictionary Version Controller"
+        },
+        {
+            "name": "real-room-alert-stats-controller-v-2",
+            "description": "Real Room Alert Stats Controller V 2"
+        },
+        {
+            "name": "workload-controller",
+            "description": "Workload Controller"
+        },
+        {
+            "name": "common-controller",
+            "description": "Common Controller"
+        },
+        {
+            "name": "real-room-relation-controller",
+            "description": "Real Room Relation Controller"
+        },
+        {
+            "name": "words-recommend-controller",
+            "description": "Words Recommend Controller"
+        },
+        {
+            "name": "real-room-relation-stat-controller",
+            "description": "Real Room Relation Stat Controller"
+        },
+        {
+            "name": "real-room-log-controller",
+            "description": "Real Room Log Controller"
+        },
+        {
+            "name": "comp-room-relation-controller",
+            "description": "Comp Room Relation Controller"
+        },
+        {
+            "name": "poi-priority-controller",
+            "description": "Poi Priority Controller"
+        },
+        {
+            "name": "comp-room-relation-fe-controller",
+            "description": "Comp Room Relation FE Controller"
+        },
+        {
+            "name": "real-room-controller",
+            "description": "Real Room Controller"
+        },
+        {
+            "name": "real-room-alert-controller",
+            "description": "Real Room Alert Controller"
+        },
+        {
+            "name": "log-controller",
+            "description": "Log Controller"
+        },
+        {
+            "name": "tools-controller",
+            "description": "Tools Controller"
+        },
+        {
+            "name": "room-relation-ba-controller",
+            "description": "Room Relation BA Controller"
+        },
+        {
+            "name": "real-room-alert-stats-controller",
+            "description": "Real Room Alert Stats Controller"
+        }
+    ],
+    "paths": {
+        "/tdc/budapest/api/ba/v1/execute/realRoom/add": {
+            "post": {
+                "tags": [
+                    "real-room-log-controller"
+                ],
+                "summary": "addRealRoomLog",
+                "operationId": "addRealRoomLogUsingPOST",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "param",
+                        "description": "param",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/RealRoomSystemSaveParam"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/MtHttpResponse"
+                        }
+                    },
+                    "201": {
+                        "description": "Created"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/tdc/budapest/api/ba/v1/execute/room/aggregation/record": {
+            "post": {
+                "tags": [
+                    "room-aggregation-log-controller"
+                ],
+                "summary": "addRoomAggregationLog",
+                "operationId": "addRoomAggregationLogUsingPOST",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "param",
+                        "description": "param",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/RoomAggregationLogParam"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/MtHttpResponse"
+                        }
+                    },
+                    "201": {
+                        "description": "Created"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/tdc/budapest/api/ba/v1/relation/goodsroom/{goodsRoomId}": {
+            "delete": {
+                "tags": [
+                    "room-relation-ba-controller"
+                ],
+                "summary": "removeRoomRelation",
+                "operationId": "removeRoomRelationUsingDELETE",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "goodsRoomId",
+                        "in": "path",
+                        "description": "goodsRoomId",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/MtHttpResponse"
+                        }
+                    },
+                    "204": {
+                        "description": "No Content"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/tdc/budapest/api/v1/common/dictionary/types": {
+            "get": {
+                "tags": [
+                    "common-controller"
+                ],
+                "summary": "loadDictionWordTypes",
+                "operationId": "loadDictionWordTypesUsingGET",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/BudapestHttpResponse«Map«int,string»»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/tdc/budapest/api/v1/common/menus": {
+            "get": {
+                "tags": [
+                    "common-controller"
+                ],
+                "summary": "loadMenus",
+                "operationId": "loadMenusUsingGET",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/BudapestHttpResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/tdc/budapest/api/v1/dictionary/recommend/ignore/{wordId}": {
+            "get": {
+                "tags": [
+                    "words-recommend-controller"
+                ],
+                "summary": "ignoreWord",
+                "operationId": "ignoreWordUsingGET",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "wordId",
+                        "in": "path",
+                        "description": "wordId",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/BudapestHttpResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/tdc/budapest/api/v1/dictionary/recommend/list/type/{typeId}": {
+            "get": {
+                "tags": [
+                    "words-recommend-controller"
+                ],
+                "summary": "recommendList",
+                "operationId": "recommendListUsingGET",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "typeId",
+                        "in": "path",
+                        "description": "typeId",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/BudapestHttpResponse«List«RecommendWordsDo»»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/tdc/budapest/api/v1/dictionary/version/clone": {
+            "post": {
+                "tags": [
+                    "dictionary-version-controller"
+                ],
+                "summary": "clone",
+                "operationId": "cloneUsingPOST",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "param",
+                        "description": "param",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/DictionaryVersionCloneParam"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/BudapestHttpResponse"
+                        }
+                    },
+                    "201": {
+                        "description": "Created"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/tdc/budapest/api/v1/dictionary/version/details/{versionId}": {
+            "get": {
+                "tags": [
+                    "dictionary-version-controller"
+                ],
+                "summary": "details",
+                "operationId": "detailsUsingGET",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "versionId",
+                        "in": "path",
+                        "description": "versionId",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/BudapestHttpResponse«DictionaryVersionDetails»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/tdc/budapest/api/v1/dictionary/version/diff/confirm/{versionId}": {
+            "post": {
+                "tags": [
+                    "dictionary-version-controller"
+                ],
+                "summary": "diffConfirm",
+                "operationId": "diffConfirmUsingPOST",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "versionId",
+                        "in": "path",
+                        "description": "versionId",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "in": "body",
+                        "name": "result",
+                        "description": "Map<Integer,Integer> <diff记录Id,结果：1=错误 2=正确>",
+                        "required": false,
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "integer",
+                                "format": "int32"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/BudapestHttpResponse"
+                        }
+                    },
+                    "201": {
+                        "description": "Created"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/tdc/budapest/api/v1/dictionary/version/diff/list/{versionId}": {
+            "post": {
+                "tags": [
+                    "dictionary-version-controller"
+                ],
+                "summary": "diffList",
+                "operationId": "diffListUsingPOST",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "versionId",
+                        "in": "path",
+                        "description": "versionId",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "pageNo",
+                        "in": "query",
+                        "description": "pageNo",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "pageSize",
+                        "in": "query",
+                        "description": "pageSize",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/BudapestHttpResponse«Page«DictionaryVersionDiffRecordDo»»"
+                        }
+                    },
+                    "201": {
+                        "description": "Created"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/tdc/budapest/api/v1/dictionary/version/list": {
+            "get": {
+                "tags": [
+                    "dictionary-version-controller"
+                ],
+                "summary": "versionList",
+                "operationId": "versionListUsingGET",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "pageNo",
+                        "in": "query",
+                        "description": "pageNo",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "pageSize",
+                        "in": "query",
+                        "description": "pageSize",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/BudapestHttpResponse«Page«DictionaryVersionDo»»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/tdc/budapest/api/v1/dictionary/version/online/{versionId}": {
+            "post": {
+                "tags": [
+                    "dictionary-version-controller"
+                ],
+                "summary": "online",
+                "operationId": "onlineUsingPOST",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "versionId",
+                        "in": "path",
+                        "description": "versionId",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/BudapestHttpResponse"
+                        }
+                    },
+                    "201": {
+                        "description": "Created"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/tdc/budapest/api/v1/dictionary/version/save": {
+            "post": {
+                "tags": [
+                    "dictionary-version-controller"
+                ],
+                "summary": "save",
+                "operationId": "saveUsingPOST",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "details",
+                        "description": "details",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/DictionaryVersionDetails"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/BudapestHttpResponse"
+                        }
+                    },
+                    "201": {
+                        "description": "Created"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/tdc/budapest/api/v1/dictionary/version/test/finish/{versionId}": {
+            "post": {
+                "tags": [
+                    "dictionary-version-controller"
+                ],
+                "summary": "finishTesting",
+                "operationId": "finishTestingUsingPOST",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "versionId",
+                        "in": "path",
+                        "description": "versionId",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/BudapestHttpResponse"
+                        }
+                    },
+                    "201": {
+                        "description": "Created"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/tdc/budapest/api/v1/dictionary/version/test/{versionId}": {
+            "post": {
+                "tags": [
+                    "dictionary-version-controller"
+                ],
+                "summary": "testing",
+                "operationId": "testingUsingPOST",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "versionId",
+                        "in": "path",
+                        "description": "versionId",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/BudapestHttpResponse"
+                        }
+                    },
+                    "201": {
+                        "description": "Created"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/tdc/budapest/api/v1/realroom/add": {
+            "post": {
+                "tags": [
+                    "real-room-controller"
+                ],
+                "summary": "addRealRoom",
+                "operationId": "addRealRoomUsingPOST",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "room",
+                        "description": "room",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/LocalRoom"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/BudapestHttpResponse"
+                        }
+                    },
+                    "201": {
+                        "description": "Created"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/tdc/budapest/api/v1/realroom/alert/details": {
+            "get": {
+                "tags": [
+                    "real-room-alert-controller"
+                ],
+                "summary": "getAlertDetails",
+                "operationId": "getAlertDetailsUsingGET",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "roomId",
+                        "in": "query",
+                        "description": "roomId",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/BudapestHttpResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/tdc/budapest/api/v1/realroom/alert/list": {
+            "get": {
+                "tags": [
+                    "real-room-alert-controller"
+                ],
+                "summary": "getAlertsList",
+                "operationId": "getAlertsListUsingGET",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "poiId",
+                        "in": "query",
+                        "description": "poiId",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/BudapestHttpResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/tdc/budapest/api/v1/realroom/alert/log": {
+            "get": {
+                "tags": [
+                    "log-controller"
+                ],
+                "summary": "getRealRoomAlertLogsPage",
+                "operationId": "getRealRoomAlertLogsPageUsingGET",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "poiId",
+                        "in": "query",
+                        "description": "poiId",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "name": "pageNo",
+                        "in": "query",
+                        "description": "pageNo",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "pageSize",
+                        "in": "query",
+                        "description": "pageSize",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/BudapestHttpResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/tdc/budapest/api/v1/realroom/alert/save": {
+            "post": {
+                "tags": [
+                    "real-room-alert-controller"
+                ],
+                "summary": "updateAlertDetails",
+                "operationId": "updateAlertDetailsUsingPOST",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "resultList",
+                        "description": "resultList",
+                        "required": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/AlertDetailHandlerResultParam"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/BudapestHttpResponse"
+                        }
+                    },
+                    "201": {
+                        "description": "Created"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/tdc/budapest/api/v1/realroom/alert/search": {
+            "get": {
+                "tags": [
+                    "real-room-alert-stats-controller"
+                ],
+                "summary": "loadPoiStats",
+                "operationId": "loadPoiStatsUsingGET",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "cityId",
+                        "in": "query",
+                        "description": "cityId",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "poiId",
+                        "in": "query",
+                        "description": "poiId",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "name": "poiName",
+                        "in": "query",
+                        "description": "poiName",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "audit",
+                        "in": "query",
+                        "description": "audit",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "pageNo",
+                        "in": "query",
+                        "description": "pageNo",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "pageSize",
+                        "in": "query",
+                        "description": "pageSize",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/BudapestHttpResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/tdc/budapest/api/v1/realroom/alert/stats/all": {
+            "get": {
+                "tags": [
+                    "real-room-alert-stats-controller"
+                ],
+                "summary": "loadRealRoomDistrictStats",
+                "operationId": "loadRealRoomDistrictStatsUsingGET",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/BudapestHttpResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/tdc/budapest/api/v1/realroom/batch/rename": {
+            "post": {
+                "tags": [
+                    "real-room-controller"
+                ],
+                "summary": "batchRenameRealRoom",
+                "operationId": "batchRenameRealRoomUsingPOST",
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "file",
+                        "in": "formData",
+                        "description": "file",
+                        "required": true,
+                        "type": "file"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/BudapestHttpResponse"
+                        }
+                    },
+                    "201": {
+                        "description": "Created"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/tdc/budapest/api/v1/realroom/comproom/relation/confirm": {
+            "post": {
+                "tags": [
+                    "comp-room-relation-fe-controller"
+                ],
+                "summary": "confirmCompRelation",
+                "operationId": "confirmCompRelationUsingPOST",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "param",
+                        "description": "param",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/CompRoomRelationConfirmParam"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/BudapestHttpResponse"
+                        }
+                    },
+                    "201": {
+                        "description": "Created"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/tdc/budapest/api/v1/realroom/comproom/relation/history/leftsidebar": {
+            "post": {
+                "tags": [
+                    "comp-room-relation-controller"
+                ],
+                "summary": "handleCompRoomRelationHistory",
+                "operationId": "handleCompRoomRelationHistoryUsingPOST",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/BudapestHttpResponse"
+                        }
+                    },
+                    "201": {
+                        "description": "Created"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/tdc/budapest/api/v1/realroom/comproom/relation/list": {
+            "get": {
+                "tags": [
+                    "comp-room-relation-fe-controller"
+                ],
+                "summary": "getRealRoomCompRelationList",
+                "operationId": "getRealRoomCompRelationListUsingGET",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "mtPoiId",
+                        "in": "query",
+                        "description": "mtPoiId",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/BudapestHttpResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/tdc/budapest/api/v1/realroom/comproom/relation/log": {
+            "get": {
+                "tags": [
+                    "comp-room-relation-fe-controller"
+                ],
+                "summary": "getCompRelationLogsPage",
+                "operationId": "getCompRelationLogsPageUsingGET",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "poiId",
+                        "in": "query",
+                        "description": "poiId",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "name": "siteId",
+                        "in": "query",
+                        "description": "siteId",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "compPoiId",
+                        "in": "query",
+                        "description": "compPoiId",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "compRoomId",
+                        "in": "query",
+                        "description": "compRoomId",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "pageNo",
+                        "in": "query",
+                        "description": "pageNo",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "pageSize",
+                        "in": "query",
+                        "description": "pageSize",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/BudapestHttpResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/tdc/budapest/api/v1/realroom/comproom/relation/move": {
+            "post": {
+                "tags": [
+                    "comp-room-relation-fe-controller"
+                ],
+                "summary": "realRoomRelationMove",
+                "operationId": "realRoomRelationMoveUsingPOST",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "param",
+                        "description": "param",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/CompRoomRelationMoveParam"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/BudapestHttpResponse"
+                        }
+                    },
+                    "201": {
+                        "description": "Created"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/tdc/budapest/api/v1/realroom/comproom/relation/relieve": {
+            "post": {
+                "tags": [
+                    "comp-room-relation-fe-controller"
+                ],
+                "summary": "relieveCompRelation",
+                "operationId": "relieveCompRelationUsingPOST",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "param",
+                        "description": "param",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/CompRoomRelationConfirmParam"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/BudapestHttpResponse"
+                        }
+                    },
+                    "201": {
+                        "description": "Created"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/tdc/budapest/api/v1/realroom/comproom/relation/search": {
+            "get": {
+                "tags": [
+                    "comp-room-relation-fe-controller"
+                ],
+                "summary": "getCompStats",
+                "operationId": "getCompStatsUsingGET",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "cityId",
+                        "in": "query",
+                        "description": "cityId",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "poiId",
+                        "in": "query",
+                        "description": "poiId",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "name": "poiName",
+                        "in": "query",
+                        "description": "poiName",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "audit",
+                        "in": "query",
+                        "description": "audit",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "pageNo",
+                        "in": "query",
+                        "description": "pageNo",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "pageSize",
+                        "in": "query",
+                        "description": "pageSize",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "level",
+                        "in": "query",
+                        "description": "level",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/BudapestHttpResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/tdc/budapest/api/v1/realroom/comproom/relation/stats/all": {
+            "get": {
+                "tags": [
+                    "comp-room-relation-fe-controller"
+                ],
+                "summary": "getCompRoomDistrictStats",
+                "operationId": "getCompRoomDistrictStatsUsingGET",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "level",
+                        "in": "query",
+                        "description": "level",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/BudapestHttpResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/tdc/budapest/api/v1/realroom/comproom/relation/task/execute": {
+            "post": {
+                "tags": [
+                    "comp-room-relation-controller"
+                ],
+                "summary": "startCompRoomRelationTask",
+                "operationId": "startCompRoomRelationTaskUsingPOST",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/BudapestHttpResponse"
+                        }
+                    },
+                    "201": {
+                        "description": "Created"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/tdc/budapest/api/v1/realroom/delete": {
+            "post": {
+                "tags": [
+                    "real-room-controller"
+                ],
+                "summary": "deleteRealRoom",
+                "operationId": "deleteRealRoomUsingPOST",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "param",
+                        "description": "param",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/RealRoomDeleteParam"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/BudapestHttpResponse"
+                        }
+                    },
+                    "201": {
+                        "description": "Created"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/tdc/budapest/api/v1/realroom/details": {
+            "get": {
+                "tags": [
+                    "real-room-controller"
+                ],
+                "summary": "realRoomDetail",
+                "operationId": "realRoomDetailUsingGET",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "roomId",
+                        "in": "query",
+                        "description": "roomId",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/BudapestHttpResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/tdc/budapest/api/v1/realroom/list": {
+            "get": {
+                "tags": [
+                    "real-room-controller"
+                ],
+                "summary": "loadRealRoomList",
+                "operationId": "loadRealRoomListUsingGET",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "poiId",
+                        "in": "query",
+                        "description": "poiId",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/BudapestHttpResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/tdc/budapest/api/v1/realroom/log": {
+            "get": {
+                "tags": [
+                    "log-controller"
+                ],
+                "summary": "getRealRoomLogsPage",
+                "operationId": "getRealRoomLogsPageUsingGET",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "poiId",
+                        "in": "query",
+                        "description": "poiId",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "name": "pageNo",
+                        "in": "query",
+                        "description": "pageNo",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "pageSize",
+                        "in": "query",
+                        "description": "pageSize",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/BudapestHttpResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/tdc/budapest/api/v1/realroom/permit": {
+            "post": {
+                "tags": [
+                    "real-room-controller"
+                ],
+                "summary": "realRoomPermit",
+                "operationId": "realRoomPermitUsingPOST",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "param",
+                        "description": "param",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/RealRoomPermitParam"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/BudapestHttpResponse"
+                        }
+                    },
+                    "201": {
+                        "description": "Created"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/tdc/budapest/api/v1/realroom/poi/import": {
+            "post": {
+                "tags": [
+                    "poi-priority-controller"
+                ],
+                "summary": "importPoi",
+                "operationId": "importPoiUsingPOST",
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "file",
+                        "in": "formData",
+                        "description": "file",
+                        "required": true,
+                        "type": "file"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/BudapestHttpResponse"
+                        }
+                    },
+                    "201": {
+                        "description": "Created"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/tdc/budapest/api/v1/realroom/reject": {
+            "post": {
+                "tags": [
+                    "real-room-controller"
+                ],
+                "summary": "realRoomReject",
+                "operationId": "realRoomRejectUsingPOST",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "param",
+                        "description": "param",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/RealRoomRejectParam"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/BudapestHttpResponse"
+                        }
+                    },
+                    "201": {
+                        "description": "Created"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/tdc/budapest/api/v1/realroom/relation/batch/delete": {
+            "post": {
+                "tags": [
+                    "real-room-relation-controller"
+                ],
+                "summary": "batchDeleteGoodsRoom",
+                "operationId": "batchDeleteGoodsRoomUsingPOST",
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "file",
+                        "in": "formData",
+                        "description": "file",
+                        "required": true,
+                        "type": "file"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/BudapestHttpResponse"
+                        }
+                    },
+                    "201": {
+                        "description": "Created"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/tdc/budapest/api/v1/realroom/relation/batch/update/relation": {
+            "post": {
+                "tags": [
+                    "real-room-relation-controller"
+                ],
+                "summary": "batchUpdateRelation",
+                "operationId": "batchUpdateRelationUsingPOST",
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "file",
+                        "in": "formData",
+                        "description": "file",
+                        "required": true,
+                        "type": "file"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/BudapestHttpResponse"
+                        }
+                    },
+                    "201": {
+                        "description": "Created"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/tdc/budapest/api/v1/realroom/relation/delete": {
+            "post": {
+                "tags": [
+                    "real-room-relation-controller"
+                ],
+                "summary": "deleteGoodsRoom",
+                "operationId": "deleteGoodsRoomUsingPOST",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "param",
+                        "description": "param",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/GoodsRoomDeleteParam"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/BudapestHttpResponse"
+                        }
+                    },
+                    "201": {
+                        "description": "Created"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/tdc/budapest/api/v1/realroom/relation/list": {
+            "get": {
+                "tags": [
+                    "real-room-relation-controller"
+                ],
+                "summary": "realRoomRelationList",
+                "operationId": "realRoomRelationListUsingGET",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "poiId",
+                        "in": "query",
+                        "description": "poiId",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/BudapestHttpResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/tdc/budapest/api/v1/realroom/relation/log": {
+            "get": {
+                "tags": [
+                    "log-controller"
+                ],
+                "summary": "getAggregationLogsPage",
+                "operationId": "getAggregationLogsPageUsingGET",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "poiId",
+                        "in": "query",
+                        "description": "poiId",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "name": "realRoomId",
+                        "in": "query",
+                        "description": "realRoomId",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "goodsRoomId",
+                        "in": "query",
+                        "description": "goodsRoomId",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "pageNo",
+                        "in": "query",
+                        "description": "pageNo",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "pageSize",
+                        "in": "query",
+                        "description": "pageSize",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/BudapestHttpResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/tdc/budapest/api/v1/realroom/relation/move": {
+            "post": {
+                "tags": [
+                    "real-room-relation-controller"
+                ],
+                "summary": "realRoomRelationMove",
+                "operationId": "realRoomRelationMoveUsingPOST_1",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "param",
+                        "description": "param",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/RoomMoveParam"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/BudapestHttpResponse"
+                        }
+                    },
+                    "201": {
+                        "description": "Created"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/tdc/budapest/api/v1/realroom/relation/permit": {
+            "post": {
+                "tags": [
+                    "real-room-relation-controller"
+                ],
+                "summary": "realRoomRelationPermit",
+                "operationId": "realRoomRelationPermitUsingPOST",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "param",
+                        "description": "param",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/RoomRelationPermitParam"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/BudapestHttpResponse"
+                        }
+                    },
+                    "201": {
+                        "description": "Created"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/tdc/budapest/api/v1/realroom/relation/permitsamename": {
+            "post": {
+                "tags": [
+                    "real-room-relation-controller"
+                ],
+                "summary": "permitSameGoodsNameRelation",
+                "operationId": "permitSameGoodsNameRelationUsingPOST",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "param",
+                        "description": "param",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/RoomRelationSameNamePermitParam"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/BudapestHttpResponse"
+                        }
+                    },
+                    "201": {
+                        "description": "Created"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/tdc/budapest/api/v1/realroom/relation/search": {
+            "get": {
+                "tags": [
+                    "real-room-relation-stat-controller"
+                ],
+                "summary": "loadPoiStats",
+                "operationId": "loadPoiStatsUsingGET_2",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "cityId",
+                        "in": "query",
+                        "description": "cityId",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "provinceId",
+                        "in": "query",
+                        "description": "provinceId",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "poiId",
+                        "in": "query",
+                        "description": "poiId",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "name": "poiName",
+                        "in": "query",
+                        "description": "poiName",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "audit",
+                        "in": "query",
+                        "description": "audit",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "pageNo",
+                        "in": "query",
+                        "description": "pageNo",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "pageSize",
+                        "in": "query",
+                        "description": "pageSize",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/BudapestHttpResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/tdc/budapest/api/v1/realroom/relation/search/partnerId": {
+            "get": {
+                "tags": [
+                    "real-room-relation-controller"
+                ],
+                "summary": "getPartnerId",
+                "operationId": "getPartnerIdUsingGET",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "goodsId",
+                        "in": "query",
+                        "description": "goodsId",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "goodsSource",
+                        "in": "query",
+                        "description": "goodsSource",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/BudapestHttpResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/tdc/budapest/api/v1/realroom/relation/stats/all": {
+            "get": {
+                "tags": [
+                    "real-room-relation-stat-controller"
+                ],
+                "summary": "loadRealRoomDistrictStats",
+                "operationId": "loadRealRoomDistrictStatsUsingGET_2",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/BudapestHttpResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/tdc/budapest/api/v1/realroom/relation/workload": {
+            "get": {
+                "tags": [
+                    "workload-controller"
+                ],
+                "summary": "findAggregationPage",
+                "operationId": "findAggregationPageUsingGET",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "beginDate",
+                        "in": "query",
+                        "description": "beginDate",
+                        "required": true,
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    {
+                        "name": "endDate",
+                        "in": "query",
+                        "description": "endDate",
+                        "required": true,
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    {
+                        "name": "user",
+                        "in": "query",
+                        "description": "user",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/BudapestHttpResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/tdc/budapest/api/v1/realroom/rename": {
+            "post": {
+                "tags": [
+                    "real-room-controller"
+                ],
+                "summary": "realRoomRename",
+                "operationId": "realRoomRenameUsingPOST",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "param",
+                        "description": "param",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/RoomRenameParam"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/BudapestHttpResponse"
+                        }
+                    },
+                    "201": {
+                        "description": "Created"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/tdc/budapest/api/v1/realroom/search": {
+            "get": {
+                "tags": [
+                    "real-room-controller"
+                ],
+                "summary": "realRoomSearch",
+                "operationId": "realRoomSearchUsingGET",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "cityId",
+                        "in": "query",
+                        "description": "cityId",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "poiId",
+                        "in": "query",
+                        "description": "poiId",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "name": "poiName",
+                        "in": "query",
+                        "description": "poiName",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "pageNo",
+                        "in": "query",
+                        "description": "pageNo",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "pageSize",
+                        "in": "query",
+                        "description": "pageSize",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/BudapestHttpResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "deprecated": true
+            }
+        },
+        "/tdc/budapest/api/v1/realroom/update": {
+            "post": {
+                "tags": [
+                    "real-room-controller"
+                ],
+                "summary": "updateRealRoom",
+                "operationId": "updateRealRoomUsingPOST",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "room",
+                        "description": "room",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/LocalRoom"
+                        }
+                    },
+                    {
+                        "name": "alert",
+                        "in": "query",
+                        "description": "alert",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/BudapestHttpResponse"
+                        }
+                    },
+                    "201": {
+                        "description": "Created"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/tdc/budapest/api/v1/realroom/update/details": {
+            "get": {
+                "tags": [
+                    "log-controller"
+                ],
+                "summary": "getRealRoomUpdateDetails",
+                "operationId": "getRealRoomUpdateDetailsUsingGET",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "updateId",
+                        "in": "query",
+                        "description": "updateId",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/BudapestHttpResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/tdc/budapest/api/v1/realroom/workload": {
+            "get": {
+                "tags": [
+                    "workload-controller"
+                ],
+                "summary": "findRealRoomPage",
+                "operationId": "findRealRoomPageUsingGET",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "beginDate",
+                        "in": "query",
+                        "description": "beginDate",
+                        "required": true,
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    {
+                        "name": "endDate",
+                        "in": "query",
+                        "description": "endDate",
+                        "required": true,
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    {
+                        "name": "user",
+                        "in": "query",
+                        "description": "user",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/BudapestHttpResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/tdc/budapest/api/v1/tools/dictionary/online": {
+            "get": {
+                "tags": [
+                    "tools-controller"
+                ],
+                "summary": "getOnlineRoomDictionary",
+                "operationId": "getOnlineRoomDictionaryUsingGET",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/BudapestHttpResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/tdc/budapest/api/v1/tools/dictionary/test": {
+            "get": {
+                "tags": [
+                    "tools-controller"
+                ],
+                "summary": "getTestingRoomDictionary",
+                "operationId": "getTestingRoomDictionaryUsingGET",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/BudapestHttpResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/tdc/budapest/api/v1/tools/goods/aggregation/retry": {
+            "get": {
+                "tags": [
+                    "tools-controller"
+                ],
+                "summary": "aggregationRetry",
+                "operationId": "aggregationRetryUsingGET",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "goodsIds",
+                        "in": "query",
+                        "description": "goodsIds",
+                        "required": true,
+                        "type": "array",
+                        "items": {
+                            "type": "integer",
+                            "format": "int32"
+                        },
+                        "collectionFormat": "multi"
+                    },
+                    {
+                        "name": "goodsSource",
+                        "in": "query",
+                        "description": "goodsSource",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/BudapestHttpResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/tdc/budapest/api/v1/tools/goodsinfo/search": {
+            "get": {
+                "tags": [
+                    "tools-controller"
+                ],
+                "summary": "searchHotelGoodsInfo",
+                "operationId": "searchHotelGoodsInfoUsingGET",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "goodsIds",
+                        "in": "query",
+                        "description": "goodsIds",
+                        "required": true,
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi"
+                    },
+                    {
+                        "name": "goodsSource",
+                        "in": "query",
+                        "description": "goodsSource",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/BudapestHttpResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/tdc/budapest/api/v1/tools/mock/aggregation": {
+            "post": {
+                "tags": [
+                    "tools-controller"
+                ],
+                "summary": "mockAggregation",
+                "operationId": "mockAggregationUsingPOST",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "mockAggregationParam",
+                        "description": "mockAggregationParam",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/MockAggregationParam"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/BudapestHttpResponse"
+                        }
+                    },
+                    "201": {
+                        "description": "Created"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/tdc/budapest/api/v1/tools/price": {
+            "get": {
+                "tags": [
+                    "tools-controller"
+                ],
+                "summary": "queryPoiIdPriceMapBySellChannel",
+                "operationId": "queryPoiIdPriceMapBySellChannelUsingGET",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "poiId",
+                        "in": "query",
+                        "description": "poiId",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/BudapestHttpResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/tdc/budapest/api/v1/tools/warning/autoapply": {
+            "get": {
+                "tags": [
+                    "tools-controller"
+                ],
+                "summary": "autoApplyWarning",
+                "operationId": "autoApplyWarningUsingGET",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "count",
+                        "in": "query",
+                        "description": "count",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/BudapestHttpResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/tdc/budapest/api/v1/tools/warning/clean": {
+            "get": {
+                "tags": [
+                    "tools-controller"
+                ],
+                "summary": "cleanInvalidWarning",
+                "operationId": "cleanInvalidWarningUsingGET",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "count",
+                        "in": "query",
+                        "description": "count",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/BudapestHttpResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/tdc/budapest/api/v2/realroom/alert/search": {
+            "get": {
+                "tags": [
+                    "real-room-alert-stats-controller-v-2"
+                ],
+                "summary": "loadPoiStats",
+                "operationId": "loadPoiStatsUsingGET_1",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "cityId",
+                        "in": "query",
+                        "description": "cityId",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "poiId",
+                        "in": "query",
+                        "description": "poiId",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "name": "poiName",
+                        "in": "query",
+                        "description": "poiName",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "audit",
+                        "in": "query",
+                        "description": "audit",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "pageNo",
+                        "in": "query",
+                        "description": "pageNo",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "pageSize",
+                        "in": "query",
+                        "description": "pageSize",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "level",
+                        "in": "query",
+                        "description": "level",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/BudapestHttpResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/tdc/budapest/api/v2/realroom/alert/stats/all": {
+            "get": {
+                "tags": [
+                    "real-room-alert-stats-controller-v-2"
+                ],
+                "summary": "loadRealRoomDistrictStats",
+                "operationId": "loadRealRoomDistrictStatsUsingGET_1",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "level",
+                        "in": "query",
+                        "description": "level",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/BudapestHttpResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/tdc/budapest/api/v2/realroom/relation/search": {
+            "get": {
+                "tags": [
+                    "real-room-relation-stat-controller-v-2"
+                ],
+                "summary": "loadPoiStats",
+                "operationId": "loadPoiStatsUsingGET_3",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "cityId",
+                        "in": "query",
+                        "description": "cityId",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "provinceId",
+                        "in": "query",
+                        "description": "provinceId",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "poiId",
+                        "in": "query",
+                        "description": "poiId",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "name": "poiName",
+                        "in": "query",
+                        "description": "poiName",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "audit",
+                        "in": "query",
+                        "description": "audit",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "pageNo",
+                        "in": "query",
+                        "description": "pageNo",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "pageSize",
+                        "in": "query",
+                        "description": "pageSize",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "level",
+                        "in": "query",
+                        "description": "level",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/BudapestHttpResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/tdc/budapest/api/v2/realroom/relation/stats/all": {
+            "get": {
+                "tags": [
+                    "real-room-relation-stat-controller-v-2"
+                ],
+                "summary": "loadRealRoomDistrictStats",
+                "operationId": "loadRealRoomDistrictStatsUsingGET_3",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "level",
+                        "in": "query",
+                        "description": "level",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/BudapestHttpResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/tdc/budapest/monitor/alive": {
+            "get": {
+                "tags": [
+                    "api-alive-controller"
+                ],
+                "summary": "monitorAlive",
+                "operationId": "monitorAliveUsingGET",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "MtHttpResponse": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "type": "object"
+                },
+                "error": {
+                    "$ref": "#/definitions/ErrorCode"
+                },
+                "paging": {
+                    "$ref": "#/definitions/Paging"
+                }
+            }
+        },
+        "DictionaryVersionCloneParam": {
+            "type": "object",
+            "properties": {
+                "templateVersionId": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "克隆模板的词典版本号"
+                },
+                "versionName": {
+                    "type": "string",
+                    "description": "新的词典名称"
+                }
+            }
+        },
+        "RecommendWordsDo": {
+            "type": "object",
+            "properties": {
+                "createdTime": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "创建时间"
+                },
+                "extractedTimes": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "提取次数"
+                },
+                "id": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "主键"
+                },
+                "modifiedTime": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "修改时间"
+                },
+                "status": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "状态 （1=默认态 2=被采纳 3=放弃）"
+                },
+                "type": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "类型：1=维度词 2=等价词 3=同义词 4=无效词 5=前缀无效词"
+                },
+                "word": {
+                    "type": "string",
+                    "description": "词"
+                }
+            }
+        },
+        "BudapestHttpResponse": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "type": "object"
+                },
+                "msg": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            }
+        },
+        "LocalGoodsRoom": {
+            "type": "object",
+            "properties": {
+                "gmtCreated": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "goodsId": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "goodsName": {
+                    "type": "string"
+                },
+                "goodsPrice": {
+                    "type": "number",
+                    "format": "double"
+                },
+                "goodsType": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "isConfirmed": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "mtaRoomId": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "mtaRoomName": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "poiId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "relationId": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "source": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            }
+        },
+        "LocalBed": {
+            "type": "object",
+            "properties": {
+                "bedCount": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "bedDesc": {
+                    "type": "string"
+                },
+                "bedType": {
+                    "type": "string"
+                },
+                "gmtModified": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "modifierId": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "modifierType": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            }
+        },
+        "LocalRoomBase": {
+            "type": "object",
+            "properties": {
+                "auditStatus": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "buildingType": {
+                    "type": "string"
+                },
+                "capacity": {
+                    "type": "string"
+                },
+                "extraBed": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "floor": {
+                    "type": "string"
+                },
+                "floorType": {
+                    "type": "string"
+                },
+                "goodsRoomList": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/LocalGoodsRoom"
+                    }
+                },
+                "innerRoomCount": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "isConfirmed": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "poiId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "realRoomId": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "roomDesc": {
+                    "type": "string"
+                },
+                "roomName": {
+                    "type": "string"
+                },
+                "roomType": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "status": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "useableArea": {
+                    "type": "string"
+                },
+                "window": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "windowBad": {
+                    "type": "string"
+                },
+                "windowView": {
+                    "type": "string"
+                }
+            }
+        },
+        "Page«DictionaryVersionDo»": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/DictionaryVersionDo"
+                    }
+                },
+                "limit": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "offset": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "pageNo": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "pageSize": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "totalCnt": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            }
+        },
+        "MockAggregationParam": {
+            "type": "object",
+            "properties": {
+                "goodsRoomMap": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/definitions/List"
+                    }
+                },
+                "goodsSource": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "version": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            }
+        },
+        "Paging": {
+            "type": "object",
+            "properties": {
+                "next": {
+                    "type": "string"
+                },
+                "previous": {
+                    "type": "string"
+                },
+                "totalCount": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            }
+        },
+        "RealRoomSystemSaveParam": {
+            "type": "object",
+            "properties": {
+                "objJson": {
+                    "type": "string"
+                },
+                "operateType": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "operatorId": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "operatorName": {
+                    "type": "string"
+                },
+                "poiId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "realRoomId": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "realRoomName": {
+                    "type": "string"
+                }
+            }
+        },
+        "BudapestHttpResponse«List«RecommendWordsDo»»": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/RecommendWordsDo"
+                    }
+                },
+                "msg": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            }
+        },
+        "GoodsRoomDeleteParam": {
+            "type": "object",
+            "properties": {
+                "goodsRoomId": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            }
+        },
+        "Page«DictionaryVersionDiffRecordDo»": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/DictionaryVersionDiffRecordDo"
+                    }
+                },
+                "limit": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "offset": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "pageNo": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "pageSize": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "totalCnt": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            }
+        },
+        "RealRoomPermitParam": {
+            "type": "object",
+            "properties": {
+                "roomId": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            }
+        },
+        "BudapestHttpResponse«Map«int,string»»": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    }
+                },
+                "msg": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            }
+        },
+        "RoomAggregationLogParam": {
+            "type": "object",
+            "properties": {
+                "content": {
+                    "type": "string"
+                },
+                "operateType": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "operatorId": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "operatorName": {
+                    "type": "string"
+                },
+                "poiId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "roomId": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "roomName": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            }
+        },
+        "Map«int,string»": {
+            "type": "object",
+            "additionalProperties": {
+                "type": "string"
+            }
+        },
+        "BudapestHttpResponse«Page«DictionaryVersionDiffRecordDo»»": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "$ref": "#/definitions/Page«DictionaryVersionDiffRecordDo»"
+                },
+                "msg": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            }
+        },
+        "GoodsRoom": {
+            "type": "object",
+            "properties": {
+                "gmtCreated": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "gmtModified": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "goodsId": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "goodsName": {
+                    "type": "string"
+                },
+                "goodsSource": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "goodsType": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "id": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "mtaRoomId": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "mtaRoomName": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "poiId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "status": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            }
+        },
+        "DictionaryVersionDiffRecordDo": {
+            "type": "object",
+            "properties": {
+                "aggregationResult": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "线上聚合结果"
+                },
+                "confirmedStatus": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "确认状态  0=未确认 1=testing有误 2=testing无误"
+                },
+                "confirmedTime": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "确认时间"
+                },
+                "confirmerId": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "确认人的userId"
+                },
+                "confirmerMis": {
+                    "type": "string",
+                    "description": "确认人的mis号"
+                },
+                "createdTime": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "创建时间"
+                },
+                "goodsRoomId": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "产品房型Id"
+                },
+                "goodsRoomName": {
+                    "type": "string",
+                    "description": "产品房型名称"
+                },
+                "id": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "主键"
+                },
+                "officialVersion": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "线上的词表版本"
+                },
+                "poiId": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "poiId"
+                },
+                "poiName": {
+                    "type": "string",
+                    "description": "poi名称"
+                },
+                "realRoomId": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "物理房型Id"
+                },
+                "realRoomName": {
+                    "type": "string",
+                    "description": "物理房型名称"
+                },
+                "testingAggregationResult": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "测试词表的聚合结果"
+                },
+                "testingRealRoomId": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "测试词表聚合的物理房型Id"
+                },
+                "testingRealRoomName": {
+                    "type": "string",
+                    "description": "测试词表聚合的物理房型名称"
+                },
+                "testingVersion": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "测试的词表版本"
+                }
+            }
+        },
+        "LocalRoom": {
+            "type": "object",
+            "properties": {
+                "beds": {
+                    "type": "array",
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/definitions/LocalBed"
+                        }
+                    }
+                },
+                "id": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "roomBase": {
+                    "$ref": "#/definitions/LocalRoomBase"
+                },
+                "roomExtend": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "RoomMoveParam": {
+            "type": "object",
+            "properties": {
+                "poiId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "relationIdList": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                },
+                "toRealRoomId": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            }
+        },
+        "BudapestHttpResponse«Page«DictionaryVersionDo»»": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "$ref": "#/definitions/Page«DictionaryVersionDo»"
+                },
+                "msg": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            }
+        },
+        "AlertDetailHandlerResultParam": {
+            "type": "object",
+            "properties": {
+                "auditStatus": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "id": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            }
+        },
+        "RealRoomDeleteParam": {
+            "type": "object",
+            "properties": {
+                "roomId": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            }
+        },
+        "DictionaryVersionDo": {
+            "type": "object",
+            "properties": {
+                "beginTime": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "开始时间"
+                },
+                "createdTime": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "创建时间"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "版本描述"
+                },
+                "diffReport": {
+                    "type": "string",
+                    "description": "diff报告 118/120 表示120条diff，188条没有问题"
+                },
+                "diffResult": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "diff结果 0=待处理 1=已处理"
+                },
+                "effected": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "是否生效过"
+                },
+                "effectedTime": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "最近生效时间"
+                },
+                "endTime": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "结束时间"
+                },
+                "id": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "主键"
+                },
+                "modifiedTime": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "修改时间"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "版本名称"
+                },
+                "period": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "周期"
+                },
+                "status": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "状态 0=未执行 1=测试中 2=测试结束 3=生效"
+                },
+                "words": {
+                    "type": "string",
+                    "description": "词表"
+                }
+            }
+        },
+        "RoomRelationPermitParam": {
+            "type": "object",
+            "properties": {
+                "goodsRoomId": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "poiId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "realRoomId": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            }
+        },
+        "RealRoomRejectParam": {
+            "type": "object",
+            "properties": {
+                "roomId": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            }
+        },
+        "BudapestHttpResponse«DictionaryVersionDetails»": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "$ref": "#/definitions/DictionaryVersionDetails"
+                },
+                "msg": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            }
+        },
+        "CompRoomRelationMoveParam": {
+            "type": "object",
+            "properties": {
+                "mtPoiId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "relationIdList": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                },
+                "toMtRoomId": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            }
+        },
+        "DictionaryVersionDetails": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "版本号"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "版本名称"
+                },
+                "status": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "状态 0=未执行 1=测试中 2=测试结束 3=生效"
+                },
+                "words": {
+                    "type": "object",
+                    "description": "Map<Integer,List<String>> Map<类型Id,List<词>>  类型Id：1=维度词 2=等价词 3=同义词 4=无效词 5=前缀无效词  List<词>：等价词&同义词&维度词 表示方式 x1=x2=x3=x4  ",
+                    "additionalProperties": {
+                        "$ref": "#/definitions/List"
+                    }
+                }
+            }
+        },
+        "RoomRelationSameNamePermitParam": {
+            "type": "object",
+            "properties": {
+                "goodsRoomIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                },
+                "poiId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "realRoomId": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            }
+        },
+        "RoomRenameParam": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "roomId": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            }
+        },
+        "CompRoomRelationConfirmParam": {
+            "type": "object",
+            "properties": {
+                "compPoiId": {
+                    "type": "string"
+                },
+                "compRoomId": {
+                    "type": "string"
+                },
+                "mtPoiId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "mtRoomId": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "siteId": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            }
+        },
+        "ErrorCode": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "message": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

@@ -1,6 +1,11 @@
 {
-    "presets": [
-      ["env", { "modules": false }]
-    ]
-  }
-  
+  "presets": [
+      "es2015",
+      ["env", {
+          "targets": {
+              "browsers": ["last 2 versions", "safari >= 7", "Firefox >= 20"]
+          }
+      }]
+  ],
+  "plugins": ["transform-runtime", "transform-object-rest-spread"]
+}

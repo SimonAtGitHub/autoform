@@ -102,7 +102,7 @@
 
 
 // import swaggerJson from '../../common/swagger/vtdc.swagger.poimatch.json';
-import swaggerJson from '../../common/swagger/vtdc.swagger.json';
+import swaggerJson from '../../swagger/vtdc.swagger.json';
 
 
 import { RequestTables, ResponseTables, controlType, DealDefinitions } from './_util';

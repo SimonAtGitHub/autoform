@@ -162,7 +162,7 @@
 
 import Vue from 'vue';
 
-import list from './vddlComponent.vue';
+// import list from './vddlComponent.vue';
 // require active-line.js
 require('codemirror/addon/selection/active-line.js')
 // styleSelectedText
@@ -446,11 +446,15 @@ header {
     left: 0;
     width: 100%;
     line-height: 60px;
+    overflow: hidden;
     z-index: 100;
     position: relative;
     margin-bottom: 15px;
     padding: 0 15px;
-    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .12), 0 0 6px 0 rgba(0, 0, 0, .04)
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .12), 0 0 6px 0 rgba(0, 0, 0, .04);
+    h3{
+        line-height: 30px;
+    }
 }
 
 .wrapper {
