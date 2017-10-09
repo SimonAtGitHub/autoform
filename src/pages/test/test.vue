@@ -2,20 +2,20 @@
     <div>
         <el-row>
             <el-col :span="12" :offset="6">
-                <auto-form :form="form" :model="model" :fields="fields" :span="24" :align="'top'" label-width="100px" ref="testForm" custom-layout="true">
-                    <template scope="f">
-                        <table>
-                            <tr>
-                                <td>
-                                    <field :form.sync="form" :model.sync="model" :field="f.keys.name"></field>
-                                </td>
-                                <td>
-                                    <field :form.sync="form" :model.sync="model" :field="f.keys.email"></field>
-                                </td>
+                <auto-form :form="form" :model="model" :fields="fields" :span="24" :align="'top'" label-width="100px" ref="testForm" :custom-layout="false">
+                    <!--<template scope="f">-->
+                        <!--<table>-->
+                            <!--<tr>-->
+                                <!--<td>-->
+                                    <!--<field :form.sync="form" :model.sync="model" :field="f.keys.name"></field>-->
+                                <!--</td>-->
+                                <!--<td>-->
+                                    <!--<field :form.sync="form" :model.sync="model" :field="f.keys.email"></field>-->
+                                <!--</td>-->
 
-                            </tr>
-                        </table>
-                    </template>
+                            <!--</tr>-->
+                        <!--</table>-->
+                    <!--</template>-->
 
                     <el-form-item>
                         <el-button type="primary" @click="onSubmit">立即创建</el-button>

@@ -31,24 +31,25 @@
                     </el-col>
                     <el-col :span="10">
                         <div class="drop-layout">
-                            <el-card class="button-card">
-                                <el-tabs v-model="activeName">
-                                    <el-tab-pane :label="zone" :name="zone" v-for="(list, zone) in tabForm" :key="zone">
-                                        <vddl-list class="drop-layout-body" :list="list" :inserted="inserted" effect-allowed="move" :external-sources="true">
-                                             <el-row :gutter="cGutter">
-                                            <el-col :span="item.templateOptions.span" v-for="(item, index) in list" :key="item.id" style="border:1px dashed #ccc;" v-bind:class="{'selected': selectedItem === item}">
-                                                <span>{{item.key}}/{{item.templateOptions.label||'请设置label'}}</span>
-                                                <vddl-draggable :horizontal="true" :draggable="item" :wrapper="list" :index="index" :item="item" :selected.stop="handleSelected" :selected-item="selectedItem">
-                                                    <div class="drop-layout-component">
-                                                        {{item.type}}
-                                                    </div>
-                                                </vddl-draggable>
-                                            </el-col>
-                                             </el-row>
-                                        </vddl-list>
-                                    </el-tab-pane>
-                                </el-tabs>
-                            </el-card>
+                            <div v-for="(list, zone) in tabForm">
+                                <el-card class="button-card">
+                                    <div slot="header" class="clearfix">
+                                        <span>{{zone}}</span>
+                                    </div>
+                                    <vddl-list class="drop-layout-body" :list="list" :inserted="inserted" effect-allowed="move" :external-sources="true">
+                                        <!--<el-row :gutter="cGutter">-->
+                                        <el-col :span="item.templateOptions.span" v-for="(item, index) in list" :key="item.id" style="border:1px dashed #ccc;" v-bind:class="{'selected': selectedItem === item}">
+                                            <span>{{item.key}}/{{item.label||'-'}}</span>
+                                            <vddl-draggable :horizontal="true" :draggable="item" :wrapper="list" :index="index" :item="item" :selected.stop="handleSelected" :selected-item="selectedItem">
+                                                <div class="drop-layout-component">
+                                                    {{item.type}}
+                                                </div>
+                                            </vddl-draggable>
+                                        </el-col>
+                                        <!--</el-row>-->
+                                    </vddl-list>
+                                </el-card>
+                            </div>
                         </div>
                     </el-col>
 
@@ -162,374 +163,374 @@
 
 <script>
 
-import Vue from 'vue';
+    import Vue from 'vue';
 
-// require active-line.js
-require('codemirror/addon/selection/active-line.js')
-// styleSelectedText
-require('codemirror/addon/selection/mark-selection.js')
-require('codemirror/addon/search/searchcursor.js')
-// hint
-require('codemirror/addon/hint/show-hint.js')
-require('codemirror/addon/hint/show-hint.css')
-require('codemirror/addon/hint/javascript-hint.js')
-require('codemirror/addon/selection/active-line.js')
-// highlightSelectionMatches
-require('codemirror/addon/scroll/annotatescrollbar.js')
-require('codemirror/addon/search/matchesonscrollbar.js')
-require('codemirror/addon/search/searchcursor.js')
-require('codemirror/addon/search/match-highlighter.js')
-// keyMap
-require('codemirror/mode/clike/clike.js')
-require('codemirror/addon/edit/matchbrackets.js')
-require('codemirror/addon/comment/comment.js')
-require('codemirror/addon/dialog/dialog.js')
-require('codemirror/addon/dialog/dialog.css')
-require('codemirror/addon/search/searchcursor.js')
-require('codemirror/addon/search/search.js')
-require('codemirror/keymap/sublime.js')
-// foldGutter
-require('codemirror/addon/fold/foldgutter.css')
-require('codemirror/addon/fold/brace-fold.js')
-require('codemirror/addon/fold/comment-fold.js')
-require('codemirror/addon/fold/foldcode.js')
-require('codemirror/addon/fold/foldgutter.js')
-require('codemirror/addon/fold/indent-fold.js')
-require('codemirror/addon/fold/markdown-fold.js')
-require('codemirror/addon/fold/xml-fold.js')
+    // require active-line.js
+    require('codemirror/addon/selection/active-line.js')
+    // styleSelectedText
+    require('codemirror/addon/selection/mark-selection.js')
+    require('codemirror/addon/search/searchcursor.js')
+    // hint
+    require('codemirror/addon/hint/show-hint.js')
+    require('codemirror/addon/hint/show-hint.css')
+    require('codemirror/addon/hint/javascript-hint.js')
+    require('codemirror/addon/selection/active-line.js')
+    // highlightSelectionMatches
+    require('codemirror/addon/scroll/annotatescrollbar.js')
+    require('codemirror/addon/search/matchesonscrollbar.js')
+    require('codemirror/addon/search/searchcursor.js')
+    require('codemirror/addon/search/match-highlighter.js')
+    // keyMap
+    require('codemirror/mode/clike/clike.js')
+    require('codemirror/addon/edit/matchbrackets.js')
+    require('codemirror/addon/comment/comment.js')
+    require('codemirror/addon/dialog/dialog.js')
+    require('codemirror/addon/dialog/dialog.css')
+    require('codemirror/addon/search/searchcursor.js')
+    require('codemirror/addon/search/search.js')
+    require('codemirror/keymap/sublime.js')
+    // foldGutter
+    require('codemirror/addon/fold/foldgutter.css')
+    require('codemirror/addon/fold/brace-fold.js')
+    require('codemirror/addon/fold/comment-fold.js')
+    require('codemirror/addon/fold/foldcode.js')
+    require('codemirror/addon/fold/foldgutter.js')
+    require('codemirror/addon/fold/indent-fold.js')
+    require('codemirror/addon/fold/markdown-fold.js')
+    require('codemirror/addon/fold/xml-fold.js')
 
 
 
-export default {
-    computed: {
-        cGutter() {
-            return parseInt(this.formOptions.gutter);
+    export default {
+        computed: {
+            cGutter() {
+                return parseInt(this.formOptions.gutter);
+            },
+            cSpan() {
+                return parseInt(this.formOptions.span);
+            }
         },
-        cSpan() {
-            return parseInt(this.formOptions.span);
-        }
-    },
-    data() {
-        return {
-            code: '',
-            editorOption: {
-                tabSize: 4,
-                styleActiveLine: true,
-                lineNumbers: true,
-                line: true,
-                // mode: 'text/javascript',
-                mode: {
-                    name: "javascript",
-                    json: true
+        data() {
+            return {
+                code: '',
+                editorOption: {
+                    tabSize: 4,
+                    styleActiveLine: true,
+                    lineNumbers: true,
+                    line: true,
+                    // mode: 'text/javascript',
+                    mode: {
+                        name: "javascript",
+                        json: true
+                    },
+                    lineWrapping: true,
+                    theme: 'base16-dark'
                 },
-                lineWrapping: true,
-                theme: 'base16-dark'
-            },
-            layout:{},
-            selectedItem: null,
-            itemMock: { type: "Input", id: 1 },
+                layout:{},
+                selectedItem: null,
+                itemMock: { type: "Input", id: 1 },
+                tabForm: {
+                    Default: []
+                },
+                tabFlag: false,
+                formOptions: {
+                    align: 'top',
+                    span: 24,
+                    labelWidth: '180px',
+                    gutter: 20
+                },
+                isPreivew: false,
+                isPreset: false,
+                Gallery: [],
+                CmpntType: [],
+                activeName: 'Default',
+                model: {},
+                optionString: ""
+            };
+        },
+        watch: {
             tabForm: {
-                Default: []
+                handler(val, oldVal) {
+                    this.code = JSON.stringify(val,null,4);
+                },
+                deep: true
+            }
+        },
+        methods: {
+            copied(item) {
+                item.id++;
             },
-            tabFlag: false,
-            formOptions: {
-                align: 'top',
-                span: 24,
-                labelWidth: '180px',
-                gutter: 20
+            inserted(data) {
+                console.log('insert',data)
             },
-            isPreivew: false,
-            isPreset: false,
-            Gallery: [],
-            CmpntType: [],
-            activeName: 'Default',
-            model: {},
-            optionString: ""
-        };
-    },
-    watch: {
-        tabForm: {
-            handler(val, oldVal) {
-                console.log(this);
-                this.code = JSON.stringify(val,null,4);
+            // toggleDisable() {
+            //     this.disable = !this.disable;
+            // },
+            handleSelected(item) {
+                this.selectedItem = item;
+                this.optionString = item.templateOptions.options.map(item => `${item.label},${item.value}`).join('\r\n')
             },
-            deep: true
-        }
-    },
-    methods: {
-        copied(item) {
-            item.id++;
-        },
-        inserted(data) {
-        },
-        // toggleDisable() {
-        //     this.disable = !this.disable;
-        // },
-        handleSelected(item) {
-            this.selectedItem = item;
-            this.optionString = item.templateOptions.options.map(item => `${item.label},${item.value}`).join('\r\n')
-        },
-        handleUnSelected() {
-            this.selectedItem = null;
-        },
-        handleOptionStrChange(input, item) {
-            let options = input.split(/[\r\n]/).map(optionItem => {
-                if(optionItem) {
-                    let arr = optionItem.split(/[,，]/);
-                    return {
-                        label: arr[0],
-                        value: arr[1]
+            handleUnSelected() {
+                this.selectedItem = null;
+            },
+            handleOptionStrChange(input, item) {
+                let options = input.split(/[\r\n]/).map(optionItem => {
+                    if(optionItem) {
+                        let arr = optionItem.split(/[,，]/);
+                        return {
+                            label: arr[0],
+                            value: arr[1]
+                        }
                     }
+                });
+                item.templateOptions.options = options;
+            },
+            handlePropertyContainerClick() { },
+            changeItemMock() {
+                this.itemMock.type = this.selectAddType;
+            },
+            handlePrivew() {
+                this.isPreivew = !this.isPreivew;
+                this.isPreset = false;
+            },
+            handlePriset() {
+                this.isPreset = !this.isPreset;
+                this.isPreivew = false;
+            },
+            onEditorBlur() {
+            },
+            handleShowCode() {
+                try  {
+                    let codeArr = eval(this.code);
+                    this.tabForm.Default = codeArr.map((item,index) => {
+                        let templateOptions  = item.templateOptions || {};
+                        let obj = {
+                            key:item.key || "key",
+                            type:item.type || "input",
+                            templateOptions:{
+                                label: templateOptions.label || '',
+                                options: templateOptions.options || [],
+                                span: templateOptions.span || 24
+                            },
+                            validators:item.validators || [],
+                            id: index
+                        };
+                        return obj;
+                    });
+                    this.handlePriset();
+                } catch (err) {
+                    console.log(err);
+                }
+            },
+            handleSpanChange() {
+                this.tabForm.Default.forEach(item => {
+                    item.templateOptions.span = this.formOptions.span;
+                })
+            }
+        },
+        components: {
+            // list
+        },
+        mounted() {
+            let components = Vue.$form.getTypes();
+            console.table(components)
+            this.Gallery = Object.keys(components).map((item, index) => {
+                let crrt_component = components[item];
+                return {
+                    key: 'key',
+                    type: crrt_component.name,
+                    templateOptions: {
+                        label: '',
+                        options: [],
+                        span: 24
+                    },
+                    validators: [],
+                    id: index,
+                    icon: crrt_component.icon,
                 }
             });
-            item.templateOptions.options = options;
+            this.CmpntType = this.Gallery.map(item => item.type);
+
+            document.addEventListener('click', this.handleUnSelected)
+
+            // this.Gallery = components.map(item =>)
         },
-        handlePropertyContainerClick() { },
-        changeItemMock() {
-            this.itemMock.type = this.selectAddType;
-        },
-        handlePrivew() {
-            this.isPreivew = !this.isPreivew;
-            this.isPreset = false;
-        },
-        handlePriset() {
-            this.isPreset = !this.isPreset;
-            this.isPreivew = false;
-        },
-        onEditorBlur() {
-        },
-        handleShowCode() {
-            try  {
-                let codeArr = eval(this.code);
-                this.tabForm.Default = codeArr.map((item,index) => {
-                    let templateOptions  = item.templateOptions || {};
-                    let obj = {
-                        key:item.key || "key",
-                        type:item.type || "input",
-                        templateOptions:{
-                            label: templateOptions.label || '',
-                            options: templateOptions.options || [],
-                            span: templateOptions.span || 24
-                        },
-                        validators:item.validators || [],
-                        id: index
-                    };
-                    return obj;
-                });
-                this.handlePriset();
-            } catch (err) {
-                console.log(err);
-            }
-        },
-        handleSpanChange() {
-            this.tabForm.Default.forEach(item => {
-                item.templateOptions.span = this.formOptions.span;
-            })
+        destroyed() {
+            document.removeEventListener('click', this.handleUnSelected)
         }
-    },
-    components: {
-        // list
-    },
-    mounted() {
-        let components = Vue.$form.getTypes();
-        console.table(components)
-        this.Gallery = Object.keys(components).map((item, index) => {
-            let crrt_component = components[item];
-            return {
-                key: 'key',
-                type: crrt_component.name,
-                templateOptions: {
-                    label: '',
-                    options: [],
-                    span: 24
-                },
-                validators: [],
-                id: index,
-                icon: crrt_component.icon,
-            }
-        });
-        this.CmpntType = this.Gallery.map(item => item.type);
-
-        document.addEventListener('click', this.handleUnSelected)
-
-        // this.Gallery = components.map(item =>)
-    },
-    destroyed() {
-        document.removeEventListener('click', this.handleUnSelected)
-    }
-};
+    };
 </script>
 
 <style lang="scss">
-// @import 'vddlBase';
-.vddl-placeholder {
-    width: 80px;
-    min-height: 80px;
-    border-bottom: 1px solid #eee; // padding: 0 15px;
-    background: #eee;
-    float: left;
-}
+    // @import 'vddlBase';
+    .vddl-placeholder {
+        width: 80px;
+        min-height: 80px;
+        border-bottom: 1px solid #eee; // padding: 0 15px;
+        background: #eee;
+        float: left;
+    }
 
 
 
-header {
-    background-color: rgb(32, 160, 255);
-    height: 60px;
-    color: #fff;
-    top: 0;
-    left: 0;
-    width: 100%;
-    line-height: 60px;
-    z-index: 100;
-    position: relative;
-    margin-bottom: 15px;
-    padding: 0 15px;
-    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .12), 0 0 6px 0 rgba(0, 0, 0, .04)
-}
+    header {
+        background-color: rgb(32, 160, 255);
+        height: 60px;
+        color: #fff;
+        top: 0;
+        left: 0;
+        width: 100%;
+        line-height: 60px;
+        z-index: 100;
+        position: relative;
+        margin-bottom: 15px;
+        padding: 0 15px;
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .12), 0 0 6px 0 rgba(0, 0, 0, .04)
+    }
 
-.wrapper {
-    margin: 15px 15px;
-}
+    .wrapper {
+        margin: 15px 15px;
+    }
 
-.vddl-dragging-source {
-    display: block;
-}
+    .vddl-dragging-source {
+        display: block;
+    }
 
-.selected {
-    background: #edf1f5;
-}
+    .selected {
+        background: #edf1f5;
+    }
 
-.gallery {
-    .gallery-body {
-        .gallery-component {
-            width: 80px;
-            float: left;
-            height: 80px;
-            text-align: center;
-            line-height: 80px;
-            border: 1px solid #abc;
-            margin: 10px 10px;
-            box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .12), 0 0 6px 0 rgba(0, 0, 0, .04);
-            color: #aaa;
-            font-weight: 400;
+    .gallery {
+        .gallery-body {
+            .gallery-component {
+                width: 80px;
+                float: left;
+                height: 80px;
+                text-align: center;
+                line-height: 80px;
+                border: 1px solid #abc;
+                margin: 10px 10px;
+                box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .12), 0 0 6px 0 rgba(0, 0, 0, .04);
+                color: #aaa;
+                font-weight: 400;
+            }
         }
     }
-}
 
-.drop-layout {
-    .drop-layout-body {
-        min-height: 500px;
-    }
-    .vddl-draggable {
-        // float: left;
-        .drop-layout-component {
-            margin: 20px auto;
-            width: 80px;
-            height: 80px;
-            text-align: center;
-            line-height: 80px;
-            border: 1px solid #abc; // margin: 10px 10px;
-            box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .12), 0 0 6px 0 rgba(0, 0, 0, .04);
-            color: #aaa;
-            font-weight: 400;
+    .drop-layout {
+        .drop-layout-body {
+            min-height: 500px;
+        }
+        .vddl-draggable {
+            // float: left;
+            .drop-layout-component {
+                margin: 20px auto;
+                width: 80px;
+                height: 80px;
+                text-align: center;
+                line-height: 80px;
+                border: 1px solid #abc; // margin: 10px 10px;
+                box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .12), 0 0 6px 0 rgba(0, 0, 0, .04);
+                color: #aaa;
+                font-weight: 400;
+            }
         }
     }
-}
 
 
 
 
-// /* new-elements */
-// .new-elements .button {
-//     border: 1px solid #000;
-//     text-align: center;
-//     height: 40px;
-//     border-radius: 4px;
-//     line-height: 40px;
-//     background-color: #ccc;
-//     color: #fff;
-//     cursor: move;
-//     font-size: 14px;
-// }
-// .new-elements .vddl-dragging-source {
-//     display: block;
-// }
-// .selected {
-//     background: #f9f9f9;
-// }
-// .selected-item .panel__body {
-//     line-height: 40px;
-// }
-// .disable-element .button {
-//     background-color: darkred;
-//     border: 1px solid darkred;
-//     cursor: pointer;
-// }
-// .ashcan {
-//     .ashcan-logo {
-//         display: block;
-//         width: 40px;
-//         margin: 10px auto;
-//     }
-//     .vddl-placeholder {
-//         display: none;
-//     }
-// }
-// .button-card {
-//     .vddl-draggable {
-//         >button {
-//             width: 100%;
-//         }
-//         &:not(:last-child) {
-//             padding-bottom: 5px;
-//         }
-//     }
-// }
-// .ashcan-card {
-//     .vddl-list {
-//         display: flex;
-//         justify-content: center;
-//         align-items: center;
-//         i {
-//             font-size: 20px;
-//         }
-//     }
-// }
-// .left-bench {
-//     >div {
-//         &:not(:last-child) {
-//             padding-bottom: 15px;
-//         }
-//     }
-// }
+    // /* new-elements */
+    // .new-elements .button {
+    //     border: 1px solid #000;
+    //     text-align: center;
+    //     height: 40px;
+    //     border-radius: 4px;
+    //     line-height: 40px;
+    //     background-color: #ccc;
+    //     color: #fff;
+    //     cursor: move;
+    //     font-size: 14px;
+    // }
+    // .new-elements .vddl-dragging-source {
+    //     display: block;
+    // }
+    // .selected {
+    //     background: #f9f9f9;
+    // }
+    // .selected-item .panel__body {
+    //     line-height: 40px;
+    // }
+    // .disable-element .button {
+    //     background-color: darkred;
+    //     border: 1px solid darkred;
+    //     cursor: pointer;
+    // }
+    // .ashcan {
+    //     .ashcan-logo {
+    //         display: block;
+    //         width: 40px;
+    //         margin: 10px auto;
+    //     }
+    //     .vddl-placeholder {
+    //         display: none;
+    //     }
+    // }
+    // .button-card {
+    //     .vddl-draggable {
+    //         >button {
+    //             width: 100%;
+    //         }
+    //         &:not(:last-child) {
+    //             padding-bottom: 5px;
+    //         }
+    //     }
+    // }
+    // .ashcan-card {
+    //     .vddl-list {
+    //         display: flex;
+    //         justify-content: center;
+    //         align-items: center;
+    //         i {
+    //             font-size: 20px;
+    //         }
+    //     }
+    // }
+    // .left-bench {
+    //     >div {
+    //         &:not(:last-child) {
+    //             padding-bottom: 15px;
+    //         }
+    //     }
+    // }
 
-.el-row {
-    margin-bottom: 20px;
-    &:last-child {
-        margin-bottom: 0;
+    .el-row {
+        margin-bottom: 20px;
+        &:last-child {
+            margin-bottom: 0;
+        }
     }
-}
-.el-col {
-    border-radius: 4px;
-}
-.bg-purple-dark {
-    background: #99a9bf;
-}
-.bg-purple {
-    background: #d3dce6;
-}
-.bg-purple-light {
-    background: #e5e9f2;
-}
-.grid-content {
-    border-radius: 4px;
-    min-height: 36px;
-}
-.row-bg {
-    padding: 10px 0;
-    background-color: #f9fafc;
-}
-.code-wrap {
-    padding: 20px;
-}
+    .el-col {
+        border-radius: 4px;
+    }
+    .bg-purple-dark {
+        background: #99a9bf;
+    }
+    .bg-purple {
+        background: #d3dce6;
+    }
+    .bg-purple-light {
+        background: #e5e9f2;
+    }
+    .grid-content {
+        border-radius: 4px;
+        min-height: 36px;
+    }
+    .row-bg {
+        padding: 10px 0;
+        background-color: #f9fafc;
+    }
+    .code-wrap {
+        padding: 20px;
+    }
 </style>
