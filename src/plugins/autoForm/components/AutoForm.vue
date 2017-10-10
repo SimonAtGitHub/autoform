@@ -1,9 +1,9 @@
 
 <template>
     <div>
-        <el-form ref="form" :model="model" :label-position="align||'left'" :label-width="labelWidth" :inline="inline">
+        <el-form ref="form" :model="model" :label-position="layout.align||'left'" :label-width="layout.labelWidth" :inline="layout.inline">
             <el-row>
-                <field v-if="!customLayout" :ref="field.key" v-for="field in fields" :form.sync="form" :model.sync="model" :field="field" :key="'form_'+field.key" :span="span"></field>
+                <field v-if="!layout.custom" :ref="field.key" v-for="field in fields" :model.sync="model" :field="field" :key="'form_'+field.key"></field>
             </el-row>
             <slot :keys="keys"></slot>
         </el-form>
@@ -29,7 +29,7 @@
                 this.$refs.form.resetFields();
             }
         },
-        props: ['form', 'model', 'fields', 'customLayout', 'align', 'labelWidth', 'inline', 'span'],
+        props: [ 'model', 'fields', 'layout'],
         computed: {
             keys() {
                 let keys = {};

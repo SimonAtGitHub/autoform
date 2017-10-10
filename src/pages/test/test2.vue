@@ -78,7 +78,7 @@
                                             </el-select>
                                         </el-form-item>
                                         <el-form-item label="Options">
-                                            <el-input type="textarea" v-model="optionString" @change="handleOptionStrChange(optionString,selectedItem)"></el-input>
+                                            <el-input type="textarea" v-model="optionString" @change="handleOptionStrChange(optionString,selectedItem)" placeholder="label,value Enter"></el-input>
                                         </el-form-item>
                                     </el-form>
                                 </div>
@@ -133,7 +133,7 @@
                             <div slot="header" class="clearfix">
                                 <span>预览结果</span>
                             </div>
-                            <auto-form :model="model" :fields="tabForm.Default" :align="formOptions.align" label-width="formOptions.labelWidth" ref="testForm" :inline="true">
+                            <auto-form :model="model" :fields="tabForm.Default" :layout="formOptions">
                             </auto-form>
                         </el-card>
                     </el-col>
@@ -237,7 +237,9 @@
                     align: 'top',
                     span: 24,
                     labelWidth: '180px',
-                    gutter: 20
+                    gutter: 20,
+                    custom: false,
+                    inline: false
                 },
                 isPreivew: false,
                 isPreset: false,
@@ -268,21 +270,25 @@
             // },
             handleSelected(item) {
                 this.selectedItem = item;
-                this.optionString = item.templateOptions.options.map(item => `${item.label},${item.value}`).join('\r\n')
+                console.log(item.templateOptions.options);
+                this.optionString = item.templateOptions.options.map(item => item ? `${item.label},${item.value}` : '').join('\r\n')
             },
             handleUnSelected() {
                 this.selectedItem = null;
             },
             handleOptionStrChange(input, item) {
-                let options = input.split(/[\r\n]/).map(optionItem => {
-                    if(optionItem) {
-                        let arr = optionItem.split(/[,，]/);
-                        return {
-                            label: arr[0],
-                            value: arr[1]
+                let options = input
+                    .split(/[\r\n]/)
+                    .filter(item => item !== "")
+                    .map(optionItem => {
+                        if(optionItem) {
+                            let arr = optionItem.split(/[,，]/);
+                            return {
+                                label: arr[0],
+                                value: arr[1]
+                            }
                         }
-                    }
-                });
+                    });
                 item.templateOptions.options = options;
             },
             handlePropertyContainerClick() { },

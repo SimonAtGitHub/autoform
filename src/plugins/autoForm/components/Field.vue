@@ -1,5 +1,5 @@
 <template>
-    <component v-show="display" :is="type" :form.sync="form" :field="field" :model="model" :to="field.templateOptions" :span="span">
+    <component v-show="display" :is="type" :field="field" :model="model" :to="field.templateOptions" :span="span">
     </component>
 </template>
 
