@@ -263,14 +263,13 @@
                 item.id++;
             },
             inserted(data) {
-                console.log('insert',data)
+//            console.log('insert',data)
             },
             // toggleDisable() {
             //     this.disable = !this.disable;
             // },
             handleSelected(item) {
                 this.selectedItem = item;
-                console.log(item.templateOptions.options);
                 this.optionString = item.templateOptions.options.map(item => item ? `${item.label},${item.value}` : '').join('\r\n')
             },
             handleUnSelected() {
