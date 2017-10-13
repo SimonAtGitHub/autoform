@@ -20,19 +20,22 @@
 * vue
 * element-ui
 
-### 使用
-目前在TDC项目中使用，demo分支：`Gema/webpack2-vue`,本地地址：http://localhost:8899/hfe/index.html#/test/test
+## 使用
 
+* TDC项目中demo分支：`Gema/webpack2-vue`
+* 本地地址：http://localhost:8899/hfe/index.html#/test/test
 
-介绍其中的schema：
+### Schema：
+调用Autoform组件，需传入三个参数：
 
-Autoform直接调用，需传入三个参数：
 * model
 * fields
 * layout
 
+例如：
 ```
 <auto-form ref="testForm" :model="model" :fields="fields" :layout="layout">
+//slot:组件内部可传入元素内容
   <el-form-item>
     <el-button type="primary" @click="onSubmit">立即创建</el-button>
     <el-button @click="onResetForm()">取消</el-button>
