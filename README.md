@@ -1,6 +1,6 @@
 # 动态表单配置化
 
-> 设计文档：[tdc 动态字段配置方案设计](https://wiki.sankuai.com/pages/viewpage.action?pageId=1065853261&focusedCommentId=1079089865#comment-1079089865)
+> 设计文档：[动态字段配置方案设计](https://wiki.sankuai.com/pages/viewpage.action?pageId=1065853261&focusedCommentId=1079089865#comment-1079089865)
 
 > git分支：Gema/webpack2-vue
 
@@ -22,7 +22,7 @@
 
 ## 使用
 
-* TDC项目中demo分支：`Gema/webpack2-vue`
+* 项目中demo分支：`Gema/webpack2-vue`
 * 本地地址：http://localhost:8899/hfe/index.html#/test/test
 
 ### Schema：
