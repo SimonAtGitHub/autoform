@@ -1,6 +1,7 @@
 # 动态表单配置化
 
 > 设计文档：[tdc 动态字段配置方案设计](https://wiki.sankuai.com/pages/viewpage.action?pageId=1065853261&focusedCommentId=1079089865#comment-1079089865)
+
 > git分支：Gema/webpack2-vue
 
 ### 背景
@@ -23,9 +24,9 @@
 目前在TDC项目中使用，demo分支：`Gema/webpack2-vue`,本地地址：http://localhost:8899/hfe/index.html#/test/test
 
 
-介绍其中的schema：
+介绍其中的schema：
 
-Autoform直接调用，需传入三个参数：
+Autoform直接调用，需传入三个参数：
 * model
 * fields
 * layout
@@ -46,9 +47,11 @@ model: {
     name: '',
     email: ''
     }
-    ```
+```
+
 fields:
 对表单控件的配置
+
 ```
 fields: [
                 {
@@ -88,6 +91,7 @@ fields: [
                 }
 ]
 ```
+
 各个参数说明：
 
 * key:model字段
