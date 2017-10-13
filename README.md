@@ -99,8 +99,27 @@ fields: [
 
 * key:model字段
 * type:组件种类
-* templateOptions:组件内部变量（视各子组件内部而定）
+* templateOptions:组件内部变量（视各子组件内部而定）
 * validators:校验（规则同Element Form）
+
+layout:
+显示配置
+```
+layout: {
+                align: 'letf',
+                labelWidth: '100px',
+                custom: false,
+                inline: false,
+                span: 12
+            }
+```
+各个参数说明：
+
+* align:表单域标签的位置('right/left/top')
+* labelWidth:表单域标签的宽度，作为 Form 直接子元素的 form-item 会继承该值
+* custom:是否需要自定义表单内容，替代AutoForm(false/true)
+* inline:行内表单模式(false/true)
+* span:Grid
 
 ### 子组件
 
@@ -109,7 +128,6 @@ fields: [
 * 添加新文件格式：`field`+组件名，例如：`src/vhfe/plugins/tdcComponets/fields/fieldInputTree.vue`
 
 #### 子组件内可调用的参数
-
 
 ```
 //src/vhfe/plugins/tdcComponets/fields/baseField
