@@ -43,7 +43,7 @@
 </auto-form>
 ```
 
-model:
+#### model
 需要创建双向绑定的数据
 ```
 model: {
@@ -52,7 +52,7 @@ model: {
     }
 ```
 
-fields:
+#### fields
 对表单控件的配置
 
 ```
@@ -102,7 +102,7 @@ fields: [
 * templateOptions:组件内部变量（视各子组件内部而定）
 * validators:校验（规则同Element Form）
 
-layout:
+#### layout
 显示配置
 ```
 layout: {
