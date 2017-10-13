@@ -21,7 +21,7 @@
 * element-ui
 
 ### 使用
-目前在TDC项目中使用，demo分支：`Gema/webpack2-vue`,本地地址：http://localhost:8899/hfe/index.html#/test/test
+目前在TDC项目中使用，demo分支：`Gema/webpack2-vue`,本地地址：http://localhost:8899/hfe/index.html#/test/test
 
 
 介绍其中的schema：
@@ -99,23 +99,36 @@ fields: [
 * templateOptions:组件内部变量（视各子组件内部而定）
 * validators:校验（规则同Element Form）
 
-#### 子组件：
+### 子组件
 
-添加新组件：
-在`src/vhfe/plugins/tdcComponets/fields`,添加新文件,格式例如：`src/vhfe/plugins/tdcComponets/fields/fieldInputTree.vue`,`field`+组件名
+#### 添加新组件
+* 在`src/vhfe/plugins/tdcComponets/fields`文件夹下
+* 添加新文件格式：`field`+组件名，例如：`src/vhfe/plugins/tdcComponets/fields/fieldInputTree.vue`
 
-参数传递：
+#### 子组件内可调用的参数
+
+
 ```
 //src/vhfe/plugins/tdcComponets/fields/baseField
 props: [
             'form',
-            'field', //表单配置内容
+            'field', //表单配置内容
             'model', //绑定数据
             'to',  //field[i].templateOptions
             'span' //element 24 Grid
         ],
 ```
 
-使用组件：
-在fields数组中，
-`fields[i].type = '组件名称'`
+#### 使用组件
+在fields配置中，`fields[i].type = '组件名称'`，例如：
+```
+fields: [
+            {
+                key: 'type',
+                type: 'inputTree',
+                templateOptions: {
+                    label: '活动性质'
+                }
+            }
+            ]
+```
