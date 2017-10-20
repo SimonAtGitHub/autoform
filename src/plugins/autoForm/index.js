@@ -1,13 +1,12 @@
 import Components from './components/index';
 import Filters from './filters/index';
+import Directives from './directives/index';
+
 import {
     getTypes,
     addType,
     addValidationMessage
 } from './util';
-import Directives from './directives/index';
-
-
 
 let AutoForm = {
     getTypes,

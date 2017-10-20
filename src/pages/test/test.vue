@@ -2,7 +2,7 @@
     <div>
         <el-row>
             <el-col :span="12" :offset="6">
-                <auto-form :form="form" :model="model" :fields="fields" :span="24" :align="'top'" label-width="100px" ref="testForm" :custom-layout="false">
+                <auto-form ref="testForm" :model="model" :fields="fields" :layout="layout">
                     <!--<template scope="f">-->
                         <!--<table>-->
                             <!--<tr>-->
@@ -38,13 +38,13 @@ export default {
                 region: [],
                 remark: ''
             },
-            form: {},
             fields: [
                 {
                     key: 'name',
                     type: 'input',
                     templateOptions: {
-                        label: '活动名称'
+                        label: '活动名称',
+                        atts: {attr:123}
                     },
                     validators: [
                         { required: true, message: '请输入活动名称', trigger: 'blur' },
@@ -133,7 +133,13 @@ export default {
                         label: "活动时间"
                     }
                 }
-            ]
+            ],
+            layout: {
+                align: 'right',
+                labelWidth: '100px',
+                custom: false,
+                inline: false
+            }
         }
     },
     methods: {
