@@ -33,6 +33,7 @@
 * layout
 
 例如：
+
 ```
 <auto-form ref="testForm" :model="model" :fields="fields" :layout="layout">
 //slot:组件内部可传入元素内容
@@ -45,6 +46,7 @@
 
 #### model
 需要创建双向绑定的数据
+
 ```
 model: {
     name: '',
@@ -104,6 +106,7 @@ fields: [
 
 #### layout
 显示配置
+
 ```
 layout: {
                 align: 'letf',
@@ -113,6 +116,7 @@ layout: {
                 span: 12
             }
 ```
+
 各个参数说明：
 
 * align:表单域标签的位置('right/left/top')
@@ -142,6 +146,7 @@ props: [
 
 #### 使用组件
 在fields配置中，`fields[i].type = '组件名称'`，例如：
+
 ```
 fields: [
             {
