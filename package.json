@@ -1,0 +1,15 @@
+{
+  "name": "charlielau.autoform",
+  "version": "1.0.1",
+  "description": "> 设计文档：[动态字段配置方案设计](https://wiki.sankuai.com/pages/viewpage.action?pageId=1065853261&focusedCommentId=1079089865#comment-1079089865)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@git.sankuai.com/hfe/charlielau.autoform.git"
+  },
+  "author": "",
+  "license": "ISC"
+}
