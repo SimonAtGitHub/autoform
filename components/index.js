@@ -5,6 +5,10 @@ export default function (Vue) {
     Vue.component('auto-form', AutoForm);
 
     Vue.component('field', (resolve) => {
-        resolve(Field);
+        if(Field.default){
+            resolve(Field.default); //兼容 vue-loader 13.3.0
+        }else{
+            resolve(Field);
+        }
     });
 }
