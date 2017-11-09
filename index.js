@@ -6,6 +6,7 @@ import {
     addValidationMessage
 } from './util';
 import Directives from './directives/index';
+import Register from "./register/index";
 
 
 
@@ -13,10 +14,11 @@ let AutoForm = {
     getTypes,
     addType,
     addValidationMessage,
-    install (Vue, options) {
+    install (Vue, options, replacement) {
         Directives(Vue);
         Components(Vue);
         Filters(Vue);
+        Register(Vue, options, replacement)
 
         Vue.$form = {
             getTypes,
