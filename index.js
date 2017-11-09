@@ -20,11 +20,11 @@ let AutoForm = {
         Filters(Vue);
         Register(Vue, options, replacement)
 
-        // Vue.$form = {
-        //     getTypes,
-        //     addType,
-        //     addValidationMessage
-        // };
+        Vue.$form = {
+            getTypes,
+            addType,
+            addValidationMessage
+        };
     }
 };
 
