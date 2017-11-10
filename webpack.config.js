@@ -12,9 +12,9 @@ module.exports = (options = {}) => ({
         filename: options.dev ? '[name].js' : '[name].js?[chunkhash]',
         chunkFilename: '[id].js?[chunkhash]',
         publicPath: options.dev ? '/assets/' : publicPath,
-        library: 'autoform',
+        // library: 'autoform',
         libraryTarget: 'umd',
-        umdNamedDefine: true
+        // umdNamedDefine: true
     },
     module: {
         rules: [{
