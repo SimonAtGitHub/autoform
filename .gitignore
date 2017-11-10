@@ -2,7 +2,6 @@
 .cache
 .DS_Store
 .idea
-build
 node_modules
 .gitkeep
 converage
