@@ -14,19 +14,22 @@ let AutoForm = {
     getTypes,
     addType,
     addValidationMessage,
-    install (Vue, options, replacement) {
+    install (Vue, components, options) {
         Directives(Vue);
         Components(Vue);
         Filters(Vue);
-        Register(Vue, options, replacement)
+        Register(Vue, components, options)
 
-        Vue.$form = {
+        Vue.$autoform = {
             getTypes,
             addType,
             addValidationMessage
         };
     }
 };
+
+
+
 
 if (typeof window !== 'undefined' && window.Vue) {
     window.Vue.use(AutoForm);
