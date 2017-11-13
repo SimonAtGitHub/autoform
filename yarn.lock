@@ -2,10 +2,6 @@
 # yarn lockfile v1
 
 
-"@hfe/autoform@^1.0.10":
-  version "1.0.10"
-  resolved "http://r.npm.sankuai.com/@hfe/autoform/download/@hfe/autoform-1.0.10.tgz#5013d655a75c9403d55b276ddecccdc957779283"
-
 abbrev@1:
   version "1.1.1"
   resolved "http://r.npm.sankuai.com/abbrev/download/abbrev-1.1.1.tgz#f8f2c887ad10bf67f634f005b6987fed3179aac8"
