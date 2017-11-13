@@ -40,7 +40,18 @@ export default {
       }
     }
   },
-  props: ["model", "fields", "layout"],
+  //props: ["model", "fields", "layout"],
+  props: {
+    model: {
+      default: {}
+    },
+    fields: {
+      default: []
+    },
+    layout: {
+      default: {}
+    }
+  },
   computed: {
     keys() {
       let keys = {};
