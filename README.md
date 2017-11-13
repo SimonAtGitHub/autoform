@@ -109,7 +109,7 @@ fields: [
 
 ```
 layout: {
-                align: 'letf',
+                align: 'left',
                 labelWidth: '100px',
                 custom: false,
                 inline: false,
