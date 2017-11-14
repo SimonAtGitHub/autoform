@@ -1,8 +1,8 @@
 <template>
-    <el-col :span=" field.templateOptions.span||span"  v-show="display">
-      <el-form-item :label="field.templateOptions.label" :prop="field.key" :rules="field.validators"  >
-              <component :is="type" :field="field" :model="model" :to="field.templateOptions" :span="span">
-              </component>
+     <el-col :span=" field.templateOptions.span||span" v-show="display">
+        <el-form-item :label="field.templateOptions.label" :prop="field.key" :rules="field.validators">
+            <component v-show="display" :is="type" :field="field" :model="model" :to="field.templateOptions" :span="span">
+            </component>
         </el-form-item>
     </el-col>
 </template>
