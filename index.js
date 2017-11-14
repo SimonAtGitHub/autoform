@@ -28,6 +28,7 @@ let AutoForm = {
         // Register(Vue, components, options)
 
         Vue.$autoform = {
+            basicComponent,
             getTypes,
             addType,
             addValidationMessage,
@@ -44,6 +45,7 @@ let AutoForm = {
 if (typeof window !== 'undefined' && window.Vue) {
     window.Vue.use(AutoForm);
     window.Vue.$autoform = {
+        basicComponent,
         getTypes,
         addType,
         addValidationMessage,
