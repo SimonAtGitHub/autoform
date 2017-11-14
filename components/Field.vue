@@ -1,10 +1,10 @@
 <template>
-    <el-form-item :label="field.templateOptions.label" :prop="field.key" :rules="field.validators"  v-show="display" >
-        <el-col :span=" field.templateOptions.span||span">
-            <component :is="type" :field="field" :model="model" :to="field.templateOptions" :span="span">
-            </component>
-        </el-col>
-    </el-form-item>
+    <el-col :span=" field.templateOptions.span||span"  v-show="display">
+      <el-form-item :label="field.templateOptions.label" :prop="field.key" :rules="field.validators"  >
+              <component :is="type" :field="field" :model="model" :to="field.templateOptions" :span="span">
+              </component>
+        </el-form-item>
+    </el-col>
 </template>
 
 <script>
