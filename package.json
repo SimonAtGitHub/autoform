@@ -1,12 +1,8 @@
 {
   "name": "@hfe/autoform",
-<<<<<<< HEAD
-  "version": "1.0.20",
-=======
-  "version": "1.0.21",
->>>>>>> 2dba14a1a4073faedc80e89acdb83a0ad4270430
+  "version": "1.0.22",
   "description": "",
-  "main": "dist/index.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rimraf dist && webpack -p --progress"
