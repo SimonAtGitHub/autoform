@@ -18,5 +18,5 @@ if [[ $_command = "2"  ]]; then
 fi
 if [[ $_command = "3" ]]; then
         npm version patch
-        npm publish
+        yarn run publish
 fi
