@@ -1,7 +1,7 @@
 import Components from './components/index';
 import Filters from './filters/index';
 
-import basicComponent from './utils/baseField';
+import abstractComponent from './utils/baseField';
 
 import {
     getTypes,
@@ -20,7 +20,7 @@ let AutoForm = {
     getTypes,
     addType,
     addValidationMessage,
-    basicComponent,
+    abstractComponent,
     install(Vue) {
         Directives(Vue);
         Components(Vue);
@@ -28,7 +28,7 @@ let AutoForm = {
         // Register(Vue, components, options)
 
         Vue.$autoform = {
-            basicComponent,
+            abstractComponent,
             getTypes,
             addType,
             addValidationMessage,
@@ -45,7 +45,7 @@ let AutoForm = {
 if (typeof window !== 'undefined' && window.Vue) {
     window.Vue.use(AutoForm);
     window.Vue.$autoform = {
-        basicComponent,
+        abstractComponent,
         getTypes,
         addType,
         addValidationMessage,
@@ -55,5 +55,4 @@ if (typeof window !== 'undefined' && window.Vue) {
 }
 export default AutoForm;
 
-
-
+export const basicComponent = abstractComponent;
