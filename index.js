@@ -54,5 +54,3 @@ if (typeof window !== 'undefined' && window.Vue) {
     };
 }
 export default AutoForm;
-
-export const basicComponent = abstractComponent;
