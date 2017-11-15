@@ -1,12 +1,12 @@
 {
   "name": "@hfe/autoform",
-  "version": "1.0.33",
+  "version": "1.0.34",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rimraf dist && webpack -p --progress",
-    "deploy":"bash publish.sh"
+    "deploy": "bash publish.sh"
   },
   "repository": {
     "type": "git",
