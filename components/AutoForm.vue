@@ -1,13 +1,17 @@
 
 <template>
     <div>
-        <el-form ref="form" :model="model" :label-position="layout.align||'left'" :label-width="layout.labelWidth" :inline="layout.inline">
+        <el-form ref="form" :model="model" :label-position="layout.align||'left'" :label-width="layout.labelWidth" :inline="layout.inline" class="autoform-block">
             <field v-if="!layout.custom" :ref="'form_'+field.key" v-for="field in fields" :model.sync="model" :field="field" :key="'form_'+field.key" :span.sync="layout.span"></field>
             <slot :keys="keys"></slot>
         </el-form>
     </div>
 </template>
-
+<style scoped>
+    .autoform-block {
+        overflow: hidden;
+    }
+</style>
 <script>
 export default {
   /*eslint-disable */
