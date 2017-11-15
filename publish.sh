@@ -5,6 +5,8 @@ echo +----------------------------------------------------------+
 
 yarn run build
 
+git pull origin  master
+
 git  add .
 git commit -m 'deploy'
 

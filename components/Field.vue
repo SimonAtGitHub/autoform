@@ -1,17 +1,21 @@
 <template>
-     <el-col :span="field.templateOptions.span||span" v-show="display">
+     <el-col :span="field.templateOptions.span||span" v-show="display" v-if="!inline">
         <el-form-item :label="field.templateOptions.label" :prop="field.key" :rules="field.validators">
             <component  :is="type" :field="field" :model="model" :to="field.templateOptions" :span="span">
             </component>
         </el-form-item>
     </el-col>
+    <el-form-item :label="field.templateOptions.label" :prop="field.key" :rules="field.validators" v-show="display" v-else>
+        <component  :is="type" :field="field" :model="model" :to="field.templateOptions" :span="span">
+        </component>
+    </el-form-item>
 </template>
 
 <script>
 /*eslint-disable */
 import Util, { getTypes, setError, parseValidationString } from "../util";
 export default {
-  props: ["form", "model", "field", "to", "span"],
+  props: ["form", "model", "field", "to", "span", "inline"],
   computed: {
     type: function() {
       return "form_" + this.field.type;
