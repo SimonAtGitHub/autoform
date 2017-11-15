@@ -1,10 +1,6 @@
 {
   "name": "@hfe/autoform",
-<<<<<<< HEAD
-  "version": "1.0.34",
-=======
   "version": "1.0.35",
->>>>>>> b6ddb71ceca826dc1a55421c68670ecc9e939cdf
   "description": "",
   "main": "dist/index.js",
   "scripts": {

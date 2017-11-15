@@ -1,18 +1,22 @@
 echo +----------------------------------------------------------+
-echo + git commit                                               +
+echo + 1. 打包                                                   +
+echo + 2. git commit                                            +
+echo + 3. 发npm package                                         +
 echo +----------------------------------------------------------+
 
 
-yarn run build
+read _command # request host
 
-git pull origin  master
 
-git  add .
-git commit -m 'deploy'
 
-git push origin master
-
-npm version  patch
-
-npm publish
-
+if [[ $_command = "1"  ]]; then
+        yarn run build
+fi
+if [[ $_command = "2"  ]]; then
+        git commit -am 'deploy'
+        git push orign master
+fi
+if [[ $_command = "3" ]]; then
+        npm version patch
+        npm publish
+fi
