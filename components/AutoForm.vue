@@ -2,7 +2,10 @@
 <template>
     <div class="autoform-block">
         <el-form ref="form" :model="model" :label-position="layout.align||'left'" :label-width="layout.labelWidth" :inline="layout.inline">
-            <field v-if="!layout.custom" :ref="'form_'+field.key" v-for="field in fields" :model.sync="model" :field="field" :key="'form_'+field.key" :span.sync="layout.span" :inline="layout.inline"></field>
+            <el-row v-if="!layout.inline">
+                <field v-if="!layout.custom" :ref="'form_'+field.key" v-for="field in fields" :model.sync="model" :field="field" :key="'form_'+field.key" :span.sync="layout.span" :inline="layout.inline"></field>
+            </el-row>
+            <field v-if="!layout.custom && layout.inline" :ref="'form_'+field.key" v-for="field in fields" :model.sync="model" :field="field" :key="'form_'+field.key" :span.sync="layout.span" :inline="layout.inline"></field>
             <slot :keys="keys"></slot>
         </el-form>
     </div>
