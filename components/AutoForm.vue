@@ -21,13 +21,9 @@ export default {
   methods: {
     validate() {
       return new Promise((resolve, reject) => {
-        this.$refs.form.validate(valid => {
-          if (valid) {
-            resolve();
-          } else {
-            reject();
-          }
-        });
+          this.$refs.form.validate(valid => {
+              resolve(valid);
+          });
       });
     },
     resetForm() {
