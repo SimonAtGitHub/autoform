@@ -1,5 +1,5 @@
 <template>
-     <el-col :span="field.templateOptions.span||span" v-show="display" v-if="!inline">
+    <el-col :span="field.templateOptions.span||span" :offset="field.templateOptions.offset" v-show="display" v-if="!inline">
         <el-form-item :label="field.templateOptions.label" :prop="field.key" :rules="field.validators">
             <component  :is="type" :field="field" :model="model" :to="field.templateOptions" :span="span" :event-bus="eventBus">
             </component>
