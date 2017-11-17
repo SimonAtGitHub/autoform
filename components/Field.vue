@@ -1,7 +1,7 @@
 <template>
      <el-col :span="field.templateOptions.span||span" v-show="display" v-if="!inline">
         <el-form-item :label="field.templateOptions.label" :prop="field.key" :rules="field.validators">
-            <component  :is="type" :field="field" :model="model" :to="field.templateOptions" :span="span">
+            <component  :is="type" :field="field" :model="model" :to="field.templateOptions" :span="span" :event-bus="eventBus">
             </component>
         </el-form-item>
     </el-col>
@@ -15,7 +15,7 @@
 /*eslint-disable */
 import Util, { getTypes, setError, parseValidationString } from "../util";
 export default {
-  props: ["form", "model", "field", "to", "span", "inline"],
+  props: ["form", "model", "field", "to", "span", "inline","eventBus"],
   computed: {
     type: function() {
       return "form_" + this.field.type;
