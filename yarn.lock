@@ -3448,6 +3448,10 @@ vue-template-es2015-compiler@^1.6.0:
   version "1.6.0"
   resolved "http://r.npm.sankuai.com/vue-template-es2015-compiler/download/vue-template-es2015-compiler-1.6.0.tgz#dc42697133302ce3017524356a6c61b7b69b4a18"
 
+vue@2.5.3:
+  version "2.5.3"
+  resolved "http://r.npm.sankuai.com/vue/download/vue-2.5.3.tgz#e1a3b1f49b6e93e574ce040b95cbc873912fecc1"
+
 watchpack@^1.4.0:
   version "1.4.0"
   resolved "http://r.npm.sankuai.com/watchpack/download/watchpack-1.4.0.tgz#4a1472bcbb952bd0a9bb4036801f954dfb39faac"
