@@ -16,10 +16,10 @@ module.exports = (options = {}) => ({
         libraryTarget: 'umd',
         umdNamedDefine: true
     },
-    externals:{
-        vue:'window.Vue'
-    },
     devtool: '#source-map',
+    extends:{
+      Vue:'window.Vue'
+    },
     module: {
         rules: [{
                 test: /\.vue$/,

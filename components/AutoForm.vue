@@ -19,7 +19,6 @@
 import Vue from "vue";
 
 export default {
-  /*eslint-disable */
   methods: {
     validate() {
       return new Promise((resolve, reject) => {
@@ -55,6 +54,9 @@ export default {
     },
     layout: {
       default: {}
+    },
+    __name__:{
+      default:"autoForm",
     }
   },
   data() {
