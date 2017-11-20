@@ -5,21 +5,21 @@ const publicPath = ''
 
 module.exports = (options = {}) => ({
     entry: {
-        index: './index.js'
+        index: './autoform_component_lib/index.js'
     },
     output: {
-        path: resolve(__dirname, 'dist'),
+        path: resolve(__dirname, '../autoform_component_lib/dist/lib'),
         filename: options.dev ? '[name].js' : '[name].js?[chunkhash]',
         chunkFilename: '[id].js?[chunkhash]',
         publicPath: options.dev ? '/assets/' : publicPath,
-        library: 'autoform',
+        library: 'autoformlib',
         libraryTarget: 'umd',
         umdNamedDefine: true
     },
-    // externals:{
-    //     vue:'window.Vue'
-    // },
     devtool: '#source-map',
+    // externals: {
+    //   "@hfe/autoform":"window.Vue.$autoform"
+    // },
     module: {
         rules: [{
                 test: /\.vue$/,
@@ -53,8 +53,7 @@ module.exports = (options = {}) => ({
     resolve: {
         extensions: ['.js', '.vue', '.json'],
         alias: {
-            '~': resolve(__dirname, 'src')
+            '~': resolve(__dirname)
         }
-    },
-    devtool: options.dev ? '#eval-source-map' : '#source-map'
+    }
 })

@@ -1,21 +1,8 @@
-<template>
-    <el-col :span="field.templateOptions.span||span" :offset="field.templateOptions.offset" v-show="display" v-if="!inline">
-        <el-form-item :label="field.templateOptions.label" :prop="field.key" :rules="field.validators">
-            <component  :is="type" :field="field" :model="model" :to="field.templateOptions" :span="span" :event-bus="eventBus">
-            </component>
-        </el-form-item>
-    </el-col>
-    <el-form-item :label="field.templateOptions.label" :prop="field.key" :rules="field.validators" v-show="display" v-else>
-        <component  :is="type" :field="field" :model="model" :to="field.templateOptions" :span="span">
-        </component>
-    </el-form-item>
-</template>
-
 <script>
 /*eslint-disable */
 import Util, { getTypes, setError, parseValidationString } from "../util";
 export default {
-  props: ["form", "model", "field", "to", "span", "inline","eventBus"],
+  props: ["form", "model", "field", "to", "span", "inline", "eventBus"],
   computed: {
     type: function() {
       return "form_" + this.field.type;
@@ -47,23 +34,49 @@ export default {
     //     this.validate();
     // });
   },
-  mounted() {
-    if (!this.field.wrapper) return;
 
-    //create a temporary element
-    let wrapper = document.createElement("DIV");
-    //populate it with the wrapper string
-    wrapper.innerHTML = this.field.wrapper;
-    //get the parent
-    let parent = this.$el.parentNode;
-    //insert the wrapper before this element
-    parent.insertBefore(wrapper, this.$el);
-    //append the element to the new wrapper
-    wrapper.firstChild.appendChild(this.$el);
-    //move the new wrapper back to where it should be
-    parent.insertBefore(wrapper.firstChild, wrapper);
-    //remove the temporary element
-    parent.removeChild(wrapper);
+  // :is="type" :field="field" :model="model" :to="field.templateOptions" :span="span">
+  render(h) {
+    let props = {
+      field: this.field,
+      to: this.field.templateOptions,
+      span: this.span,
+      model: this.model
+    };
+
+    let vNode = h(this.type, { props });
+
+    if (!this.display) {
+      return "";
+    }
+
+    if (!this.inline) {
+      let vNode = h(this.type, {
+        props
+      });
+
+      return (
+        <el-col span={this.field.templateOptions.span || this.span}>
+          <el-form-item
+            label={this.field.templateOptions.label}
+            prop={this.field.key}
+            rules={this.field.validators}
+          >
+            {vNode}
+          </el-form-item>
+        </el-col>
+      );
+    } else {
+      return (
+        <el-form-item
+          label={this.field.templateOptions.label}
+          prop={this.field.key}
+          rules={this.field.validators}
+        >
+          {vNode}
+        </el-form-item>
+      );
+    }
   }
 };
 </script>
