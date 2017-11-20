@@ -2,9 +2,6 @@ var webpack = require('webpack');
 
 
 
-
-
-
 let config = null;
 
 let env = process.env.NODE_ENV || 'dev';

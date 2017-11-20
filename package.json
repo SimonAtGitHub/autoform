@@ -6,7 +6,7 @@
   "scripts": {
     "dev": " cross-env NODE_ENV=dev  webpack-dev-server --progress --open",
     "build": " rimraf  ./autoform/dist/lib &  cross-env NODE_ENV=build   webpack -p --progress",
-    "build-lib": " rimraf  ./autoform_component_lib/dist/lib &  cross-env NODE_ENV=lib   webpack -p --progress"
+    "build-lib": " rimraf  ./autoform_component_lib/dist/lib &  cross-env NODE_ENV=lib  webpack -p --progress"
   },
   "repository": {
     "type": "git",
