@@ -367,7 +367,11 @@ babel-helper-replace-supers@^6.24.1:
     babel-traverse "^6.24.1"
     babel-types "^6.24.1"
 
+<<<<<<< HEAD
 babel-helper-vue-jsx-merge-props@^2.0.0, babel-helper-vue-jsx-merge-props@^2.0.2:
+=======
+babel-helper-vue-jsx-merge-props@^2.0.2:
+>>>>>>> 0a5d7eceb9039c592ac91e166297f9c3124a95c0
   version "2.0.2"
   resolved "http://r.npm.sankuai.com/babel-helper-vue-jsx-merge-props/download/babel-helper-vue-jsx-merge-props-2.0.2.tgz#aceb1c373588279e2755ea1cfd35c22394fd33f8"
 
