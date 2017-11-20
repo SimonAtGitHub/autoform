@@ -2,7 +2,8 @@ import Components from './components/index';
 import Filters from './filters/index';
 
 import abstractComponent from './utils/baseField';
-import AutoFormMixin from './utils/autoformMixin'
+import AutoFormMixin from './utils/autoformMixin';
+import EventBus from './utils/eventBus';
 
 
 import {
@@ -27,6 +28,8 @@ let AutoForm = {
     Directives(Vue);
     Components(Vue);
     Filters(Vue);
+    EventBus(Vue);
+
     // Register(Vue, components, options)
 
     Vue.mixin(AutoFormMixin);
