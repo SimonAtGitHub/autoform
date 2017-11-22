@@ -1,0 +1,18 @@
+{
+  "name": "@hfe/autoform_component_lib",
+  "version": "0.0.23",
+  "description": "autoform component lib",
+  "main": "lib/index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@git.sankuai.com/hfe/autoform_component_lib.git"
+  },
+  "keywords": [
+    "vue",
+    "component",
+    "lib"
+  ],
+  "author": "maominfang",
+  "license": "ISC"
+}
