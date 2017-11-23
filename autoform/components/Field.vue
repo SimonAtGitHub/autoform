@@ -58,7 +58,7 @@ export default {
       });
 
       return (
-        <el-col span={this.field.templateOptions.span || this.span}>
+        <el-col span={this.field.templateOptions.span || this.span} offset={this.field.templateOptions.offset}>
           <el-form-item
             label={this.field.templateOptions.label}
             prop={this.field.key}

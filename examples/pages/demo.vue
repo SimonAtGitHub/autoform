@@ -94,7 +94,8 @@
                                     label: "单纯品牌曝光",
                                     value: "单纯品牌曝光"
                                 }
-                            ]
+                            ],
+                            onChange: 'sortChange'
                         }
                     },
                     {
@@ -109,11 +110,11 @@
         },
         autoform:{
             eventBus:{
-                aa(aa){
-                    console.log(aa)
+                sortChange(e){
+                    console.log(e)
                 }
             }
-        }
+        },
     };
 </script>
 
