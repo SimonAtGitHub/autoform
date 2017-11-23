@@ -51,7 +51,8 @@
                                     value: "beijing"
                                 }
                             ],
-                            filterMethod: () => {}
+                            filterMethod: () => {},
+                            onChange:'aa'
                         }
                     },
                     {
@@ -105,6 +106,13 @@
                     }
                 ]
             };
+        },
+        autoform:{
+            eventBus:{
+                aa(aa){
+                    console.log(aa)
+                }
+            }
         }
     };
 </script>

@@ -42,7 +42,8 @@ export default {
       field: this.field,
       to: this.field.templateOptions,
       span: this.span,
-      model: this.model
+      model: this.model,
+      eventBus:this.eventBus
     };
 
     let vNode = h(this.type, { props });

@@ -18,9 +18,6 @@
 <script>
 import Vue from "vue";
 
-
-import EventBus from '../utils/eventBus';
-
 export default {
   /*eslint-disable */
   methods: {
@@ -59,8 +56,8 @@ export default {
     layout: {
       default: {}
     },
-    __name__:{
-      default:"autoForm",
+    __name__: {
+      default: "autoForm"
     }
   },
   data() {
@@ -79,13 +76,8 @@ export default {
   },
   created() {
     //实例化 eventBus
-
-    if(EventBus()){
-      this.eventBus = EventBus();
-    }else{
-      console.warn('请注册 eventBus')
-    }
-
+    this.eventBus = new Vue();
+    
     //make sure that the 'value' is always set
     this._errorlint(this.fields, "请传入fields属性");
     this._errorlint(this.layout, "请传入layout属性");
