@@ -93,7 +93,8 @@
                                     label: "单纯品牌曝光",
                                     value: "单纯品牌曝光"
                                 }
-                            ]
+                            ],
+                            onChange: 'sortChange'
                         }
                     },
                     {
@@ -105,7 +106,14 @@
                     }
                 ]
             };
-        }
+        },
+        autoform:{
+            eventBus:{
+                sortChange(e){
+                    console.log(e)
+                }
+            }
+        },
     };
 </script>
 
