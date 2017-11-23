@@ -6,7 +6,7 @@
                        :max="to.max"
                        :text-color="to.textColor"
                        :fill="to.fill"
-                       @change="onChange">
+                       @change="onEmuChange">
         <el-checkbox v-for="item in to.options"
                      :label="to.optionKey ? item[to.optionKey] : item.value"
                      :key="to.optionKey ? item[to.optionKey] : item.value"

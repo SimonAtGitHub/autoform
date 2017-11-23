@@ -12,7 +12,7 @@
                 @blur="onBlur"
                 @focus="onFocus"
                 @click="onClick"
-                @change="onChange"
+                @change="onEmuChange"
                 @keyup="onKeyup"
                 @keydown="onKeydown"
                 v-form-atts="to.atts"
@@ -63,6 +63,7 @@
                 this.options = ds;
             }
         }
+
     };
 </script>
 

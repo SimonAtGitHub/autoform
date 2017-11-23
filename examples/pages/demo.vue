@@ -8,7 +8,7 @@
                 <el-button type="primary">立即创建</el-button>
                 <el-button>取消</el-button>
             </el-form-item>
-        </auto-form>
+        </auto-form>{{model1}}
     </el-card>
 </template>
 
@@ -17,8 +17,12 @@ export default {
   data() {
     return {
       model1: {
-        name: "hello~",
-        type: []
+          name: "hello~",
+          region: "",
+          date1: "",
+          date2: "",
+          desc: "",
+          type: []
       },
       layout: {
         align: "left",
@@ -44,15 +48,21 @@ export default {
             options: [
               {
                 label: "区域一",
-                value: "shanghai"
+                value: "1"
               },
               {
                 label: "区域二",
-                value: "beijing"
+                value: "2"
+              },
+              {
+                label: "区域三",
+                value: "3"
               }
             ],
             filterMethod: () => {},
-            onChange: "aa"
+            onChange: "sortChange",
+              optionKey: 'value',
+              multiple: false
           }
         },
         {
@@ -80,22 +90,52 @@ export default {
             options: [
               {
                 label: "美食/餐厅线上活动",
-                value: "美食/餐厅线上活动"
+                value: "美食/餐厅线上活动value"
               },
               {
                 label: "地推活动",
-                value: "地推活动"
+                value: "地推活动value"
               },
               {
                 label: "线下主题活动",
-                value: "线下主题活动"
+                value: "线下主题活动value"
               },
               {
                 label: "单纯品牌曝光",
-                value: "单纯品牌曝光"
+                value: "单纯品牌曝光value"
               }
             ],
-            onChange: "sortChange"
+            onChange: (e, item) => {
+                console.log(e, item);
+            }
+          }
+        },
+        {
+          key: "type2",
+          type: "radio",
+          templateOptions: {
+            label: "活动性质RADIO",
+            options: [
+              {
+                label: "美食/餐厅线上活动",
+                value: "美食/餐厅线上活动value"
+              },
+              {
+                label: "地推活动",
+                value: "地推活动value"
+              },
+              {
+                label: "线下主题活动",
+                value: "线下主题活动value"
+              },
+              {
+                label: "单纯品牌曝光",
+                value: "单纯品牌曝光value"
+              }
+            ],
+            onChange: (e, item) => {
+                console.log(e, item);
+            }
           }
         },
         {
@@ -110,8 +150,8 @@ export default {
   },
   autoform: {
     eventBus: {
-      sortChange(e) {
-        console.log(e);
+      sortChange(e, item) {
+        console.log(e, item);
       }
     }
   }
