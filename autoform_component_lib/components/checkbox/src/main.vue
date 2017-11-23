@@ -21,8 +21,6 @@
 
 <script>
     import basicComponent from "../../..//utils/baseField";
-
-
     export default {
         mixins: [basicComponent],
         name: 'cCheckbox',
