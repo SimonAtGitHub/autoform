@@ -18,7 +18,7 @@ export default {
     return {
       model1: {
           name: "hello~",
-          region: "",
+          region: "2",
           date1: "",
           date2: "",
           desc: "",
