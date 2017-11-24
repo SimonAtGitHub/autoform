@@ -2,6 +2,7 @@ const resolve = require('path').resolve
 const webpack = require('webpack')
 const url = require('url')
 const publicPath = ''
+const path = require('path');
 
 module.exports = (options = {}) => ({
     entry: {
@@ -53,7 +54,8 @@ module.exports = (options = {}) => ({
     resolve: {
         extensions: ['.js', '.vue', '.json'],
         alias: {
-            '~': resolve(__dirname)
+            '~': resolve(__dirname),
+            'autoform': path.resolve(__dirname, '../autoform')
         }
     }
 })

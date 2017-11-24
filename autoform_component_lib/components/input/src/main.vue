@@ -21,8 +21,7 @@
 </template>
 
 <script>
-import basicComponent from "../../..//utils/baseField";
-
+import basicComponent from "autoform/utils/baseField";
 
 export default {
   mixins: [basicComponent],

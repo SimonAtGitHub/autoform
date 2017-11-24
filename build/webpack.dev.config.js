@@ -17,8 +17,8 @@ module.exports = {
         extensions: ['.js', '.vue'],
         alias: {
             vue: 'vue/dist/vue.js',
-            'autoform': path.resolve(__dirname, '../autoform/index'),
-            "autoform_component_lib": path.resolve(__dirname, '../autoform_component_lib/index')
+            'autoform': path.resolve(__dirname, '../autoform'),
+            "autoform_component_lib": path.resolve(__dirname, '../autoform_component_lib')
         }
     },
     devServer: {
