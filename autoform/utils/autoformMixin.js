@@ -25,7 +25,7 @@ export default {
         //event  keys
         Object.keys(autoform.eventBus).forEach(eventKey => {
           c_autoform.forEach(item => {
-            item.eventBus.$on(eventKey, autoform.eventBus[eventKey])
+            item.eventBus.$on(eventKey, autoform.eventBus[eventKey].bind(vm));
           });
         });
       }

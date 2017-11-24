@@ -41,6 +41,32 @@ export default {
     },
     onKeydown: function (e) {
       this.runFunction('onKeydown', e);
+    },
+    onEmuChange: function (e) {
+      let model;
+
+      switch (Object.prototype.toString.call(e)) {
+        case '[object String]':
+        case '[object Number]':
+          model = this.to.options.find(item => e === (item[this.to.optionKey] || item.value));
+          break;
+        case '[object Array]':
+          model = this.to.options.filter(item => e.indexOf(item[this.to.optionKey] || item.value) >= 0);
+          break;
+      }
+
+      switch (typeof this.to.onChange) {
+        case 'string':
+          if (!this.eventBus) {
+            console.warn('事件总线为空');
+            return;
+          }
+          this.eventBus.$emit(this.to.onChange, e, model);
+          break;
+        case 'function':
+          this.to.onChange.call(this, e, model);
+          break;
+      }
     }
   }
 };
