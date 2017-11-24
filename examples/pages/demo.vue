@@ -151,6 +151,7 @@ export default {
   autoform: {
     eventBus: {
       sortChange(e, item) {
+        console.log(this)
         console.log(e, item);
       }
     }
