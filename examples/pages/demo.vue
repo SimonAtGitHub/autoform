@@ -59,7 +59,7 @@ export default {
                 value: "3"
               }
             ],
-            filterMethod: () => {},
+            filterMethod: "",
             onChange: "sortChange",
               optionKey: 'value',
               multiple: false
@@ -105,9 +105,9 @@ export default {
                 value: "单纯品牌曝光value"
               }
             ],
-            onChange: (e, item) => {
-                console.log(e, item);
-            }
+            // onChange: (e, item) => {
+            //     console.log(e, item);
+            // }
           }
         },
         {
@@ -133,9 +133,9 @@ export default {
                 value: "单纯品牌曝光value"
               }
             ],
-            onChange: (e, item) => {
-                console.log(e, item);
-            }
+            // onChange: (e, item) => {
+            //     console.log(e, item);
+            // }
           }
         },
         {

@@ -1,11 +1,11 @@
 
 <template>
     <div class="autoform-block">
-        <el-form ref="form" :model="model" :label-position="layout.align||'left'" :label-width="layout.labelWidth" :inline="layout.inline">
-            <el-row v-if="!layout.inline" :gutter="layout.gutter">
-                <field v-if="!layout.custom" :ref="'form_'+field.key" :event-bus="eventBus"  v-for="field in fields" :model.sync="model" :field="field" :key="'form_'+field.key" :span.sync="layout.span" :inline="layout.inline"></field>
+        <el-form ref="form" :model="vModel" :label-position="vLayout.align||'left'" :label-width="vLayout.labelWidth" :inline="vLayout.inline">
+            <el-row v-if="!vLayout.inline" :gutter="vLayout.gutter">
+                <field v-if="!vLayout.custom" :ref="'form_'+field.key" :event-bus="eventBus"  v-for="field in vFields" :model.sync="vModel" :field="field" :key="'form_'+field.key" :span.sync="vLayout.span" :inline="vLayout.inline"></field>
             </el-row>
-            <field v-if="!layout.custom && layout.inline" :ref="'form_'+field.key" v-for="field in fields" :model.sync="model" :field="field" :key="'form_'+field.key" :span.sync="layout.span" :inline="layout.inline"></field>
+            <field v-if="!vLayout.custom && vLayout.inline" :ref="'form_'+field.key" v-for="field in vFields" :model.sync="vModel" :field="field" :key="'form_'+field.key" :span.sync="vLayout.span" :inline="vLayout.inline"></field>
             <slot :keys="keys"></slot>
         </el-form>
     </div>
@@ -43,6 +43,48 @@ export default {
       if (!props || (Array.isArray(props) && props.length === 0)) {
         console.warn(msg);
       }
+    },
+    ___IS__DEV__() {
+      return !!window.__AUTOFORM_DEVTOOLS_GLOBAL_HOOK__;
+    },
+    __DEV_TOOL__() {
+      let self = this;
+      setTimeout(function() {
+        const $autoForm = self.___IS__DEV__();
+        if ($autoForm) {
+          window.addEventListener("message", e => {
+            if (e.source === window && e.data.type === "devtool-data-update") {
+              self.propsVaule = e.data.data;
+
+              [self.vLayout, self.vModel, self.vFields] = [
+                e.data.data.layout,
+                e.data.data.model,
+                e.data.data.fields
+              ];
+            }
+          });
+
+          let data = {
+            model: self.model,
+            layout: self.layout,
+            fields: self.fields
+          };
+          try {
+            window.postMessage(
+              {
+                type: "init",
+                data
+              },
+              "*"
+            );
+          } catch (e) {
+            console.warn(e);
+            console.error("配置文件不要写函数");
+          }
+        } else {
+          console.log("未安装devtool");
+        }
+      }, 100);
     }
   },
   //props: ["model", "fields", "layout"],
@@ -62,7 +104,10 @@ export default {
   },
   data() {
     return {
-      eventBus: null
+      eventBus: null,
+      vModel: this.model,
+      vFields: this.fields,
+      vLayout: this.layout
     };
   },
   computed: {
@@ -74,10 +119,29 @@ export default {
       return keys;
     }
   },
+  watch: {
+    vModel: {
+      handler(val) {
+        let self=this;
+        setTimeout(() => {
+          window.postMessage(
+            {
+              type: "autoform_update_model",
+              data: {
+                model: val
+              }
+            },
+            "*"
+          );
+        }, 100);
+      },
+      deep: true
+    }
+  },
   created() {
     //实例化 eventBus
     this.eventBus = new Vue();
-    
+
     //make sure that the 'value' is always set
     this._errorlint(this.fields, "请传入fields属性");
     this._errorlint(this.layout, "请传入layout属性");
@@ -86,6 +150,8 @@ export default {
       if (typeof this.model[field.key] === "undefined")
         this.$set(this.model, field.key, "");
     });
+
+    this.__DEV_TOOL__();
   }
 };
 </script>

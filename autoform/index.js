@@ -42,7 +42,7 @@ let AutoForm = {
       Register,
       RegisterDir
     };
-
+    window.__AUTOFORM_DEVTOOLS_GLOBAL_HOOK__=Vue.$autoform;
   }
 };
 
@@ -59,5 +59,9 @@ if (typeof window !== 'undefined' && window.Vue) {
     Register,
     RegisterDir
   };
+  window.__AUTOFORM_DEVTOOLS_GLOBAL_HOOK__=Vue.$autoform;
 }
 export default AutoForm;
+
+
+
