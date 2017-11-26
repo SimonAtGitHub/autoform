@@ -14,7 +14,7 @@
     "type": "git",
     "url": "ssh://git@git.sankuai.com/hfe/charlielau.autoform.git"
   },
-  "author": "",
+  "author": "jinweiyi02@meituan.com、liuqingqing05@meituan.com",
   "license": "ISC",
   "devDependencies": {
     "autoprefixer": "^7.1.6",
