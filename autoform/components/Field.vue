@@ -3,7 +3,7 @@
 /*eslint-disable */
 import Util, { getTypes, setError, parseValidationString } from "../util";
 export default {
-  props: ["form", "model", "field", "to", "span", "inline", "eventBus"],
+  props: [ "layout", "model", "field", "to", "span", "inline", "eventBus"],
   computed: {
     type: function() {
       return "form_" + this.field.type;
@@ -39,6 +39,7 @@ export default {
   // :is="type" :field="field" :model="model" :to="field.templateOptions" :span="span">
   render(h) {
     let props = {
+      layout: this.layout,
       field: this.field,
       to: this.field.templateOptions,
       span: this.span,

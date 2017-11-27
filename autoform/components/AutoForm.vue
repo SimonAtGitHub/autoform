@@ -3,7 +3,7 @@
     <div class="autoform-block">
         <el-form ref="form" :model="vModel" :label-position="vLayout.align||'left'" :label-width="vLayout.labelWidth" :inline="vLayout.inline">
             <el-row v-if="!vLayout.inline" :gutter="vLayout.gutter">
-                <field v-if="!vLayout.custom" :ref="'form_'+field.key" :event-bus="eventBus"  v-for="field in vFields" :model.sync="vModel" :field="field" :key="'form_'+field.key" :span.sync="vLayout.span" :inline="vLayout.inline"></field>
+                <field v-if="!vLayout.custom" :ref="'form_'+field.key" :event-bus="eventBus"  v-for="field in vFields" :model.sync="vModel" :field="field" :key="'form_'+field.key" :span.sync="vLayout.span" :inline="vLayout.inline" :layout="vLayout"></field>
             </el-row>
             <field v-if="!vLayout.custom && vLayout.inline" :ref="'form_'+field.key" v-for="field in vFields" :model.sync="vModel" :field="field" :key="'form_'+field.key" :span.sync="vLayout.span" :inline="vLayout.inline"></field>
             <slot :keys="keys"></slot>
