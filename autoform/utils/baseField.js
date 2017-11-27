@@ -1,6 +1,6 @@
 export default {
   props: [
-    'form',
+    'layout',
     'field',
     'model',
     'to',
