@@ -39,6 +39,13 @@ export default {
             label: "活动名称"
           }
         },
+         {
+          key: "name",
+          type: "hello",
+          templateOptions: {
+            label: "活动名称"
+          }
+        },
         {
           key: "region",
           type: "select",

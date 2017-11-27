@@ -17,6 +17,10 @@ Vue.use(AutoForm);
 
 Vue.use(AutoForm_component_lib);
 
+
+
+Vue.$autoform.RegisterDir(()=>require.context('./components'))
+
 Vue.config.productionTip = false;
 
 
