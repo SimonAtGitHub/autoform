@@ -43,25 +43,24 @@ export const RegisterDir = (callback, options = {
     let replacePattern = new RegExp('^' + options.prefix);
 
     let Fields = callback();
+    Fields.keys().forEach(key => {
+     
+        if(key.indexOf('.vue')<0){  //重复解析
+            return;
+        }
 
-    Fields.keys().forEach((key) => {
-        //remove all the .vue crap
         let name = key
             .replace(/^\.\//, '')
             .replace(/\.vue/, '')
             .replace(replacePattern, '')
             .replace(/-/, '');
 
-        // name = name.charAt(0).toLowerCase() + name.slice(1);
-
-
         let cc = getCamelCase(name);
 
         let ml = getMidLineCase(name);
 
-
         let component = Fields(key);
-        
+
         if (Fields(key).default) {
             component = Fields(key).default;
         }
