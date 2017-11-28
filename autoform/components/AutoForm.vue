@@ -49,21 +49,22 @@ export default {
     },
     __DEV_TOOL__() {
       let self = this;
+
+      window.addEventListener("message", e => {
+        if (e.source === window && e.data.type === "devtool-data-update") {
+          self.propsVaule = e.data.data;
+
+          [self.vLayout, self.vModel, self.vFields] = [
+            e.data.data.layout,
+            e.data.data.model,
+            e.data.data.fields
+          ];
+        }
+      });
+
       setTimeout(function() {
         const $autoForm = self.___IS__DEV__();
         if ($autoForm) {
-          window.addEventListener("message", e => {
-            if (e.source === window && e.data.type === "devtool-data-update") {
-              self.propsVaule = e.data.data;
-
-              [self.vLayout, self.vModel, self.vFields] = [
-                e.data.data.layout,
-                e.data.data.model,
-                e.data.data.fields
-              ];
-            }
-          });
-
           let data = {
             model: self.model,
             layout: self.layout,
@@ -84,7 +85,7 @@ export default {
         } else {
           console.log("未安装devtool");
         }
-      }, 100);
+      }, 500);
     }
   },
   //props: ["model", "fields", "layout"],
@@ -122,8 +123,8 @@ export default {
   watch: {
     vModel: {
       handler(val) {
-        let self=this;
-        setTimeout(() => {
+        let self = this;
+        setTimeout(function() {
           window.postMessage(
             {
               type: "autoform_update_model",
@@ -133,7 +134,7 @@ export default {
             },
             "*"
           );
-        }, 100);
+        }, 500);
       },
       deep: true
     }
