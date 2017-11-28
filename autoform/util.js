@@ -8,8 +8,8 @@ export default exports;
 export function addType(id, options) {
     if (!exports.fields['form_' + id]) {
         exports.fields['form_' + id] = options;
-    }else{
-        console.log(id,'已经存在了,请勿重复注入');
+    } else {
+        console.log(id, '已经存在了,请勿重复注入');
     }
 }
 
@@ -48,4 +48,9 @@ export function getCamelCase(str) {
 
 export function getMidLineCase(str) {
     return str.replace(/([a-z])([A-Z])/, "$1-$2").toLowerCase()
+}
+
+
+export function getFileName(str) {
+    return str.replace(/(.*\/)*([^.]+.*)/ig,"$2");
 }

@@ -124,7 +124,8 @@ export default {
     vModel: {
       handler(val) {
         let self = this;
-        setTimeout(function() {
+        clearTimeout(this.update_model_timer);
+        this.update_model_timer = setTimeout(function() {
           window.postMessage(
             {
               type: "autoform_update_model",

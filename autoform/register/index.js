@@ -1,7 +1,8 @@
 import {
     addType,
     getCamelCase,
-    getMidLineCase
+    getMidLineCase,
+    getFileName
 } from "../util";
 
 
@@ -49,13 +50,15 @@ export const RegisterDir = (callback, options = {
             return;
         }
 
-        let name = key
-            .replace(/^\.\//, '')
+
+        let name =
+            getFileName(key)
             .replace(/\.vue/, '')
             .replace(replacePattern, '')
             .replace(/-/, '');
 
         name = name.charAt(0).toLowerCase() + name.slice(1);
+
 
         let cc = getCamelCase(name);
         let ml = getMidLineCase(name);
@@ -63,7 +66,9 @@ export const RegisterDir = (callback, options = {
         if (Fields(key).default) {
             component = Fields(key).default;
         }
-        
+
+        console.log(cc,ml)
+
         addType(cc, component);
         addType(ml, component);
     });
