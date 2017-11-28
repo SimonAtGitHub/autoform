@@ -7,7 +7,11 @@
       }
     }]
   ],
-  "plugins": ["transform-runtime", "transform-vue-jsx"],
+  "plugins": [
+    "transform-runtime", 
+    "transform-vue-jsx",
+    "transform-object-rest-spread"
+  ],
   "env": {
     "test": {
       "presets": ["env"],

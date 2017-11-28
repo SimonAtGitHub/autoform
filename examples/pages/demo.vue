@@ -36,7 +36,8 @@ export default {
           key: "name",
           type: "input",
           templateOptions: {
-            label: "活动名称"
+            label: "活动名称",
+            onFocus: 'activityFocus'
           }
         },
          {
@@ -158,8 +159,12 @@ export default {
   autoform: {
     eventBus: {
       sortChange(e, item) {
+        debugger;
         console.log(this)
         console.log(e, item);
+      },
+      activityFocus (e, item) {
+        debugger;
       }
     }
   }
