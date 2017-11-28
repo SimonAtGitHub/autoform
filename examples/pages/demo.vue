@@ -165,8 +165,16 @@ export default {
   autoform: {
     eventBus: {
       sortChange(e, item) {
+<<<<<<< HEAD
         console.log(this);
+=======
+        debugger;
+        console.log(this)
+>>>>>>> b3bef74810a6508fe4c613b7b033f6534663fec9
         console.log(e, item);
+      },
+      activityFocus (e, item) {
+        debugger;
       }
     }
   }
