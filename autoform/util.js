@@ -9,7 +9,7 @@ export function addType(id, options) {
     if (!exports.fields['form_' + id]) {
         exports.fields['form_' + id] = options;
     } else {
-        console.log(id, '已经存在了,请勿重复注入');
+        console.warn(id, '已经存在了,请勿重复注入');
     }
 }
 

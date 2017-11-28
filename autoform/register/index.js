@@ -67,7 +67,6 @@ export const RegisterDir = (callback, options = {
             component = Fields(key).default;
         }
 
-        console.log(cc,ml)
 
         addType(cc, component);
         addType(ml, component);
