@@ -49,16 +49,18 @@ export default {
     },
     __DEV_TOOL__() {
       let self = this;
-
       window.addEventListener("message", e => {
         if (e.source === window && e.data.type === "devtool-data-update") {
-          self.propsVaule = e.data.data;
 
-          [self.vLayout, self.vModel, self.vFields] = [
-            e.data.data.layout,
-            e.data.data.model,
-            e.data.data.fields
-          ];
+          if (!this._q(self.vLayout, e.data.data.layout)) {
+            self.vLayout = e.data.data.layout;
+          }
+          if (!this._q(self.vModel, e.data.data.model)) {
+            self.vModel = e.data.data.model;
+          }
+          if (!this._q(self.vFields, e.data.data.fields)) {
+            self.vFields = e.data.data.fields;
+          }
         }
       });
 
@@ -122,7 +124,10 @@ export default {
   },
   watch: {
     vModel: {
-      handler(val) {
+      handler(val, oldVal) {
+        if (this._q(val, oldVal)) {
+          return;
+        }
         let self = this;
         clearTimeout(this.update_model_timer);
         this.update_model_timer = setTimeout(function() {
@@ -152,7 +157,6 @@ export default {
       if (typeof this.model[field.key] === "undefined")
         this.$set(this.model, field.key, "");
     });
-
     this.__DEV_TOOL__();
   }
 };
