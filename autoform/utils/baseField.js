@@ -9,18 +9,18 @@ export default {
   ],
   icon: 'el-icon-edit',
   methods: {
-    runFunction: function (action, e) {
+    runFunction: function (action, ...args) {
       //
       switch (typeof this.to[action]) {
         case 'function':
-          this.to[action].call(this, e);
+          this.to[action].apply(this, args);
           break;
         case "string":
           if (!this.eventBus) {
             console.warn('事件总线为空');
             return;
           }
-          this.eventBus.$emit(this.to[action], e);
+          this.eventBus.$emit(this.to[action], ...args);
           break;
       }
     },
