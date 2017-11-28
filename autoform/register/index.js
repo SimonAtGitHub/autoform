@@ -44,8 +44,8 @@ export const RegisterDir = (callback, options = {
 
     let Fields = callback();
     Fields.keys().forEach(key => {
-     
-        if(key.indexOf('.vue')<0){  //重复解析
+
+        if (key.indexOf('.vue') < 0) { //重复解析
             return;
         }
 
@@ -55,17 +55,16 @@ export const RegisterDir = (callback, options = {
             .replace(replacePattern, '')
             .replace(/-/, '');
 
+        name = name.charAt(0).toLowerCase() + name.slice(1);
+
         let cc = getCamelCase(name);
-
         let ml = getMidLineCase(name);
-
         let component = Fields(key);
-
         if (Fields(key).default) {
             component = Fields(key).default;
         }
 
-        console.log(cc,ml)
+        console.log(cc, ml)
         addType(cc, component);
         addType(ml, component);
     });
