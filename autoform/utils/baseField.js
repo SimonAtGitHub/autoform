@@ -42,12 +42,6 @@ export default {
     onKeydown: function (e) {
       this.runFunction('onKeydown', e);
     },
-    onEnter: function (e) {
-      this.runFunction('onEnter', e);
-    },
-    onClear: function (e) {
-      this.runFunction("onClear", e);
-    }
     onEmuChange: function (e) {
       let model;
 
