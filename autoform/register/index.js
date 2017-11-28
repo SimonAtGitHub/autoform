@@ -1,5 +1,7 @@
 import {
-    addType
+    addType,
+    getCamelCase,
+    getMidLineCase
 } from "../util";
 
 
@@ -30,7 +32,7 @@ export const Register = (Vue, registerComponents, options = {
 
 
 export const RegisterDir = (callback, options = {
-    prefix: "c"   //去掉 文件前缀
+    prefix: "c" //去掉 文件前缀
 }) => {
 
     if (typeof callback !== 'function') {
@@ -44,16 +46,26 @@ export const RegisterDir = (callback, options = {
 
     Fields.keys().forEach((key) => {
         //remove all the .vue crap
-        let component = key
+        let name = key
             .replace(/^\.\//, '')
             .replace(/\.vue/, '')
-            .replace(replacePattern, '');
+            .replace(replacePattern, '')
+            .replace(/-/, '');
 
-        component = component.charAt(0).toLowerCase() + component.slice(1);
-        let com = Fields(key);
+        // name = name.charAt(0).toLowerCase() + name.slice(1);
+
+
+        let cc = getCamelCase(name);
+
+        let ml = getMidLineCase(name);
+
+
+        let component = Fields(key);
+        
         if (Fields(key).default) {
-            com = Fields(key).default;
+            component = Fields(key).default;
         }
-        addType(component, com);
+        addType(cc, component);
+        addType(ml, component);
     });
 }
