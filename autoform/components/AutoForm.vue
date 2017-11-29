@@ -1,18 +1,3 @@
-
-<template>
-    <div class="autoform-block">
-        <el-form ref="form" :model="vModel" :label-position="vLayout.align||'left'" :label-width="vLayout.labelWidth" :inline="vLayout.inline">
-            <el-row v-if="!vLayout.inline && !isFieldArray2d" :gutter="vLayout.gutter">
-                <field v-if="!vLayout.custom" :ref="'form_'+field.key" :event-bus="eventBus"  v-for="field in vFields" :model.sync="vModel" :field="field" :key="'form_'+field.key" :span.sync="vLayout.span" :inline="vLayout.inline" :layout="vLayout"></field>
-            </el-row>
-            <el-row v-if="!vLayout.inline && isFieldArray2d" :gutter="vLayout.gutter" v-for="(row, index) in vFields" :key="index" >
-                <field v-if="!vLayout.custom" :ref="'form_'+field.key" :event-bus="eventBus" v-for="field in row" :model.sync="vModel" :field="field" :key="'form_'+field.key" :span.sync="vLayout.span" :inline="vLayout.inline" :layout="vLayout"></field>
-            </el-row>
-            <field v-if="!vLayout.custom && vLayout.inline" :ref="'form_'+field.key" v-for="field in vFields" :model.sync="vModel" :field="field" :key="'form_'+field.key" :span.sync="vLayout.span" :inline="vLayout.inline"></field>
-            <slot :keys="keys"></slot>
-        </el-form>
-    </div>
-</template>
 <style scoped>
 .autoform-block {
   overflow: hidden;
@@ -74,7 +59,7 @@ export default {
               e.data.data.layout.inline !== self.vLayout.inline &&
               e.data.data.layout.inline === true
             ) {
-              self.vLayout.inline=true;
+              self.vLayout.inline = true;
               self._inline_flat_FieldArray();
             }
             self.vLayout = e.data.data.layout;
@@ -108,7 +93,6 @@ export default {
       }, 500);
     },
     _inline_flat_FieldArray() {
-      console.log(this.vLayout.inline, this.isFieldArray2d)
       if (this.vLayout.inline && this.isFieldArray2d) {
         //如果是 inline 就打平 二维数组
         let cpFields = [...this.vFields];
@@ -218,6 +202,117 @@ export default {
         this.$set(this.model, field.key, "");
     });
     this.__DEV_TOOL__();
+  },
+  render(h) {
+    //     <template>
+    //     <div class="autoform-block">
+    //         <el-form ref="form" :model="vModel" :label-position="vLayout.align||'left'" :label-width="vLayout.labelWidth" :inline="vLayout.inline">
+    //             <el-row v-if="!vLayout.inline && !isFieldArray2d" :gutter="vLayout.gutter">
+    //                 <field v-if="!vLayout.custom" :ref="'form_'+field.key" :event-bus="eventBus"  v-for="field in vFields" :model.sync="vModel" :field="field" :key="'form_'+field.key" :span.sync="vLayout.span" :inline="vLayout.inline" :layout="vLayout"></field>
+    //             </el-row>
+    //             <el-row v-if="!vLayout.inline && isFieldArray2d" :gutter="vLayout.gutter" v-for="(row, index) in vFields" :key="index" >
+    //                 <field v-if="!vLayout.custom" :ref="'form_'+field.key" :event-bus="eventBus" v-for="field in row" :model.sync="vModel" :field="field" :key="'form_'+field.key" :span.sync="vLayout.span" :inline="vLayout.inline" :layout="vLayout"></field>
+    //             </el-row>
+    //             <field v-if="!vLayout.custom && vLayout.inline" :ref="'form_'+field.key" v-for="field in vFields" :model.sync="vModel" :field="field" :key="'form_'+field.key" :span.sync="vLayout.span" :inline="vLayout.inline"></field>
+    //             <slot :keys="keys"></slot>
+    //         </el-form>
+    //     </div>
+    // </template>
+
+    let custom_layout = () => {
+      return <slot keys={this.keys} />;
+    };
+
+    let not_inline_not_2_wei = () => {
+      return (
+        <el-row gutter={this.vLayout.gutter}>
+          this.vFields.map((field, fIndex) =>
+          {
+            <field
+              ref={"form_" + field.key}
+              event-bus={this.eventBus}
+              model={this.vModel}
+              field={field}
+              key={"form_" + field.key}
+              span={this.vLayout.span}
+              inline={this.vLayout.inline}
+              layout={this.vLayout}
+            />
+          })
+        </el-row>
+      );
+    };
+
+    let not_inline_2_wei = () => {
+      return this.vFields.map((row, index) => {
+        return (
+          <el-row gutter={this.vLayout.gutter} key={index}>
+            {row.map((field, index) => {
+              return (
+                <field
+                  ref={"form_" + field.key}
+                  event-bus={this.eventBus}
+                  model={this.vModel}
+                  field={field}
+                  key={"form_" + field.key}
+                  span={this.vLayout.span}
+                  inline={this.vLayout.inline}
+                  layout={this.vLayout}
+                />
+              );
+            })}
+          </el-row>
+        );
+      });
+    };
+    let inline = () => {
+      return this.vFields.map((field, index) => {
+        return (
+          <field
+            ref={"form_" + field.key}
+            model={this.vModel}
+            field={field}
+            key={"form_" + field.key}
+            span={this.vLayout.span}
+            inline={this.vLayout.inline}
+          />
+        );
+      });
+    };
+
+    let resultFn = null;
+
+    if (this.vLayout.custom) {
+      resultFn = custom_layout;
+    } else if (
+      !this.vLayout.custom &&
+      !this.vLayout.inline &&
+      !this.isFieldArray2d
+    ) {
+      resultFn = not_inline_not_2_wei;
+    } else if (
+      !this.vLayout.custom &&
+      !this.vLayout.inline &&
+      this.isFieldArray2d
+    ) {
+      resultFn = not_inline_2_wei;
+    } else {
+      resultFn = inline;
+    }
+
+    return (
+      <div class="autoform-block">
+        <el-form
+          ref="form"
+          model={this.vModel}
+          label-position={this.vLayout.align || "left"}
+          label-width={this.vLayout.labelWidth}
+          inline={this.vLayout.inline}
+        >
+          {resultFn}
+        </el-form>
+      </div>
+    );
   }
 };
 </script>
