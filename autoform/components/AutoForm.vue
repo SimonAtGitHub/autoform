@@ -5,7 +5,7 @@
             <el-row v-if="!vLayout.inline && !isFieldArray2d" :gutter="vLayout.gutter">
                 <field v-if="!vLayout.custom" :ref="'form_'+field.key" :event-bus="eventBus"  v-for="field in vFields" :model.sync="vModel" :field="field" :key="'form_'+field.key" :span.sync="vLayout.span" :inline="vLayout.inline" :layout="vLayout"></field>
             </el-row>
-            <el-row v-if="!vLayout.inline && isFieldArray2d" :gutter="vLayout.gutter" v-for="row in vFields" :key="row">
+            <el-row v-if="!vLayout.inline && isFieldArray2d" :gutter="vLayout.gutter" v-for="(row, index) in vFields" :key="index" >
                 <field v-if="!vLayout.custom" :ref="'form_'+field.key" :event-bus="eventBus" v-for="field in row" :model.sync="vModel" :field="field" :key="'form_'+field.key" :span.sync="vLayout.span" :inline="vLayout.inline" :layout="vLayout"></field>
             </el-row>
             <field v-if="!vLayout.custom && vLayout.inline" :ref="'form_'+field.key" v-for="field in vFields" :model.sync="vModel" :field="field" :key="'form_'+field.key" :span.sync="vLayout.span" :inline="vLayout.inline"></field>

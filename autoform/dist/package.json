@@ -2,7 +2,7 @@
   "name": "@hfe/autoform",
   "version": "1.1.37",
   "description": "",
-  "main": "dist/lib/index.js",
+  "main": "lib/index.js",
   "scripts": {},
   "repository": {
     "type": "git",

@@ -5,9 +5,9 @@
   "main": "dist/index.js",
   "scripts": {
     "dev": "cross-env NODE_ENV=dev  webpack-dev-server --progress --open",
-    "build": " rimraf  ./autoform/dist &  cross-env NODE_ENV=build   webpack -p --progress && npm run echo-build",
-    "build-lib": " rimraf  ./autoform_component_lib/dist &  cross-env NODE_ENV=lib  webpack -p --progress && npm run echo-lib",
-    "echo-build": "echo '\\033[33m AutoForm打包完成，npm发布路径为： \\033[0m \\033[34m autoform/ \\033[0m \\033[33m 发布完成后务必push \\033[0m '",
+    "build": " rimraf  ./autoform/dist/lib &  cross-env NODE_ENV=build   webpack -p --progress && npm run echo-build",
+    "build-lib": " rimraf  ./autoform_component_lib/dist/lib &  cross-env NODE_ENV=lib  webpack -p --progress && npm run echo-lib",
+    "echo-build": "echo '\\033[33m AutoForm打包完成，npm发布路径为： \\033[0m \\033[34m autoform/lib \\033[0m \\033[33m 发布完成后务必push \\033[0m '",
     "echo-lib": "echo '\\033[33m 组件库打包完成，npm发布路径为： \\033[0m \\033[34m autoform_component_lib/\\033[0m \\033[33m 发布完成后务必push \\033[0m '"
   },
   "repository": {
