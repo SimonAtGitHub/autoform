@@ -226,19 +226,20 @@ export default {
     let not_inline_not_2_wei = () => {
       return (
         <el-row gutter={this.vLayout.gutter}>
-          this.vFields.map((field, fIndex) =>
-          {
-            <field
-              ref={"form_" + field.key}
-              event-bus={this.eventBus}
-              model={this.vModel}
-              field={field}
-              key={"form_" + field.key}
-              span={this.vLayout.span}
-              inline={this.vLayout.inline}
-              layout={this.vLayout}
-            />
-          })
+          {this.vFields.map((field, fIndex) => {
+            return (
+              <field
+                ref={"form_" + field.key}
+                event-bus={this.eventBus}
+                model={this.vModel}
+                field={field}
+                key={"form_" + field.key}
+                span={this.vLayout.span}
+                inline={this.vLayout.inline}
+                layout={this.vLayout}
+              />
+            );
+          })}
         </el-row>
       );
     };
