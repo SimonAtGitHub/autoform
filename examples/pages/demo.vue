@@ -38,6 +38,7 @@ export default {
             key: "name",
             type: "input",
             templateOptions: {
+              span: 12,
               label: "活动名称"
             }
           },
@@ -45,6 +46,7 @@ export default {
             key: "name",
             type: "hello",
             templateOptions: {
+              span: 12,
               label: "活动名称"
             }
           }
@@ -56,6 +58,7 @@ export default {
             templateOptions: {
               label: "活动区域",
               placeholder: "请选择活动区域",
+              span: 12,
               options: [
                 {
                   label: "区域一",
@@ -91,8 +94,9 @@ export default {
             key: "date2",
             type: "timepicker",
             templateOptions: {
+              label: "选择时间",
               placeholder: "选择时间",
-              span: 10
+              span: 12
             }
           },
           {
@@ -100,6 +104,7 @@ export default {
             type: "checkbox",
             templateOptions: {
               label: "活动性质",
+              span: 24,
               options: [
                 {
                   label: "美食/餐厅线上活动",
@@ -118,9 +123,6 @@ export default {
                   value: "单纯品牌曝光value"
                 }
               ]
-              // onChange: (e, item) => {
-              //     console.log(e, item);
-              // }
             }
           },
           {
@@ -128,6 +130,7 @@ export default {
             type: "radio",
             templateOptions: {
               label: "活动性质RADIO",
+              span: 24,
               options: [
                 {
                   label: "美食/餐厅线上活动",
@@ -146,9 +149,6 @@ export default {
                   value: "单纯品牌曝光value"
                 }
               ]
-              // onChange: (e, item) => {
-              //     console.log(e, item);
-              // }
             }
           },
           {
@@ -162,18 +162,18 @@ export default {
       ]
     };
   },
-    autoform: {
-        eventBus: {
-            sortChange(e, item) {
-                debugger;
-                console.log(this)
-                console.log(e, item);
-            },
-            activityFocus (e, item) {
-                debugger;
-            }
-        }
+  autoform: {
+    eventBus: {
+      sortChange(e, item) {
+        debugger;
+        console.log(this);
+        console.log(e, item);
+      },
+      activityFocus(e, item) {
+        debugger;
+      }
     }
+  }
 };
 </script>
 

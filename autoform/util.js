@@ -52,23 +52,30 @@ export function getMidLineCase(str) {
 
 
 export function getFileName(str) {
-    return str.replace(/(.*\/)*([^.]+.*)/ig,"$2");
+    return str.replace(/(.*\/)*([^.]+.*)/ig, "$2");
 }
 
-export const typeCheck = {
-    isFunction (val) {
-        return Object.prototype.toString.call(val) === '[object Function]';
-    },
-    isObject (val) {
-        return Object.prototype.toString.call(val) === '[object Object]';
-    },
-    isArray (val) {
-        return Object.prototype.toString.call(val) === '[object Array]';
-    },
-    isNumber (val) {
-        return Object.prototype.toString.call(val) === '[object Number]';
-    },
-    isString (val) {
-        return Object.prototype.toString.call(val) === '[object String]';
-    }
-}
+
+
+// isFunction (val) {
+//     return Object.prototype.toString.call(val) === '[object Function]';
+// },
+// isObject (val) {
+//     return Object.prototype.toString.call(val) === '[object Object]';
+// },
+// isArray (val) {
+//     return Object.prototype.toString.call(val) === '[object Array]';
+// },
+// isNumber (val) {
+//     return Object.prototype.toString.call(val) === '[object Number]';
+// },
+// isString (val) {
+//     return Object.prototype.toString.call(val) === '[object String]';
+// }
+export const typeCheck = ['Function', 'Object', 'Array', 'Number', 'String']
+    .reduce((result, item) => {
+        result[`is` + item] = (val) => {
+            return Object.prototype.toString.call(val) === `[object ${item}]`;
+        }
+        return result;
+    }, {})

@@ -21,7 +21,7 @@
 <script>
 import Vue from "vue";
 import {typeCheck} from '../util'
-console.log(typeCheck);
+
 export default {
   /*eslint-disable */
   methods: {
