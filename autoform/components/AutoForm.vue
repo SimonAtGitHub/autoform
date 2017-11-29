@@ -247,7 +247,7 @@ export default {
       return this.vFields.map((row, index) => {
         return (
           <el-row gutter={this.vLayout.gutter} key={index}>
-            {row.map((field, index) => {
+            {row.map((field, fIndex) => {
               return (
                 <field
                   ref={"form_" + field.key}
