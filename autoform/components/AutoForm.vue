@@ -20,7 +20,7 @@
 </style>
 <script>
 import Vue from "vue";
-import {typeCheck} from '../util'
+import { typeCheck } from "../util";
 
 export default {
   /*eslint-disable */
@@ -55,15 +55,29 @@ export default {
       let self = this;
       window.addEventListener("message", e => {
         if (e.source === window && e.data.type === "devtool-data-update") {
-
-          if (!this._q(self.vLayout, e.data.data.layout)) {
-            self.vLayout = e.data.data.layout;
-          }
           if (!this._q(self.vModel, e.data.data.model)) {
             self.vModel = e.data.data.model;
           }
           if (!this._q(self.vFields, e.data.data.fields)) {
             self.vFields = e.data.data.fields;
+          }
+
+          if (!this._q(self.vLayout, e.data.data.layout)) {
+            //如果是inline并且为二维数组要变回来
+            if (
+              e.data.data.layout.inline !== self.vLayout.inline &&
+              e.data.data.layout.inline === false &&
+              self.___oldFields
+            ) {
+              self.vFields = self.___oldFields;
+            } else if (
+              e.data.data.layout.inline !== self.vLayout.inline &&
+              e.data.data.layout.inline === true
+            ) {
+              self.vLayout.inline=true;
+              self._inline_flat_FieldArray();
+            }
+            self.vLayout = e.data.data.layout;
           }
         }
       });
@@ -92,6 +106,21 @@ export default {
           console.log("未安装devtool");
         }
       }, 500);
+    },
+    _inline_flat_FieldArray() {
+      console.log(this.vLayout.inline, this.isFieldArray2d)
+      if (this.vLayout.inline && this.isFieldArray2d) {
+        //如果是 inline 就打平 二维数组
+        let cpFields = [...this.vFields];
+
+        this.___oldFields = cpFields;
+        let flatMap = [];
+        flatMap = cpFields.reduce((result, item) => {
+          result = result.concat(item);
+          return result;
+        }, []);
+        this.vFields = flatMap;
+      }
     }
   },
   //props: ["model", "fields", "layout"],
@@ -125,9 +154,9 @@ export default {
       });
       return keys;
     },
-   isFieldArray2d() {
-     return this.fields[0] && typeCheck.isArray(this.fields[0]);
-   }
+    isFieldArray2d() {
+      return this.fields[0] && typeCheck.isArray(this.fields[0]);
+    }
   },
   watch: {
     vModel: {
@@ -150,9 +179,33 @@ export default {
         }, 500);
       },
       deep: true
+    },
+    vFields: {
+      handler(val, oldVal) {
+        if (this._q(val, oldVal)) {
+          return;
+        }
+        let self = this;
+        clearTimeout(this.update_fields_timer);
+        this.update_fields_timer = setTimeout(function() {
+          window.postMessage(
+            {
+              type: "autoform_update_fields",
+              data: {
+                fields: val
+              }
+            },
+            "*"
+          );
+        }, 500);
+      },
+      deep: true
     }
   },
+  mounted() {},
   created() {
+    this._inline_flat_FieldArray();
+
     //实例化 eventBus
     this.eventBus = new Vue();
 

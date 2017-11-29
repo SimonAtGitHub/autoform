@@ -3,7 +3,7 @@
 /*eslint-disable */
 import Util, { getTypes, setError, parseValidationString } from "../util";
 export default {
-  props: [ "layout", "model", "field", "to", "span", "inline", "eventBus"],
+  props: ["layout", "model", "field", "to", "span", "inline", "eventBus"],
   computed: {
     type: function() {
       return "form_" + this.field.type;
@@ -36,30 +36,34 @@ export default {
     // });
   },
 
-  // :is="type" :field="field" :model="model" :to="field.templateOptions" :span="span">
   render(h) {
+
+    
+    this.field.templateOptions = this.field.templateOptions || {};
+
     let props = {
       layout: this.layout,
       field: this.field,
       to: this.field.templateOptions,
       span: this.span,
       model: this.model,
-      eventBus:this.eventBus
+      eventBus: this.eventBus
     };
 
-    let vNode = h(this.type, { props });
-
-    if (!this.display) {
+    if (!this.display || !this.field.type) {
       return "";
     }
 
-    if (!this.inline) {
-      let vNode = h(this.type, {
-        props
-      });
+    let vNode = h(this.type, {
+      props
+    });
 
+    if (!this.inline) {
       return (
-        <el-col span={this.field.templateOptions.span || this.span} offset={this.field.templateOptions.offset}>
+        <el-col
+          span={this.field.templateOptions.span || this.span}
+          offset={this.field.templateOptions.offset}
+        >
           <el-form-item
             label={this.field.templateOptions.label}
             prop={this.field.key}

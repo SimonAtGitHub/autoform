@@ -28,7 +28,7 @@ export default {
         align: "left",
         labelWidth: "100px",
         custom: false,
-        inline: false,
+        inline: true,
         span: 8,
         gutter: 50
       },
