@@ -21,11 +21,11 @@ export default {
       resultFn = this.jsx_inline;
     }
 
-    return <div>{resultFn()}</div>;
+    return resultFn();
   },
   methods: {
     jsx_custom_layout() {
-      return <slot keys={this.keys} event-bus={this.eventBus}  />;
+      return <slot keys={this.keys} event-bus={this.eventBus} />;
     },
     jsx_not_inline_not_2_wei() {
       return (
@@ -48,41 +48,49 @@ export default {
       );
     },
     jsx_not_inline_2_wei() {
-      return this.fields.map((row, index) => {
-        return (
-          <el-row gutter={this.layout.gutter} key={index}>
-            {row.map((field, fIndex) => {
-              return (
-                <auto-form-field
-                  ref={"form_" + field.key}
-                  event-bus={this.eventBus}
-                  model={this.model}
-                  field={field}
-                  key={"form_" + field.key}
-                  span={this.layout.span}
-                  inline={this.layout.inline}
-                  layout={this.layout}
-                />
-              );
-            })}
-          </el-row>
-        );
-      });
+      return (
+        <div>
+          {this.fields.map((row, index) => {
+            return (
+              <el-row gutter={this.layout.gutter} key={index}>
+                {row.map((field, fIndex) => {
+                  return (
+                    <auto-form-field
+                      ref={"form_" + field.key}
+                      event-bus={this.eventBus}
+                      model={this.model}
+                      field={field}
+                      key={"form_" + field.key}
+                      span={this.layout.span}
+                      inline={this.layout.inline}
+                      layout={this.layout}
+                    />
+                  );
+                })}
+              </el-row>
+            );
+          })}
+        </div>
+      );
     },
     jsx_inline() {
-      return this.fields.map((field, index) => {
-        return (
-          <auto-form-field
-            ref={"form_" + field.key}
-            model={this.model}
-            field={field}
-            key={"form_" + field.key}
-            span={this.layout.span}
-            inline={this.layout.inline}
-            event-bus={this.eventBus}
-          />
-        );
-      });
+      return (
+        <span>
+          {this.fields.map((field, index) => {
+            return (
+              <auto-form-field
+                ref={"form_" + field.key}
+                model={this.model}
+                field={field}
+                key={"form_" + field.key}
+                span={this.layout.span}
+                inline={this.layout.inline}
+                event-bus={this.eventBus}
+              />
+            );
+          })}
+        </span>
+      );
     },
     isFieldArray2d() {
       return this.fields[0] && typeCheck.isArray(this.fields[0]);

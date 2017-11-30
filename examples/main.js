@@ -5,7 +5,7 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 
 
-import AutoForm from 'autoform/dist/lib';
+import AutoForm from 'autoform';
 
 import AutoForm_component_lib from 'autoform_component_lib';
 
