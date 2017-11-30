@@ -17,9 +17,9 @@ module.exports = (options = {}) => ({
         libraryTarget: 'umd',
         umdNamedDefine: true
     },
-    // externals:{
-    //     vue:'window.Vue'
-    // },
+    externals: {
+        'Vue': 'vue'
+    },
     devtool: '#source-map',
     module: {
         rules: [{
