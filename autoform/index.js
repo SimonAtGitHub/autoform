@@ -10,7 +10,7 @@ import {
   getTypes,
   addType,
   addValidationMessage
-} from './util';
+} from './utils';
 import Directives from './directives/index';
 import {
   Register,

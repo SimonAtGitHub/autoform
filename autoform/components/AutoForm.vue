@@ -5,7 +5,7 @@
 </style>
 <script>
 import Vue from "vue";
-import { typeCheck } from "../util";
+import { typeCheck } from "../utils";
 
 export default {
   /*eslint-disable */
@@ -219,88 +219,6 @@ export default {
     //     </div>
     // </template>
 
-    let custom_layout = () => {
-      return <slot keys={this.keys} />;
-    };
-
-    let not_inline_not_2_wei = () => {
-      return (
-        <el-row gutter={this.vLayout.gutter}>
-          {this.vFields.map((field, fIndex) => {
-            return (
-              <field
-                ref={"form_" + field.key}
-                event-bus={this.eventBus}
-                model={this.vModel}
-                field={field}
-                key={"form_" + field.key}
-                span={this.vLayout.span}
-                inline={this.vLayout.inline}
-                layout={this.vLayout}
-              />
-            );
-          })}
-        </el-row>
-      );
-    };
-
-    let not_inline_2_wei = () => {
-      return this.vFields.map((row, index) => {
-        return (
-          <el-row gutter={this.vLayout.gutter} key={index}>
-            {row.map((field, fIndex) => {
-              return (
-                <field
-                  ref={"form_" + field.key}
-                  event-bus={this.eventBus}
-                  model={this.vModel}
-                  field={field}
-                  key={"form_" + field.key}
-                  span={this.vLayout.span}
-                  inline={this.vLayout.inline}
-                  layout={this.vLayout}
-                />
-              );
-            })}
-          </el-row>
-        );
-      });
-    };
-    let inline = () => {
-      return this.vFields.map((field, index) => {
-        return (
-          <field
-            ref={"form_" + field.key}
-            model={this.vModel}
-            field={field}
-            key={"form_" + field.key}
-            span={this.vLayout.span}
-            inline={this.vLayout.inline}
-          />
-        );
-      });
-    };
-
-    let resultFn = null;
-
-    if (this.vLayout.custom) {
-      resultFn = custom_layout;
-    } else if (
-      !this.vLayout.custom &&
-      !this.vLayout.inline &&
-      !this.isFieldArray2d
-    ) {
-      resultFn = not_inline_not_2_wei;
-    } else if (
-      !this.vLayout.custom &&
-      !this.vLayout.inline &&
-      this.isFieldArray2d
-    ) {
-      resultFn = not_inline_2_wei;
-    } else {
-      resultFn = inline;
-    }
-
     return (
       <div class="autoform-block">
         <el-form
@@ -310,7 +228,11 @@ export default {
           label-width={this.vLayout.labelWidth}
           inline={this.vLayout.inline}
         >
-          {resultFn}
+          <auto-form-layout
+            model={this.vModel}
+            layout={this.vLayout}
+            fields={this.vFields}
+          />
         </el-form>
       </div>
     );

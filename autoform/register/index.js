@@ -3,7 +3,7 @@ import {
     getCamelCase,
     getMidLineCase,
     getFileName
-} from "../util";
+} from "../utils";
 
 
 
@@ -18,14 +18,14 @@ export const Register = (Vue, registerComponents, options = {
         let componentName = key.name
             .replace(pattern, '');
 
-
         //convert the first letter to lc
         componentName = componentName.charAt(0).toLowerCase() + componentName.slice(1);
+
         let component = key;
         if (component.default) {
             component = component.default;
         }
-
+       
         addType(componentName, component);
     });
 }

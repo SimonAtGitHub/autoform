@@ -2,6 +2,7 @@
 <script>
 /*eslint-disable */
 import Util, { getTypes, setError, parseValidationString } from "../utils";
+
 export default {
   props: ["layout", "model", "field", "to", "span", "inline", "eventBus"],
   computed: {

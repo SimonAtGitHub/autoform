@@ -1,15 +1,24 @@
 import AutoForm from './AutoForm';
-import Field from './Field';
-
+import AutoFormField from './AutoFormField';
+import AutoFormLayout from './AutoFormLayout';
 
 export default function (Vue) {
     Vue.component('auto-form', AutoForm);
 
-    Vue.component('field', (resolve) => {
-        if(Field.default){
-            resolve(Field.default); //兼容 vue-loader 13.3.0
-        }else{
-            resolve(Field);
+
+    Vue.component('auto-form-layout', (resolve) => {
+        if (AutoFormLayout.default) {
+            resolve(AutoFormLayout.default); //兼容 vue-loader 13.3.0
+        } else {
+            resolve(AutoFormLayout);
+        }
+    });
+
+    Vue.component('auto-form-field', (resolve) => {
+        if (AutoFormField.default) {
+            resolve(AutoFormField.default); //兼容 vue-loader 13.3.0
+        } else {
+            resolve(AutoFormField);
         }
     });
 }
