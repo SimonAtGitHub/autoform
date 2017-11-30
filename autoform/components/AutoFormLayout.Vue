@@ -1,0 +1,110 @@
+
+<script>
+export default {
+  render(h) {
+    let resultFn = null;
+    if (this.layout.custom) {
+      resultFn = this.jsx_custom_layout;
+    } else if (
+      !this.layout.custom &&
+      !this.layout.inline &&
+      !this.isFieldArray2d
+    ) {
+      resultFn = this.jsx_not_inline_not_2_wei;
+    } else if (
+      !this.layout.custom &&
+      !this.layout.inline &&
+      this.isFieldArray2d
+    ) {
+      resultFn = this.jsx_not_inline_2_wei;
+    } else {
+      resultFn = this.jsx_inline;
+    }
+
+    return <div>{resultFn()}</div>;
+  },
+  methods: {
+    jsx_custom_layout() {
+      return <slot keys={this.keys} event-bus={this.eventBus}  />;
+    },
+    jsx_not_inline_not_2_wei() {
+      return (
+        <el-row gutter={this.layout.gutter}>
+          {this.fields.map((field, fIndex) => {
+            return (
+              <auto-form-field
+                ref={"form_" + field.key}
+                event-bus={this.eventBus}
+                model={this.model}
+                field={field}
+                key={"form_" + field.key}
+                span={this.layout.span}
+                inline={this.layout.inline}
+                layout={this.layout}
+              />
+            );
+          })}
+        </el-row>
+      );
+    },
+    jsx_not_inline_2_wei() {
+      return this.fields.map((row, index) => {
+        return (
+          <el-row gutter={this.layout.gutter} key={index}>
+            {row.map((field, fIndex) => {
+              return (
+                <auto-form-field
+                  ref={"form_" + field.key}
+                  event-bus={this.eventBus}
+                  model={this.model}
+                  field={field}
+                  key={"form_" + field.key}
+                  span={this.layout.span}
+                  inline={this.layout.inline}
+                  layout={this.layout}
+                />
+              );
+            })}
+          </el-row>
+        );
+      });
+    },
+    jsx_inline() {
+      return this.fields.map((field, index) => {
+        return (
+          <auto-form-field
+            ref={"form_" + field.key}
+            model={this.model}
+            field={field}
+            key={"form_" + field.key}
+            span={this.layout.span}
+            inline={this.layout.inline}
+            event-bus={this.eventBus}
+          />
+        );
+      });
+    },
+    isFieldArray2d() {
+      return this.fields[0] && typeCheck.isArray(this.fields[0]);
+    }
+  },
+  props: {
+    model: {
+      default: {}
+    },
+    fields: {
+      default: []
+    },
+    layout: {
+      default: {}
+    },
+    eventBus: {
+      default: null
+    }
+  }
+};
+</script>
+
+<style>
+
+</style>
