@@ -25,7 +25,7 @@ export const Register = (Vue, registerComponents, options = {
         if (component.default) {
             component = component.default;
         }
-       
+
         addType(componentName, component);
     });
 }
@@ -66,9 +66,11 @@ export const RegisterDir = (callback, options = {
         if (Fields(key).default) {
             component = Fields(key).default;
         }
-
-
-        addType(cc, component);
-        addType(ml, component);
+        if (cc === ml) {
+            addType(cc, component);
+        } else {
+            addType(cc, component);
+            addType(ml, component);
+        }
     });
 }
