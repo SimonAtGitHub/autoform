@@ -1,5 +1,7 @@
 
 <script>
+import { typeCheck } from "../utils";
+
 export default {
   render(h) {
     let resultFn = null;
@@ -22,6 +24,11 @@ export default {
     }
 
     return resultFn();
+  },
+  computed:{
+    isFieldArray2d() {
+      return this.fields[0] && typeCheck.isArray(this.fields[0]);
+    }
   },
   methods: {
     jsx_custom_layout() {
@@ -91,9 +98,6 @@ export default {
           })}
         </span>
       );
-    },
-    isFieldArray2d() {
-      return this.fields[0] && typeCheck.isArray(this.fields[0]);
     }
   },
   props: {
