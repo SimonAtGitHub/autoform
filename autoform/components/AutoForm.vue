@@ -4,7 +4,6 @@
 }
 </style>
 <script>
-import Vue from "vue";
 import { typeCheck } from "../utils";
 import EventBus from "../utils/eventBus";
 
