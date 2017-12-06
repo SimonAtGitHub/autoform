@@ -1,7 +1,11 @@
-export default function (Vue) {
-    
+let eventBusClass = null;
 
-    return () => {
-        return new Vue;
+
+export default function (Vue) {
+
+
+    if (eventBusClass === null) {
+        eventBusClass = Vue;
     }
+    return new  eventBusClass();
 };

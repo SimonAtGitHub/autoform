@@ -6,6 +6,7 @@
 <script>
 import Vue from "vue";
 import { typeCheck } from "../utils";
+import EventBus from "../utils/eventBus";
 
 export default {
   /*eslint-disable */
@@ -191,7 +192,9 @@ export default {
     this._inline_flat_FieldArray();
 
     //实例化 eventBus
-    this.eventBus = new Vue();
+    // this.eventBus = new Vue();
+
+    this.eventBus = EventBus();
 
     //make sure that the 'value' is always set
     this._errorlint(this.fields, "请传入fields属性");
@@ -232,6 +235,7 @@ export default {
             model={this.vModel}
             layout={this.vLayout}
             fields={this.vFields}
+            eventBus={this.eventBus}
           />
         </el-form>
       </div>
