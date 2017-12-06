@@ -7,5 +7,5 @@ export default function (Vue) {
     if (eventBusClass === null) {
         eventBusClass = Vue;
     }
-    return new  eventBusClass();
+    return new eventBusClass();
 };
