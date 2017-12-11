@@ -10,6 +10,7 @@
         :prefix-icon="to.prefixIcon"
         :suffix-icon="to.suffixIcon"
         :required="to.required"
+        :readonly="to.readonly"
         @blur="onBlur"
         @focus="onFocus"
         @change="onChange"

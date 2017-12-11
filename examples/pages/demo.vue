@@ -39,8 +39,12 @@ export default {
             type: "input",
             templateOptions: {
               span: 12,
-              label: "活动名称"
-            }
+              label: "活动名称",
+                readonly: true,
+            },
+              display() {
+                  return false;
+              }
           },
           {
             key: "name",

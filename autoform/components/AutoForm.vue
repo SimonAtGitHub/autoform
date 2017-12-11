@@ -84,8 +84,8 @@ export default {
               "*"
             );
           } catch (e) {
-            console.warn(e);
-            console.error("配置文件不要写函数");
+//            console.warn(e);
+            console.warn("配置文件不要写函数");
           }
         } else {
           console.log("未安装devtool");

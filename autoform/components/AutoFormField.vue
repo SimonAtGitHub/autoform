@@ -9,7 +9,7 @@ export default {
     type: function() {
       return "form_" + this.field.type;
     },
-    display: function() {
+    display: function(val) {
       // always show if there is no conditional display
       let displayType = typeof this.field.display;
       if (displayType !== "function" && displayType !== "string") return true;
@@ -17,12 +17,13 @@ export default {
       if (displayType === "function") {
         return this.field.display(this.field, this.model);
       } else {
-        let result = new Function(
-          "field",
-          "model",
-          "return " + this.field.display + ";"
-        );
-        return result.call({}, this.field, this.model);
+//        let result = new Function(
+//          "field",
+//          "model",
+//          "return " + this.field.display + ";"
+//        );
+//        return result.call({}, this.field, this.model);
+          this.runFunction(val, this.field, this.model)
       }
     }
   },
