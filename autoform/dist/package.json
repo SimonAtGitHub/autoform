@@ -1,5 +1,5 @@
 {
-  "name": "@hfe/autoform",
+  "name": "autoform",
   "version": "1.1.44",
   "description": "",
   "main": "lib/index.js",
