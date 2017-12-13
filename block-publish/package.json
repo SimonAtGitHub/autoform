@@ -1,0 +1,32 @@
+{
+  "name": "@hfe/block-publish",
+  "version": "0.3.1",
+  "description": "block webpack plugin",
+  "author": "dubaoxing",
+  "keywords": [
+    "vue",
+    "block"
+  ],
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "http://git.sankuai.com/projects/HFE/repos/block-publish/browse"
+  },
+  "dependencies": {
+    "chalk": "^1.1.3",
+    "colors": "^1.1.2",
+    "compare-versions": "^3.0.1",
+    "eslint": "^4.0.0",
+    "eslint-config-hfe": "^2.3.0",
+    "progress": "^2.0.0",
+    "superagent": "^3.5.2",
+    "through2": "^2.0.3",
+    "vinyl-fs": "^2.4.4"
+  },
+  "license": "ISC",
+  "engines": {
+    "node": ">= 4.0.0",
+    "npm": ">= 3.0.0"
+  },
+  "devDependencies": {}
+}

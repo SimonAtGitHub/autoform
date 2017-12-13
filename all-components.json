@@ -1,0 +1,20 @@
+{
+    "categorys": {
+        "pc": {
+            "prefix": "fit",
+            "gitlabPrefix": "pc",
+            "access": "public",
+            "components": {
+                "基本": [{
+                        "name": "表单",
+                        "path": "autoform"
+                    },
+                    {
+                        "name": "组件库",
+                        "path": "autoform_component_lib"
+                    }
+                ]
+            }
+        }
+    }
+}
