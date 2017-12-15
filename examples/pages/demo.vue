@@ -42,9 +42,7 @@ export default {
               label: "活动名称",
                 readonly: true,
             },
-              display() {
-                  return false;
-              }
+              display: 'display'
           },
           {
             key: "name",
@@ -175,7 +173,11 @@ export default {
       },
       activityFocus(e, item) {
         debugger;
-      }
+      },
+        display () {
+          console.log(123123);
+          return 1;
+        }
     }
   }
 };

@@ -2,7 +2,11 @@
 <script>
 /*eslint-disable */
 import Util, { getTypes, setError, parseValidationString } from "../utils";
-
+let __timeout = (ms) => {
+    return new Promise((resolve) => {
+        setTimeout(resolve, ms);
+    });
+};
 export default {
   props: ["layout", "model", "field", "to", "span", "inline", "eventBus"],
   computed: {
@@ -10,38 +14,26 @@ export default {
       return "form_" + this.field.type;
     },
     display: function(val) {
-      // always show if there is no conditional display
       let displayType = typeof this.field.display;
+
       if (displayType !== "function" && displayType !== "string") return true;
 
       if (displayType === "function") {
         return this.field.display(this.field, this.model);
       } else {
-//        let result = new Function(
-//          "field",
-//          "model",
-//          "return " + this.field.display + ";"
-//        );
-//        return result.call({}, this.field, this.model);
-          this.runFunction(val, this.field, this.model)
+          console.log(this.eventBus._events);
+          if(this.eventBus._events) {
+              return this.eventBus._events[this.field.display][0]();
+          }
       }
     }
   },
   methods: {},
   components: getTypes(),
-  created() {
-    // this.validate();
-    // this.$watch(function() {
-    //     return this.model[this.field.key];
-    // }, (val) => {
-    //     this.validate();
-    // });
-  },
 
   render(h) {
 
-    
-    this.field.templateOptions = this.field.templateOptions || {};
+      this.field.templateOptions = this.field.templateOptions || {};
 
     let props = {
       layout: this.layout,
