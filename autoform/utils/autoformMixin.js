@@ -21,7 +21,6 @@ export default {
 
         let c_autoform = [];
         _deepChildren(vm, c_autoform);
-
         //event  keys
         Object.keys(autoform.eventBus).forEach(eventKey => {
           c_autoform.forEach(item => {

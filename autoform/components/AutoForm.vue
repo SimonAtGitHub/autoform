@@ -84,7 +84,6 @@ export default {
               "*"
             );
           } catch (e) {
-//            console.warn(e);
             console.warn("配置文件不要写函数");
           }
         } else {
@@ -172,15 +171,19 @@ export default {
         let self = this;
         clearTimeout(this.update_fields_timer);
         this.update_fields_timer = setTimeout(function() {
-          window.postMessage(
-            {
-              type: "autoform_update_fields",
-              data: {
-                fields: val
-              }
-            },
-            "*"
-          );
+          try {
+            window.postMessage(
+              {
+                type: "autoform_update_fields",
+                data: {
+                  fields: val
+                }
+              },
+              "*"
+            );
+          } catch (e) {
+            console.log("配置文件不要写函数", e);
+          }
         }, 500);
       },
       deep: true

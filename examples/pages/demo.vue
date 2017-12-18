@@ -40,9 +40,12 @@ export default {
             templateOptions: {
               span: 12,
               label: "活动名称",
-                readonly: true,
+              readonly: true
             },
-              display: 'display'
+            // display(field, model, cb) {
+            //   cb(true);
+            // }
+            display: "ssssss"
           },
           {
             key: "name",
@@ -174,10 +177,9 @@ export default {
       activityFocus(e, item) {
         debugger;
       },
-        display () {
-          console.log(123123);
-          return 1;
-        }
+      ssssss(field, model, cb) {
+        cb(true);
+      }
     }
   }
 };
