@@ -170,8 +170,8 @@ export default {
         console.log(this);
         console.log(e, item, th);
       },
-        keyUpFn(e, item, th) {
-            console.log(e, item, th);
+        keyUpFn(e, item) {
+            console.log(e, item);
         },
       ssssss(field, model, cb) {
         cb(true);

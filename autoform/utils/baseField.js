@@ -20,7 +20,7 @@ export default {
             console.warn('事件总线为空');
             return;
           }
-          this.eventBus.$emit(this.to[action], ...args, this.field);
+          this.eventBus.$emit(this.to[action], ...args);
           break;
       }
     },
