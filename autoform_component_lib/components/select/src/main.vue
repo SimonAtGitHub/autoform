@@ -11,7 +11,6 @@
                 @filter-method="to.filterMethod ? to.filterMethod : null"
                 @blur="onBlur"
                 @focus="onFocus"
-                @click="onClick"
                 @change="onEmuChange"
                 @keyup="onKeyup"
                 @keydown="onKeydown"

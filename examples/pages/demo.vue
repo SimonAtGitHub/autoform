@@ -40,12 +40,9 @@ export default {
             templateOptions: {
               span: 12,
               label: "活动名称",
-              readonly: true
-            },
-            // display(field, model, cb) {
-            //   cb(true);
-            // }
-            display: "ssssss"
+              readonly: false,
+                onChange: 'keyUpFn'
+            }
           },
           {
             key: "name",
@@ -79,7 +76,7 @@ export default {
                 }
               ],
               filterMethod: "",
-              onChange: "sortChange",
+              onChange: "keyUpFn",
               optionKey: "value",
               multiple: false
             }
@@ -169,14 +166,13 @@ export default {
   },
   autoform: {
     eventBus: {
-      sortChange(e, item) {
-        debugger;
+      sortChange(e, item, th) {
         console.log(this);
-        console.log(e, item);
+        console.log(e, item, th);
       },
-      activityFocus(e, item) {
-        debugger;
-      },
+        keyUpFn(e, item, th) {
+            console.log(e, item, th);
+        },
       ssssss(field, model, cb) {
         cb(true);
       }

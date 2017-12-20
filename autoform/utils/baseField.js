@@ -13,14 +13,14 @@ export default {
       //
       switch (typeof this.to[action]) {
         case 'function':
-          this.to[action].apply(this, args);
+          this.to[action].apply(this, args, this.field);
           break;
         case "string":
           if (!this.eventBus) {
             console.warn('事件总线为空');
             return;
           }
-          this.eventBus.$emit(this.to[action], ...args);
+          this.eventBus.$emit(this.to[action], ...args, this.field);
           break;
       }
     },
@@ -43,15 +43,15 @@ export default {
       this.runFunction('onKeydown', e);
     },
     onEmuChange: function (e) {
-      let model;
+      let options;
 
       switch (Object.prototype.toString.call(e)) {
         case '[object String]':
         case '[object Number]':
-          model = this.to.options.find(item => e === (item[this.to.optionKey] || item.value));
+            options = this.to.options.find(item => e === (item[this.to.optionKey] || item.value));
           break;
         case '[object Array]':
-          model = this.to.options.filter(item => e.indexOf(item[this.to.optionKey] || item.value) >= 0);
+            options = this.to.options.filter(item => e.indexOf(item[this.to.optionKey] || item.value) >= 0);
           break;
       }
 
@@ -61,10 +61,10 @@ export default {
             console.warn('事件总线为空');
             return;
           }
-          this.eventBus.$emit(this.to.onChange, e, model);
+          this.eventBus.$emit(this.to.onChange, e, options, this.field);
           break;
         case 'function':
-          this.to.onChange.call(this, e, model);
+          this.to.onChange.call(this, e, options, this.field);
           break;
       }
     }
