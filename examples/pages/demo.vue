@@ -42,7 +42,8 @@ export default {
               label: "活动名称",
               readonly: false,
                 onChange: 'keyUpFn'
-            }
+            },
+              display: 'ssssss'
           },
           {
             key: "name",
@@ -174,7 +175,7 @@ export default {
             console.log(e, item);
         },
       ssssss(field, model, cb) {
-        cb(true);
+        cb(false);
       }
     }
   }
