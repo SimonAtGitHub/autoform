@@ -11,7 +11,6 @@ import {
 export const Register = (Vue, registerComponents, options = {
     prefix: "c"
 }) => {
-
     let pattern = new RegExp('^' + options.prefix);
     registerComponents.forEach((key) => {
         //remove

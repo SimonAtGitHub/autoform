@@ -1,86 +1,53 @@
 <template>
     <div>
-        <auto-form ref="tagForm5" :model="model3" :fields="fields5" :layout="layout4"></auto-form>
-
+        <auto-form ref="tagForm1" :model="model" :fields="fields" :layout="layout"></auto-form>
     </div>
 </template>
 <script>
+    import Vue from 'vue';
+
+    Vue.directive('demo', {
+        bind: function (el, binding, vnode) {
+            console.log(el);
+            var s = JSON.stringify
+            el.innerHTML =
+                'name: '       + s(binding.name) + '<br>' +
+                'value: '      + s(binding.value) + '<br>' +
+                'expression: ' + s(binding.expression) + '<br>' +
+                'argument: '   + s(binding.arg) + '<br>' +
+                'modifiers: '  + s(binding.modifiers) + '<br>' +
+                'vnode keys: ' + Object.keys(vnode).join(', ')
+        }
+    })
+
     export default {
         data() {
             return {
-                model3: {
+                model: {
                     name: '',
-                    status: ''
+                    hello: ''
                 },
-                layout4: {
+                layout: {
                     align: 'left',
                     labelWidth: '100px',
-                    custom: false,
-                    inline: false,
-                    span: 10,
-                    gutter: 60
+                    inline: false
                 },
-                fields5: [
-                    // {
-                    //     key: 'name',
-                    //     type: 'input',
-                    //     templateOptions: {
-                    //         label: '审批人',
-                    //         offset: 2
-                    //     }
-                    // },
-                    // {
-                    //     key: 'status',
-                    //     type: 'radio',
-                    //     templateOptions: {
-                    //         label: '活动状态',
-                    //         options: [
-                    //             {
-                    //                 label: '线上品牌商赞助',
-                    //                 value: 1
-                    //             },
-                    //             {
-                    //                 label: '线下场地免费',
-                    //                 value: 0
-                    //             }
-                    //         ],
-                    //         offset: 1
-                    //     }
-                    // }
-                     {
-                       key: 'name',
-                       type: 'input',
-                       templateOptions: {
-                           label: '审批人',
-                           offset: 2
-                       }
-                   },
-                   {
-                       key: 'status',
-                       type: 'radio',
-                       templateOptions: {
-                           label: '活动状态',
-                           options: [
-                               {
-                                   label: '线上品牌商赞助',
-                                   value: 1
-                               },
-                               {
-                                   label: '线下场地免费',
-                                   value: 0
-                               }
-                           ],
-                           offset: 1
-                       }
-                   },
-                   {
-                       key: 'name',
-                       type: 'hello',
-                       templateOptions: {
-                           label: '审批人',
-                           offset: 2
-                       }
-                   },
+                fields: [
+                    {
+                        key: 'name',
+                        type: 'input',
+                        templateOptions: {
+                            label: '审批人',
+                            atts: {'v-demo:foo.a.b':'model'}
+                        }
+                    },
+                    {
+                        key: 'hello',
+                        type: 'hello',
+                        templateOptions: {
+                            label: '自定义'
+                        }
+                    },
                 ]
             };
         }

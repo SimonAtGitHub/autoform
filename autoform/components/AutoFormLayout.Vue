@@ -5,16 +5,12 @@ import { typeCheck } from "../utils";
 export default {
   render(h) {
     let resultFn = null;
-    if (this.layout.custom) {
-      resultFn = this.jsx_custom_layout;
-    } else if (
-      !this.layout.custom &&
+    if (
       !this.layout.inline &&
       !this.isFieldArray2d
     ) {
       resultFn = this.jsx_not_inline_not_2_wei;
     } else if (
-      !this.layout.custom &&
       !this.layout.inline &&
       this.isFieldArray2d
     ) {
@@ -31,9 +27,6 @@ export default {
     }
   },
   methods: {
-    jsx_custom_layout() {
-      return <slot keys={this.keys} event-bus={this.eventBus} />;
-    },
     jsx_not_inline_not_2_wei() {
       return (
         <el-row gutter={this.layout.gutter}>

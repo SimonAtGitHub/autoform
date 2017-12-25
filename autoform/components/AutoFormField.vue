@@ -19,6 +19,7 @@ export default {
     model: {
       handler: function(val, oldVal) {
         this._dealDisplay();
+        this.field['value'] = val[this.field.key];
       },
       deep: true
     }

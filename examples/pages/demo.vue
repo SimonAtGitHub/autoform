@@ -3,12 +3,12 @@
 
 <template>
     <el-card>
-        <auto-form ref="tagForm" :model="model1" :fields="fields1" :layout="layout">
+        <auto-form ref="tagForm" :model="model1" :fields="fields1" :layout="layout" watchChange="watch">
             <el-form-item>
                 <el-button type="primary">立即创建</el-button>
                 <el-button>取消</el-button>
             </el-form-item>
-        </auto-form>{{model1}}
+        </auto-form>
     </el-card>
 </template>
 
@@ -27,8 +27,7 @@ export default {
       layout: {
         align: "left",
         labelWidth: "100px",
-        custom: false,
-        inline: true,
+        inline: false,
         span: 8,
         gutter: 50
       },
@@ -43,7 +42,9 @@ export default {
               readonly: false,
                 onChange: 'keyUpFn'
             },
-              display: 'ssssss'
+              display: 'ssssss',
+              isWatch: true,
+              value: ''
           },
           {
             key: "name",
@@ -152,14 +153,16 @@ export default {
                   value: "单纯品牌曝光value"
                 }
               ]
-            }
+            },
+              isWatch: true
           },
           {
             key: "desc",
             type: "textarea",
             templateOptions: {
               label: "活动形式"
-            }
+            },
+              isWatch: true,
           }
         ]
       ]
@@ -174,8 +177,12 @@ export default {
         keyUpFn(e, item) {
             console.log(e, item);
         },
-      ssssss(field, model, cb) {
+      ssssss(model, field, cb) {
+//          console.log(111,model,field);
         cb(false);
+      },
+        watch(keys,fields,model) {
+          console.log(111,keys,fields,model);
       }
     }
   }

@@ -104,6 +104,40 @@ export default {
         }, []);
         this.vFields = flatMap;
       }
+    },
+    __findField(key) {
+      let result = {};
+      if (this.isFieldArray2d) {
+        this.fields.forEach(list => {
+          result = list.find(item => item.key === key);
+        });
+      } else {
+        result = this.fields.find(item => item.key === key);
+      }
+      return result;
+    },
+    __modelChange(val) {
+      let changeField = [];
+      let changeKey = [];
+      let changeModel = {};
+      for (var key in val) {
+        if (val[key] !== this.oldModel[key]) {
+          let field = this.__findField(key);
+          if (field.isWatch) {
+            changeField.push(field);
+            changeModel[key] = val[key];
+            changeKey.push(key);
+          }
+        }
+      }
+      if (changeKey.length) {
+        this.eventBus.$emit(
+          this.watchChange,
+          changeKey,
+          changeField,
+          changeModel
+        );
+      }
     }
   },
   //props: ["model", "fields", "layout"],
@@ -119,6 +153,9 @@ export default {
     },
     __name__: {
       default: "autoForm"
+    },
+    watchChange: {
+      default: ""
     }
   },
   data() {
@@ -126,7 +163,8 @@ export default {
       eventBus: null,
       vModel: this.model,
       vFields: this.fields,
-      vLayout: this.layout
+      vLayout: this.layout,
+      oldModel: this.model
     };
   },
   computed: {
@@ -142,12 +180,12 @@ export default {
     }
   },
   watch: {
-    vModel: {
+    model: {
       handler(val, oldVal) {
-//        if (this._q(val, oldVal)) {
-//          return;
-//        }
-//        let self = this;
+        //        if (this._q(val, oldVal)) {
+        //          return;
+        //        }
+        //        let self = this;
         clearTimeout(this.update_model_timer);
         this.update_model_timer = setTimeout(function() {
           window.postMessage(
@@ -160,6 +198,9 @@ export default {
             "*"
           );
         }, 500);
+        //检测model
+        this.__modelChange(val);
+        this.oldModel = Object.assign({}, val);
       },
       deep: true
     },

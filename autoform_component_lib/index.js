@@ -31,7 +31,6 @@ const install = function (Vue, options) {
     if(! Vue.$autoform){
         console.log(`请先引入 autoform`)
     }
-
     Vue.$autoform.Register(Vue, components, options)
 
 };
