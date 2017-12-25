@@ -144,10 +144,10 @@ export default {
   watch: {
     vModel: {
       handler(val, oldVal) {
-        if (this._q(val, oldVal)) {
-          return;
-        }
-        let self = this;
+//        if (this._q(val, oldVal)) {
+//          return;
+//        }
+//        let self = this;
         clearTimeout(this.update_model_timer);
         this.update_model_timer = setTimeout(function() {
           window.postMessage(
