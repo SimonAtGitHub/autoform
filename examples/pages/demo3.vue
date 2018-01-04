@@ -3,6 +3,7 @@
 
 <template>
     <el-card>
+        {{model6}}
         <auto-form ref="tagForm" :model="model6" :fields="fields8" :layout="layout6" watchChange="watch"></auto-form>
         <auto-form ref="tagForm2" :model="model5" :fields="fields7" :layout="layout6" watchChange="watch"></auto-form>
     </el-card>
@@ -12,7 +13,7 @@
 export default {
   data() {
     return {
-      model6: null,
+      model6: {},
       fields8: null,
       layout6: null,
       model5: null,
@@ -37,6 +38,9 @@ export default {
       },
       watch(keys, fields, model) {
         console.log("model发生变化", keys, fields, model);
+      },
+      name1KeyUP(){
+          console.log(11)
       }
     }
   },
@@ -63,7 +67,8 @@ export default {
             type: "input",
             templateOptions: {
               span: 12,
-              label: "活动名称1"
+              label: "活动名称1111",
+              onKeyup:"name1KeyUP"
             },
             isWatch: true
           },
@@ -72,7 +77,7 @@ export default {
             type: "input",
             templateOptions: {
               span: 12,
-              label: "活动名称2"
+              label: "活动名称21111"
             }
           }
         ]
@@ -100,13 +105,13 @@ export default {
     };
 
     setTimeout(() => {
-    //   this.layout6 = aa.layout6;
       this.fields8 = aa.fields8;
+      this.fields7 = aa.fields7;
     }, 1000);
 
     setTimeout(() => {
-        this.layout6 = aa.layout6;
-    }, 5000);
+      this.layout6 = aa.layout6;
+    }, 1000);
   }
 };
 </script>
