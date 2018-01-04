@@ -149,7 +149,12 @@ export default {
       default: []
     },
     layout: {
-      default: {}
+      default: {
+        align: "left",
+        labelWidth: "100px",
+        inline: false,
+        gutter: 30
+      }
     },
     __name__: {
       default: "autoForm"
@@ -180,12 +185,20 @@ export default {
     }
   },
   watch: {
+    fields: {
+      handler(val, oldVal) {
+        this.vFields = val;
+      },
+      deep: true
+    },
+    layout: {
+      handler(val, oldVal) {
+        this.vLayout = val;
+      },
+      deep: true
+    },
     model: {
       handler(val, oldVal) {
-        //        if (this._q(val, oldVal)) {
-        //          return;
-        //        }
-        //        let self = this;
         clearTimeout(this.update_model_timer);
         this.update_model_timer = setTimeout(function() {
           window.postMessage(
@@ -232,39 +245,27 @@ export default {
   },
   mounted() {},
   created() {
+    this.vLayout = this.vLayout || {
+      align: "left",
+      labelWidth: "1px",
+      inline: false,
+      gutter: 30
+    };
+    this.vFields = this.vFields || [];
+    this.vModel = this.vModel || {};
+
     this._inline_flat_FieldArray();
 
-    //实例化 eventBus
-    // this.eventBus = new Vue();
-
+  
     this.eventBus = EventBus();
 
-    //make sure that the 'value' is always set
-    this._errorlint(this.fields, "请传入fields属性");
-    this._errorlint(this.layout, "请传入layout属性");
-    this._errorlint(this.model, "请传入layout属性");
-    this.fields.forEach(field => {
+    this.vFields.forEach(field => {
       if (typeof this.model[field.key] === "undefined")
         this.$set(this.model, field.key, "");
     });
     this.__DEV_TOOL__();
   },
   render(h) {
-    //     <template>
-    //     <div class="autoform-block">
-    //         <el-form ref="form" :model="vModel" :label-position="vLayout.align||'left'" :label-width="vLayout.labelWidth" :inline="vLayout.inline">
-    //             <el-row v-if="!vLayout.inline && !isFieldArray2d" :gutter="vLayout.gutter">
-    //                 <field v-if="!vLayout.custom" :ref="'form_'+field.key" :event-bus="eventBus"  v-for="field in vFields" :model.sync="vModel" :field="field" :key="'form_'+field.key" :span.sync="vLayout.span" :inline="vLayout.inline" :layout="vLayout"></field>
-    //             </el-row>
-    //             <el-row v-if="!vLayout.inline && isFieldArray2d" :gutter="vLayout.gutter" v-for="(row, index) in vFields" :key="index" >
-    //                 <field v-if="!vLayout.custom" :ref="'form_'+field.key" :event-bus="eventBus" v-for="field in row" :model.sync="vModel" :field="field" :key="'form_'+field.key" :span.sync="vLayout.span" :inline="vLayout.inline" :layout="vLayout"></field>
-    //             </el-row>
-    //             <field v-if="!vLayout.custom && vLayout.inline" :ref="'form_'+field.key" v-for="field in vFields" :model.sync="vModel" :field="field" :key="'form_'+field.key" :span.sync="vLayout.span" :inline="vLayout.inline"></field>
-    //             <slot :keys="keys"></slot>
-    //         </el-form>
-    //     </div>
-    // </template>
-
     return (
       <div class="autoform-block">
         <el-form
