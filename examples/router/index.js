@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Demo from '../pages/demo.vue'
 import Demo2 from '../pages/demo2.vue'
 import Demo3 from '../pages/demo3.vue'
+import Remote from '../pages/remote.vue'
 
 Vue.use(Router)
 
@@ -27,6 +28,11 @@ export default new Router({
             path: '/demo3',
             name: 'Demo3',
             component: Demo3
+        },
+        {
+            path: '/remote',
+            name: 'Remote',
+            component: Remote
         }
     ]
 })
