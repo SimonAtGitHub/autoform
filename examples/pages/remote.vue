@@ -8,10 +8,7 @@
     export default {
         data() {
             return {
-                model6: {
-                    name1: "",
-                    name2: ""
-                },
+                model6: null,
                 layout6: {
                     align: "left",
                     labelWidth: "100px",
@@ -50,11 +47,14 @@
         },
         mounted () {
             window.setTimeout(()=>{
-                this.model6 = config.model6;
-                this.layout6 = config.layout6;
-                this.fields8 = config.fields8;
-                console.log(this.model6);
-                this.model6.name1 = '123123'
+//                this.model6 = config.model6;
+//                this.layout6 = config.layout6;
+//                this.fields8 = config.fields8;
+//                console.log(this.model6);
+                this.model6 = {
+                    name1: "111",
+                    name2: ""
+                };
             },1000)
         }
     };
