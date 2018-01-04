@@ -264,7 +264,7 @@ export default {
         this.$set(this.model, field.key, "");
     });
     this.__DEV_TOOL__();
-    this.oldModel = this.model;
+    this.oldModel = Object.assign({}, this.model);
   },
   render(h) {
     return (
