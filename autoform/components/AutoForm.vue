@@ -164,7 +164,7 @@ export default {
       vModel: this.model,
       vFields: this.fields,
       vLayout: this.layout,
-      oldModel: this.model
+      oldModel: null
     };
   },
   computed: {
@@ -264,6 +264,7 @@ export default {
         this.$set(this.model, field.key, "");
     });
     this.__DEV_TOOL__();
+    this.oldModel = this.model;
   },
   render(h) {
     return (
