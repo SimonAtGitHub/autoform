@@ -81,7 +81,8 @@ export default {
               onChange: "keyUpFn",
               optionKey: "value",
               multiple: false
-            }
+            },
+              isWatch: true
           },
           {
             key: "date1",

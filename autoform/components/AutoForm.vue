@@ -106,15 +106,15 @@ export default {
       }
     },
     __findField(key) {
-      let result = {};
+      let result;
       if (this.isFieldArray2d) {
         this.fields.forEach(list => {
-          result = list.find(item => item.key === key);
+            !result ? result = list.find(item => item.key === key) : '';
         });
       } else {
         result = this.fields.find(item => item.key === key);
       }
-      return result;
+        return result;
     },
     __modelChange(val) {
       let changeField = [];
@@ -123,8 +123,8 @@ export default {
       for (var key in val) {
         if (val[key] !== this.oldModel[key]) {
           let field = this.__findField(key);
-          if (field.isWatch) {
-            changeField.push(field);
+            if (field && field.isWatch) {
+              changeField.push(field);
             changeModel[key] = val[key];
             changeKey.push(key);
           }
@@ -194,7 +194,6 @@ export default {
     },
     model: {
       handler(val, oldVal) {
-          console.log(val);
         clearTimeout(this.update_model_timer);
         this.update_model_timer = setTimeout(function() {
           window.postMessage(

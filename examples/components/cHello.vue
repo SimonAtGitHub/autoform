@@ -12,7 +12,7 @@
 </template>
 
 <script>
-    import {baseField} from "@hfe/autoform";
+    import {baseField} from "autoform";
     export default {
         mixins: [baseField],
         name: 'cHello',

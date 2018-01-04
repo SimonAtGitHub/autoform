@@ -8,7 +8,7 @@
     export default {
         data() {
             return {
-                model6: null,
+                model6: {},
                 layout6: {
                     align: "left",
                     labelWidth: "100px",
@@ -16,25 +16,6 @@
                     gutter: 30
                 },
                 fields8: [
-                    [
-                        {
-                            key: "name1",
-                            type: "input",
-                            templateOptions: {
-                                span: 12,
-                                label: "活动名称1"
-                            },
-                            isWatch: true
-                        },
-                        {
-                            key: "name2",
-                            type: "input",
-                            templateOptions: {
-                                span: 12,
-                                label: "活动名称2"
-                            }
-                        }
-                    ]
                 ]
             };
         },
@@ -49,7 +30,7 @@
             window.setTimeout(()=>{
 //                this.model6 = config.model6;
 //                this.layout6 = config.layout6;
-//                this.fields8 = config.fields8;
+                this.fields8 = config.fields8;
 //                console.log(this.model6);
                 this.model6 = {
                     name1: "111",
