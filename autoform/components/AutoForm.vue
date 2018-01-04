@@ -149,12 +149,7 @@ export default {
       default: []
     },
     layout: {
-      default: {
-        align: "left",
-        labelWidth: "100px",
-        inline: false,
-        gutter: 30
-      }
+      default: {}
     },
     __name__: {
       default: "autoForm"
@@ -243,9 +238,14 @@ export default {
         }, 500);
       },
       deep: true
+    },
+    vModel: {
+      handler(val, oldVal) {
+        this.$emit("model", this.val);
+      },
+      deep: true
     }
   },
-  mounted() {},
   created() {
     this.vLayout = this.vLayout || {
       align: "left",
@@ -258,7 +258,6 @@ export default {
 
     this._inline_flat_FieldArray();
 
-  
     this.eventBus = EventBus();
 
     this.vFields.forEach(field => {
