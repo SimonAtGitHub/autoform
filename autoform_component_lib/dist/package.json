@@ -1,6 +1,6 @@
 {
   "name": "@hfe/autoform_component_lib",
-  "version": "0.0.30",
+  "version": "0.0.32",
   "description": "autoform component lib",
   "main": "lib/index.js",
   "scripts": {},
