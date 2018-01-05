@@ -44,7 +44,7 @@
   },
   "dependencies": {
     "@hfe/autoform": "^1.1.51",
-    "@hfe/autoform_component_lib": "^0.0.29",
+    "@hfe/autoform_component_lib": "0.0.31",
     "element-ui": "^2.0.5",
     "vue": "2.5.3",
     "vue-router": "^3.0.1"

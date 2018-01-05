@@ -9,6 +9,7 @@
                 <el-button>取消</el-button>
             </el-form-item>
         </auto-form>
+        <el-input v-model="input" placeholder="请输入内容" @change="handleChange"></el-input>
     </el-card>
 </template>
 
@@ -24,6 +25,7 @@ export default {
         desc: "",
         type: []
       },
+        input: 1,
       layout: {
         align: "left",
         labelWidth: "100px",
@@ -188,7 +190,17 @@ export default {
           console.log(111,keys,fields,model);
       }
     }
-  }
+  },
+    methods: {
+        handleChange() {
+            console.log(1111111);
+        }
+    },
+    mounted() {
+      setTimeout(() => {
+          this.input= 222;
+      },2000)
+    }
 };
 </script>
 
