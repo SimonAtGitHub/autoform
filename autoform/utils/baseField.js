@@ -25,22 +25,22 @@ export default {
       }
     },
     onFocus: function (e) {
-      this.runFunction('onFocus', e);
+      this.runFunction('onFocus', e, this.field);
     },
     onBlur: function (e) {
-      this.runFunction('onBlur', e);
+      this.runFunction('onBlur', e, this.field);
     },
     onClick: function (e) {
-      this.runFunction('onClick', e);
+      this.runFunction('onClick', e, this.field);
     },
     onChange: function (e) {
-      this.runFunction('onChange', e);
+      this.runFunction('onChange', e, this.field);
     },
     onKeyup: function (e) {
-      this.runFunction('onKeyup', e);
+      this.runFunction('onKeyup', e, this.field);
     },
     onKeydown: function (e) {
-      this.runFunction('onKeydown', e);
+      this.runFunction('onKeydown', e, this.field);
     },
     onEmuChange: function (e) {
       let options;

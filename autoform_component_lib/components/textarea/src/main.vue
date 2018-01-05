@@ -1,5 +1,24 @@
 <template>
-    <el-input type="textarea" v-model="model[field.key]"></el-input>
+    <el-input v-model="model[field.key]"
+              :id="to.id ? to.id : null"
+              :placeholder="to.placeholder"
+              type="textarea"
+              :maxlength="to.maxlength"
+              :minlength="to.minlength"
+              :disabled="to.disabled"
+              :size="to.size"
+              :prefix-icon="to.prefixIcon"
+              :suffix-icon="to.suffixIcon"
+              :required="to.required"
+              :readonly="to.readonly"
+              @blur="onBlur"
+              @focus="onFocus"
+              @change="onChange"
+              @keyup.native="onKeyup"
+              @keydown="onKeydown"
+              v-form-atts="to.atts"
+              v-form-input-type="to.inputType">
+    </el-input>
 </template>
 
 <script>

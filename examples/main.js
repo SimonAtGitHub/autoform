@@ -5,9 +5,9 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 
 
-import AutoForm from '@hfe/autoform';
+import AutoForm from 'autoform';
 
-import AutoForm_component_lib from 'autoform_component_lib';
+import AutoForm_component_lib from 'autoform_component_lib/dist';
 
 import router from './router'
 import Hello from './components/cHello.vue';

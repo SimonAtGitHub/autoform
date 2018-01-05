@@ -8,6 +8,20 @@
                 :clearable="to.clearable"
                 :filterable="to.filterable"
                 :required="to.required"
+                :size="to.size"
+                :collapse-tags="to.collapseTags"
+                :multiple-limit="to.multipleLimit"
+                :name="to.name"
+                :allow-create="to.allowCreate"
+                :remote="to.remote"
+                :remote-method="remoteMethod"
+                :loading="to.loading"
+                :loading-text="to.loadingText"
+                :no-match-text="to.noMatchText"
+                :no-data-text="to.noDataText"
+                :popper-class="to.popperClass"
+                :reserve-keyword="to.reserveKeyword"
+                :default-first-option="to.defaultFirstOption"
                 @filter-method="to.filterMethod ? to.filterMethod : null"
                 @blur="onBlur"
                 @focus="onFocus"
@@ -60,6 +74,9 @@
             //label  value
             initOptions (ds) {
                 this.options = ds;
+            },
+            remoteMethod () {
+                console.log(this.eventBus);
             }
         }
 

@@ -42,7 +42,6 @@ export default {
               readonly: false,
                 onChange: 'keyUpFn'
             },
-              display: 'ssssss',
               isWatch: true,
               value: ''
           },
@@ -78,7 +77,7 @@ export default {
                 }
               ],
               filterMethod: "",
-              onChange: "keyUpFn",
+              onChange: "sortChange",
               optionKey: "value",
               multiple: false
             },
@@ -101,7 +100,8 @@ export default {
             templateOptions: {
               label: "选择时间",
               placeholder: "选择时间",
-              span: 12
+              span: 12,
+                onChange: "sortChange"
             }
           },
           {
@@ -127,7 +127,8 @@ export default {
                   label: "单纯品牌曝光",
                   value: "单纯品牌曝光value"
                 }
-              ]
+              ],
+                onChange: "sortChange"
             }
           },
           {
@@ -161,7 +162,8 @@ export default {
             key: "desc",
             type: "textarea",
             templateOptions: {
-              label: "活动形式"
+              label: "活动形式",
+                onChange: "sortChange"
             },
               isWatch: true,
           }

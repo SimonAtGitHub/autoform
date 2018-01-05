@@ -115,29 +115,6 @@ export default {
         result = this.fields.find(item => item.key === key);
       }
         return result;
-    },
-    __modelChange(val) {
-      let changeField = [];
-      let changeKey = [];
-      let changeModel = {};
-      for (var key in val) {
-        if (val[key] !== this.oldModel[key]) {
-          let field = this.__findField(key);
-            if (field && field.isWatch) {
-              changeField.push(field);
-            changeModel[key] = val[key];
-            changeKey.push(key);
-          }
-        }
-      }
-      if (changeKey.length) {
-        this.eventBus.$emit(
-          this.watchChange,
-          changeKey,
-          changeField,
-          changeModel
-        );
-      }
     }
   },
   //props: ["model", "fields", "layout"],
@@ -153,9 +130,6 @@ export default {
     },
     __name__: {
       default: "autoForm"
-    },
-    watchChange: {
-      default: ""
     }
   },
   data() {
@@ -163,8 +137,7 @@ export default {
       eventBus: null,
       vModel: this.model,
       vFields: this.fields,
-      vLayout: this.layout,
-      oldModel: null
+      vLayout: this.layout
     };
   },
   computed: {
@@ -206,10 +179,7 @@ export default {
             "*"
           );
         }, 500);
-        //检测model
-        this.__modelChange(val);
           this.vModel = val;
-          this.oldModel = Object.assign({}, val);
       },
       deep: true
     },
@@ -264,7 +234,6 @@ export default {
         this.$set(this.model, field.key, "");
     });
     this.__DEV_TOOL__();
-    this.oldModel = Object.assign({}, this.model);
   },
   render(h) {
     return (
