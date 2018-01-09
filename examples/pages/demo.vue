@@ -9,7 +9,6 @@
                 <el-button>取消</el-button>
             </el-form-item>
         </auto-form>
-        <el-input v-model="input" placeholder="请输入内容" @change="handleChange"></el-input>
     </el-card>
 </template>
 
@@ -52,7 +51,8 @@ export default {
             type: "hello",
             templateOptions: {
               span: 12,
-              label: "活动名称"
+              label: "活动名称",
+                onChange: 'keyUpFn'
             }
           }
         ],
@@ -197,9 +197,7 @@ export default {
         }
     },
     mounted() {
-      setTimeout(() => {
-          this.input= 222;
-      },2000)
+
     }
 };
 </script>

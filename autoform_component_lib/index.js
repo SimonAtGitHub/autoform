@@ -41,7 +41,6 @@ if (typeof window !== 'undefined' && window.Vue) {
 };
 
 let Conf_component_lib = {
-    install,
     components
 }
 

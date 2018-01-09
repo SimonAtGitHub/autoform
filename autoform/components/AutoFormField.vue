@@ -34,10 +34,9 @@ export default {
     },
     _dealDisplay() {
       let displayType = typeof this.field.display;
-      if (displayType !== "function" && displayType !== "string") {
-        this.display = true;
-      }
-      if (displayType === "function") {
+      if (displayType === "boolean") {
+          this.display = this.field.display;
+      } else if (displayType === "function") {
         this.field.display(this.field, this.model, this.__judgeDisplay);
       } else if (displayType === "string") {
         this.$nextTick(() => {
@@ -48,7 +47,8 @@ export default {
             this.__judgeDisplay
           );
         });
-      }
+      } else {
+          this.display = true;
     }
   },
   components: getTypes(),

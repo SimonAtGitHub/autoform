@@ -7,19 +7,24 @@
       <p>model: {{model}}</p>
       <p>layout: {{layout}}</p>
       <p>to: {{to}}</p>
+      <el-button @click="handleClick()">点击触发事件</el-button>
     </div>
   </div>
 </template>
 
 <script>
-    import {baseField} from "autoform";
+    import {baseField} from "@hfe/autoform";
     export default {
         mixins: [baseField],
         name: 'cHello',
         data () {
             return {};
         },
-        methods: {}
+        methods: {
+            handleClick() {
+                this.eventBus.$emit(this.to.action, '传递任意参数',1,2,3);
+            }
+        }
     };
 </script>
 

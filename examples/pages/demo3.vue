@@ -1,49 +1,44 @@
 <template>
     <div>
-        <auto-form ref="tagForm" :model="model6" :fields="fields8" :layout="layout6" :watch-change="'watch'"></auto-form>
+        <auto-form ref="tagForm1" :model="model" :fields="fields" :layout="layout"></auto-form>
     </div>
 </template>
 <script>
     export default {
         data() {
             return {
-                model6: {
-                    name1: "111",
-                    name2: ""
+                model: {
+                    name: '',
+                    hello: ''
                 },
-                layout6: {
-                    align: "left",
-                    labelWidth: "100px",
-                    inline: false,
-                    gutter: 30
+                layout: {
+                    align: 'left',
+                    labelWidth: '100px',
+                    inline: false
                 },
-                fields8: [
-                    [
-                        {
-                            key: "name1",
-                            type: "input",
-                            templateOptions: {
-                                span: 12,
-                                label: "活动名称1"
-                            },
-                            isWatch: true
-                        },
-                        {
-                            key: "name2",
-                            type: "input",
-                            templateOptions: {
-                                span: 12,
-                                label: "活动名称2"
-                            }
+                fields: [
+                    {
+                        key: 'name',
+                        type: 'input',
+                        templateOptions: {
+                            label: '审批人'
                         }
-                    ]
+                    },
+                    {
+                        key: 'hello',
+                        type: 'hello',
+                        templateOptions: {
+                            label: '自定义',
+                            action: 'handleClick'
+                        }
+                    },
                 ]
             };
         },
         autoform: {
             eventBus: {
-                watch(keys, fields, model) {
-                    console.log('model发生变化',keys, fields, model);
+                handleClick(...arg) {
+                    console.log(arg);
                 }
             }
         }
