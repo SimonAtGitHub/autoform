@@ -37,16 +37,16 @@
                     :disabled="group.disabled"
                     :label="group.label">
                 <el-option
-                        v-for="item in group.options"
-                        :key="item.value"
+                        v-for="(item,index) in group.options"
+                        :key="index"
                         :label="item.label"
                         :value="to.optionKey ? item[to.optionKey] : item.value">
                 </el-option>
             </el-option-group>
         </template>
         <template v-else>
-            <el-option v-for="item in options"
-                       :key="item.value"
+            <el-option v-for="(item,index) in options"
+                       :key="index"
                        :label="item.label"
                        :disabled="item.disabled"
                        :value="to.optionKey ? item[to.optionKey] : item.value">
