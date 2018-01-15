@@ -109,12 +109,12 @@ export default {
       let result;
       if (this.isFieldArray2d) {
         this.fields.forEach(list => {
-            !result ? result = list.find(item => item.key === key) : '';
+          !result ? (result = list.find(item => item.key === key)) : "";
         });
       } else {
         result = this.fields.find(item => item.key === key);
       }
-        return result;
+      return result;
     }
   },
   //props: ["model", "fields", "layout"],
@@ -179,7 +179,7 @@ export default {
             "*"
           );
         }, 500);
-          this.vModel = val;
+        this.vModel = val;
       },
       deep: true
     },
@@ -250,10 +250,10 @@ export default {
             layout={this.vLayout}
             fields={this.vFields}
             eventBus={this.eventBus}
-          />
-          { this.$slots.default }
+          >
+          {this.$slots.default}
+          </auto-form-layout>
         </el-form>
-        <slot></slot>
       </div>
     );
   }

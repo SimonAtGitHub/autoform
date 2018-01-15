@@ -5,15 +5,9 @@ import { typeCheck } from "../utils";
 export default {
   render(h) {
     let resultFn = null;
-    if (
-      !this.layout.inline &&
-      !this.isFieldArray2d
-    ) {
+    if (!this.layout.inline && !this.isFieldArray2d) {
       resultFn = this.jsx_not_inline_not_2_wei;
-    } else if (
-      !this.layout.inline &&
-      this.isFieldArray2d
-    ) {
+    } else if (!this.layout.inline && this.isFieldArray2d) {
       resultFn = this.jsx_not_inline_2_wei;
     } else {
       resultFn = this.jsx_inline;
@@ -21,7 +15,7 @@ export default {
 
     return resultFn();
   },
-  computed:{
+  computed: {
     isFieldArray2d() {
       return this.fields[0] && typeCheck.isArray(this.fields[0]);
     }
@@ -44,6 +38,7 @@ export default {
               />
             );
           })}
+          {this.$slots.default}
         </el-row>
       );
     },
@@ -70,6 +65,7 @@ export default {
               </el-row>
             );
           })}
+          {this.$slots.default}
         </div>
       );
     },
@@ -89,6 +85,7 @@ export default {
               />
             );
           })}
+          {this.$slots.default}
         </span>
       );
     }
