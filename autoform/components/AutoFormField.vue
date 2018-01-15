@@ -19,7 +19,7 @@ export default {
     model: {
       handler: function(val, oldVal) {
         this._dealDisplay();
-        this.field['value'] = val[this.field.key];
+        this.field["value"] = val[this.field.key];
       },
       deep: true
     }
@@ -35,7 +35,7 @@ export default {
     _dealDisplay() {
       let displayType = typeof this.field.display;
       if (displayType === "boolean") {
-          this.display = this.field.display;
+        this.display = this.field.display;
       } else if (displayType === "function") {
         this.field.display(this.field, this.model, this.__judgeDisplay);
       } else if (displayType === "string") {
@@ -48,7 +48,8 @@ export default {
           );
         });
       } else {
-          this.display = true;
+        this.display = true;
+      }
     }
   },
   components: getTypes(),
