@@ -251,7 +251,9 @@ export default {
             fields={this.vFields}
             eventBus={this.eventBus}
           />
+          { this.$slots.default }
         </el-form>
+        <slot></slot>
       </div>
     );
   }
