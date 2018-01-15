@@ -57,30 +57,34 @@
 </template>
 
 <script>
-    import basicComponent from "autoform/utils/baseField";
-    export default {
-        mixins: [basicComponent],
-        name: 'cSelect',
-        icon: 'el-icon-edit',
-        data () {
-            return { options: [] };
-        },
-        created () {
-            if (this.to.options) {
-                this.options = this.to.options;
-            }
-        },
-        methods: {
-            //label  value
-            initOptions (ds) {
-                this.options = ds;
-            },
-            remoteMethod () {
-                console.log(this.eventBus);
-            }
-        }
-
-    };
+import basicComponent from "autoform/utils/baseField";
+export default {
+  mixins: [basicComponent],
+  name: "cSelect",
+  icon: "el-icon-edit",
+  data() {
+    return { options: [] };
+  },
+  created() {
+    if (this.to.options) {
+      this.options = this.to.options;
+    }
+  },
+  methods: {
+    //label  value
+    initOptions(ds) {
+      this.options = ds;
+    },
+    remoteMethod() {
+      console.log(this.eventBus);
+    }
+  },
+  mounted() {
+    if (typeof this.to.initOptionsKey === "string") {
+      this.eventBus.$on(this.to.initOptionsKey, this.initOptions);
+    }
+  }
+};
 </script>
 
 <style>
