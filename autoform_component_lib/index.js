@@ -36,18 +36,14 @@ const install = function (Vue, options) {
 };
 
 /* istanbul ignore if */
-if (typeof window !== 'undefined' && window.Vue) {
-    install(window.Vue);
-};
+// if (typeof window !== 'undefined' && window.Vue) {
+//     install(window.Vue);
+// };
 
 let Conf_component_lib = {
     install,
     components
 }
-
-
-
-
 
 
 export default Conf_component_lib;
