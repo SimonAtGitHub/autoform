@@ -11,6 +11,7 @@
         :suffix-icon="to.suffixIcon"
         :required="to.required"
         :readonly="to.readonly"
+        :clearable="to.clearable"
         @blur="onBlur"
         @focus="onFocus"
         @change="onChange"
