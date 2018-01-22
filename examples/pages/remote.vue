@@ -1,42 +1,78 @@
 <template>
     <div>
-        <auto-form ref="tagForm" :model="model6" :fields="fields8" :layout="layout6"></auto-form>
+        <auto-form ref="tagForm1" :model="model" :fields="fields" :layout="layout" :tabs="tabs"></auto-form>
+        {{model}}
     </div>
 </template>
+
 <script>
-    import {config} from '../data/config'
     export default {
         data() {
             return {
-                model6: {},
-                layout6: {
-                    align: "left",
-                    labelWidth: "100px",
-                    inline: false,
-                    gutter: 30
+                model: {
+                    name: '',
+                    hello: '',
+                    date1: ''
                 },
-                fields8: [
-                ]
+                layout: {
+                    align: 'left',
+                    labelWidth: '100px',
+                    inline: false
+                },
+                fields: {
+                    tab1: [{
+                            key: 'name',
+                            type: 'input',
+                            templateOptions: {
+                                label: '审批人'
+                            }
+                        },
+                        {
+                            key: 'hello',
+                            type: 'hello',
+                            templateOptions: {
+                                label: '自定义',
+                                action: 'handleClick'
+                            }
+                        },
+                    ],
+                    tab2: [{
+                        key: "date1",
+                        type: "datepicker",
+                        templateOptions: {
+                            label: "活动时间",
+                            placeholder: "选择日期",
+                            span: 12
+                        }
+                    }]
+                },
+                tabs: {
+                    active: 'tab1',
+                    list: [{
+                            name: 'tab1',
+                            label: '标题1',
+                        disabled: false
+                        },
+                        {
+                            name: 'tab2',
+                            label: '标题2'
+                        }
+                    ],
+                    tabClick: 'handleClick'
+                }
             };
         },
         autoform: {
             eventBus: {
-                watch(keys, fields, model) {
-                    console.log('model发生变化',keys, fields, model);
+                handleClick(...arg) {
+                    console.log(arg);
                 }
             }
         },
-        mounted () {
-            window.setTimeout(()=>{
-//                this.model6 = config.model6;
-//                this.layout6 = config.layout6;
-                this.fields8 = config.fields8;
-//                console.log(this.model6);
-                this.model6 = {
-                    name1: "111",
-                    name2: ""
-                };
-            },1000)
+        methods: {
+            handleClick (e) {
+                console.log(e)
+            }
         }
     };
 </script>

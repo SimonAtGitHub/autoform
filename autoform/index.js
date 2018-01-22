@@ -5,7 +5,6 @@ import abstractComponent from './utils/baseField';
 import AutoFormMixin from './utils/autoformMixin';
 import EventBus from './utils/eventBus';
 
-
 import {
   getTypes,
   addType,

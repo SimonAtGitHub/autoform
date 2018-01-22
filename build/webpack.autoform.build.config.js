@@ -18,7 +18,8 @@ module.exports = (options = {}) => ({
         umdNamedDefine: true
     },
     externals: {
-        'vue': 'vue'
+        Vue: 'vue',
+        'element-ui': 'ELEMENT'
     },
     devtool: '#source-map',
     module: {

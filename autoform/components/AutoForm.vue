@@ -130,6 +130,9 @@ export default {
     },
     __name__: {
       default: "autoForm"
+    },
+      tabs: {
+      default: {}
     }
   },
   data() {
@@ -137,7 +140,8 @@ export default {
       eventBus: null,
       vModel: this.model,
       vFields: this.fields,
-      vLayout: this.layout
+      vLayout: this.layout,
+      vTabs: this.tabs
     };
   },
   computed: {
@@ -229,10 +233,10 @@ export default {
 
     this.eventBus = EventBus();
 
-    this.vFields.forEach(field => {
-      if (typeof this.model[field.key] === "undefined")
-        this.$set(this.model, field.key, "");
-    });
+    // this.vFields.forEach(field => {
+    //   if (typeof this.model[field.key] === "undefined")
+    //     this.$set(this.model, field.key, "");
+    // });
     this.__DEV_TOOL__();
   },
   render(h) {
@@ -250,6 +254,7 @@ export default {
             layout={this.vLayout}
             fields={this.vFields}
             eventBus={this.eventBus}
+      tabs={this.tabs}
           >
           {this.$slots.default}
           </auto-form-layout>

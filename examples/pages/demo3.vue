@@ -35,10 +35,17 @@
                 ]
             };
         },
+        methods:{
+            reset () {
+                console.log(this.$refs.tagForm1);
+                this.$refs.tagForm1.$refs.form.resetFields();
+            }
+        },
         autoform: {
             eventBus: {
                 handleClick(...arg) {
                     console.log(arg);
+                    this.reset();
                 }
             }
         }
