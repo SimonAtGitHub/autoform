@@ -7,7 +7,7 @@ import 'element-ui/lib/theme-chalk/index.css';
 
 import AutoForm from 'autoform/index.js';
 
-import AutoForm_component_lib from '../autoform_component_lib/dist';
+import AutoForm_component_lib from '../autoform_component_lib/index';
 
 import router from './router'
 import Hello from './components/cHello.vue';

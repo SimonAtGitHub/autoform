@@ -48,10 +48,10 @@ export default {
       switch (Object.prototype.toString.call(e)) {
         case '[object String]':
         case '[object Number]':
-            options = this.options.find(item => e === (item[this.to.optionKey] || item.value));
+            options = this.to.options.find(item => e === (item[this.to.optionKey] || item.value));
           break;
         case '[object Array]':
-            options = this.options.filter(item => e.indexOf(item[this.to.optionKey] || item.value) >= 0);
+            options = this.to.options.filter(item => e.indexOf(item[this.to.optionKey] || item.value) >= 0);
           break;
       }
 

@@ -1,9 +1,7 @@
 
-
-
 <template>
     <el-card>
-        <auto-form ref="tagForm" :model="model1" :fields="fields1" :layout="layout" watchChange="watch">
+        <auto-form ref="tagForm" :model="model1" :fields="fields1" :layout="layout">
             <el-form-item>
                 <el-button type="primary">立即创建</el-button>
                 <el-button>取消</el-button>
@@ -78,7 +76,6 @@ export default {
                   value: "3"
                 }
               ],
-              filterMethod: "",
               onChange: "sortChange",
               optionKey: "value",
               multiple: false

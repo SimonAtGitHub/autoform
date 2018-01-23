@@ -33,6 +33,24 @@ export default {
         console.warn(msg);
       }
     },
+    _isFieldArray2d(fields) {
+      return fields[0] && typeCheck.isArray(fields[0]);
+    },
+    _emptyValue(fields) {
+      if (this._isFieldArray2d(fields)) {
+        fields.forEach(field => {
+          field.forEach(item => {
+            if (typeof this.model[item.key] === "undefined")
+              this.$set(this.model, item.key, "");
+          });
+        });
+      } else {
+        fields.forEach(field => {
+          if (typeof this.model[field.key] === "undefined")
+            this.$set(this.model, field.key, "");
+        });
+      }
+    },
     ___IS__DEV__() {
       return !!window.__AUTOFORM_DEVTOOLS_GLOBAL_HOOK__;
     },
@@ -131,8 +149,8 @@ export default {
     __name__: {
       default: "autoForm"
     },
-      tabs: {
-      default: {}
+    tabs: {
+      default: null
     }
   },
   data() {
@@ -140,8 +158,7 @@ export default {
       eventBus: null,
       vModel: this.model,
       vFields: this.fields,
-      vLayout: this.layout,
-      vTabs: this.tabs
+      vLayout: this.layout
     };
   },
   computed: {
@@ -233,10 +250,13 @@ export default {
 
     this.eventBus = EventBus();
 
-    // this.vFields.forEach(field => {
-    //   if (typeof this.model[field.key] === "undefined")
-    //     this.$set(this.model, field.key, "");
-    // });
+    if (!this.tabs) {
+      this._emptyValue(this.vFields);
+    } else {
+      Object.keys(this.vFields).forEach(item => {
+        this._emptyValue(this.vFields[item]);
+      });
+    }
     this.__DEV_TOOL__();
   },
   render(h) {
@@ -254,9 +274,9 @@ export default {
             layout={this.vLayout}
             fields={this.vFields}
             eventBus={this.eventBus}
-      tabs={this.tabs}
+            tabs={this.tabs}
           >
-          {this.$slots.default}
+            {this.$slots.default}
           </auto-form-layout>
         </el-form>
       </div>
