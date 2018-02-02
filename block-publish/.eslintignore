@@ -1,5 +1,0 @@
-**/node_modules/*
-/gulpfile.js
-/build/
-/entry/
-/lib/push/pub.js
