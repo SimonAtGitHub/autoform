@@ -7,6 +7,7 @@ import Radio from './components/radio/index';
 import Textarea from "./components/textarea/index";
 import Timepicker from "./components/timepicker/index";
 import Switch from "./components/switch/index";
+import Button from "./components/button/index";
 
 
 const components = [
@@ -18,7 +19,8 @@ const components = [
     Radio,
     Textarea,
     Timepicker,
-    Switch
+    Switch,
+    Button
 ];
 
 const install = function (Vue, options) {

@@ -1,6 +1,6 @@
 {
   "name": "@hfe/autoform",
-  "version": "1.1.62",
+  "version": "1.1.64",
   "description": "",
   "main": "dist/lib/index.js",
   "scripts": {},

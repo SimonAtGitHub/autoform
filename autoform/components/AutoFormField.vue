@@ -50,7 +50,49 @@ export default {
       } else {
         this.display = true;
       }
-    }
+    },
+      label_jsx (vNode) {
+          return (
+            <el-col
+            span={this.field.templateOptions.span || this.span}
+            offset={this.field.templateOptions.offset}
+            >
+            <el-form-item
+              label={this.field.templateOptions.label}
+              prop={this.field.key}
+              rules={this.field.validators}
+            >
+              {vNode}
+            </el-form-item>
+        </el-col>
+          )
+      },
+      inline_label_jsx (vNode) {
+          return (
+            <el-form-item
+              label={this.field.templateOptions.label}
+              prop={this.field.key}
+              rules={this.field.validators}
+            >
+              {vNode}
+            </el-form-item>
+          )
+      },
+      button_jsx (vNode) {
+          return (
+            <el-col
+            span={this.field.templateOptions.span || this.span}
+            offset={this.field.templateOptions.offset}
+            >
+            <div style="margin-bottom: 22px">{vNode}</div>
+            </el-col>
+          )
+      },
+      inline_button_jsx (vNode) {
+          return (
+              <div style="margin-bottom: 22px">{vNode}</div>
+          )
+      },
   },
   components: getTypes(),
 
@@ -73,33 +115,20 @@ export default {
     let vNode = h(this.type, {
       props
     });
-
-    if (!this.inline) {
-      return (
-        <el-col
-          span={this.field.templateOptions.span || this.span}
-          offset={this.field.templateOptions.offset}
-        >
-          <el-form-item
-            label={this.field.templateOptions.label}
-            prop={this.field.key}
-            rules={this.field.validators}
-          >
-            {vNode}
-          </el-form-item>
-        </el-col>
-      );
+    if (this.field.templateOptions.hasLabel === false) {
+      if (!this.inline) {
+        return this.button_jsx(vNode);
+      } else {
+        return this.button_label_jsx(vNode);
+      }
     } else {
-      return (
-        <el-form-item
-          label={this.field.templateOptions.label}
-          prop={this.field.key}
-          rules={this.field.validators}
-        >
-          {vNode}
-        </el-form-item>
-      );
+      if (!this.inline) {
+        return this.label_jsx(vNode);
+      } else {
+        return this.inline_label_jsx(vNode);
+      }
     }
+
   },
   mounted() {
     this._dealDisplay();
