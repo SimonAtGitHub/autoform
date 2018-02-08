@@ -36,6 +36,16 @@ export default {
         initTree (ds) {
             this.data = ds;
         }
+    },
+    created() {
+        if (this.to.options) {
+            this.data = this.to.options;
+        }
+    },
+    mounted() {
+        if (typeof this.to.initOptionsKey === "string") {
+            this.eventBus.$on(this.to.initOptionsKey, this.initTree);
+        }
     }
 };
 </script>

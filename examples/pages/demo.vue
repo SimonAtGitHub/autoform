@@ -189,6 +189,24 @@
                                 onChange: "sortChange"
                             },
                             isWatch: true,
+                        },
+                        {
+                            key: "typeId",
+                            type: "input-tree",
+                            templateOptions: {
+                                label: "品类树",
+                                initOptionsKey: 'initTree'
+                                // options: [
+                                //     {
+                                //         name: '测试',
+                                //         id: 1
+                                //     },
+                                //     {
+                                //         name: '测试2',
+                                //         id: 2
+                                //     }
+                                // ]
+                            }
                         }
                     ]
                 ]
