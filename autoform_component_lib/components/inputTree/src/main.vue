@@ -30,6 +30,9 @@ export default {
     },
     methods: {
         onNodeClick (data, node, tree) {
+            if (data.disabled) {
+                return;
+            }
             this.model[this.field.key] = data.id;
             this.label = data[this.defaultProps.label];
         },

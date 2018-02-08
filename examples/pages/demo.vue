@@ -195,17 +195,24 @@
                             type: "input-tree",
                             templateOptions: {
                                 label: "品类树",
-                                initOptionsKey: 'initTree'
-                                // options: [
-                                //     {
-                                //         name: '测试',
-                                //         id: 1
-                                //     },
-                                //     {
-                                //         name: '测试2',
-                                //         id: 2
-                                //     }
-                                // ]
+                                // initOptionsKey: 'initTree'
+                                options: [
+                                    {
+                                        name: '测试',
+                                        id: 1,
+                                        disabled: true,
+                                        children: [
+                                            {
+                                                name: '测试zi',
+                                                id: 1
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        name: '测试2',
+                                        id: 2
+                                    }
+                                ]
                             }
                         }
                     ]
