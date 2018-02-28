@@ -44,14 +44,17 @@ export default {
     },
     onEmuChange: function (e) {
       let options;
-
+      let oldOpt = this.options || [];
+      if (Object.prototype.toString.call(this.options) !== '[object Array]') {
+          oldOpt = [];
+      }
       switch (Object.prototype.toString.call(e)) {
         case '[object String]':
         case '[object Number]':
-            options = this.to.options.find(item => e === (item[this.to.optionKey] || item.value));
+            options = oldOpt.find(item => e === (item[this.to.optionKey] || item.value));
           break;
         case '[object Array]':
-            options = this.to.options.filter(item => e.indexOf(item[this.to.optionKey] || item.value) >= 0);
+            options = oldOpt.filter(item => e.indexOf(item[this.to.optionKey] || item.value) >= 0);
           break;
       }
 

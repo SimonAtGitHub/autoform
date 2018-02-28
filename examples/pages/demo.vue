@@ -86,23 +86,11 @@
                                 label: "活动区域",
                                 placeholder: "请选择活动区域",
                                 span: 12,
-                                options: [
-                                    {
-                                        label: "区域一",
-                                        value: "1"
-                                    },
-                                    {
-                                        label: "区域二",
-                                        value: "2"
-                                    },
-                                    {
-                                        label: "区域三",
-                                        value: "3"
-                                    }
-                                ],
                                 onChange: "sortChange",
                                 optionKey: "value",
-                                multiple: false
+                                multiple: false,
+                                initOptionsKey: 'initSelectOpt',
+                                options: []
                             },
                             isWatch: true
                         },
@@ -216,7 +204,8 @@
                             }
                         }
                     ]
-                ]
+                ],
+                query$: {}
             };
         },
         autoform: {
@@ -243,7 +232,24 @@
             }
         },
         mounted() {
-
+            this.query$.eventBus = this.$refs.tagForm.eventBus;
+            let opt = [
+                        {
+                            label: "区域一",
+                            value: "1"
+                        },
+                        {
+                            label: "区域二",
+                            value: "2"
+                        },
+                        {
+                            label: "区域三",
+                            value: "3"
+                        }
+                    ]
+            this.$nextTick(()=> {
+                this.query$.eventBus.$emit('initSelectOpt', opt);
+            })
         }
     };
 </script>

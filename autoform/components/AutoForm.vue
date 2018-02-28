@@ -102,7 +102,7 @@ export default {
               "*"
             );
           } catch (e) {
-            console.warn("配置文件不要写函数");
+            console.warn("devTool参数传递出错(window.postMessage)", e);
           }
         } else {
           console.log("未安装devtool");
@@ -223,7 +223,7 @@ export default {
               "*"
             );
           } catch (e) {
-            console.log("配置文件不要写函数", e);
+              console.warn("devTool参数传递出错(window.postMessage autoform_update_fields)", e);
           }
         }, 500);
       },
