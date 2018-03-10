@@ -2,13 +2,17 @@
 # yarn lockfile v1
 
 
-"@hfe/autoform@^1.1.49", "@hfe/autoform@^1.1.51":
+"@hfe/autoform@1.1.67":
+  version "1.1.67"
+  resolved "http://r.npm.sankuai.com/@hfe/autoform/download/@hfe/autoform-1.1.67.tgz#fb0ea1ab9ee97f44364c7bb5b629fca8cc8cb19b"
+
+"@hfe/autoform@^1.1.49":
   version "1.1.65"
   resolved "http://r.npm.sankuai.com/@hfe/autoform/download/@hfe/autoform-1.1.65.tgz#9cd038ba6ead31ecdda329444c146310a35bbdb2"
 
-"@hfe/autoform_component_lib@0.0.47":
-  version "0.0.47"
-  resolved "http://r.npm.sankuai.com/@hfe/autoform_component_lib/download/@hfe/autoform_component_lib-0.0.47.tgz#cadedcf4c6027e111b7393250dbbff8efbffecc6"
+"@hfe/autoform_component_lib@0.0.48":
+  version "0.0.48"
+  resolved "http://r.npm.sankuai.com/@hfe/autoform_component_lib/download/@hfe/autoform_component_lib-0.0.48.tgz#81ee956c73435936dc79eaa433173f1dc36cb99e"
   dependencies:
     "@hfe/autoform" "^1.1.49"
     "@hfe/autoform_component_lib" "^0.0.29"

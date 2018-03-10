@@ -44,8 +44,8 @@
     "webpack-dev-server": "^2.9.4"
   },
   "dependencies": {
-    "@hfe/autoform": "^1.1.51",
-    "@hfe/autoform_component_lib": "0.0.47",
+    "@hfe/autoform": "1.1.67",
+    "@hfe/autoform_component_lib": "0.0.48",
     "element-ui": "^2.0.5",
     "vue": "2.5.3",
     "vue-router": "^3.0.1"

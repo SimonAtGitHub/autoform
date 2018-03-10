@@ -5,6 +5,7 @@ import Demo2 from '../pages/demo2.vue'
 import Demo3 from '../pages/demo3.vue'
 import Remote from '../pages/remote.vue'
 import Tab1 from '../pages/tab1.vue'
+import Cache from '../pages/cache.vue'
 
 Vue.use(Router)
 
@@ -39,6 +40,11 @@ export default new Router({
             path: '/tab1',
             name: 'Tab1',
             component: Tab1
+        },
+        {
+            path: '/cache',
+            name: 'Cache',
+            component: Cache
         }
     ]
 })
