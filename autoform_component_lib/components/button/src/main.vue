@@ -5,8 +5,7 @@
         name: 'cButton',
         icon: 'el-icon-edit',
         render(h) {
-            if (this.to.inline) {
-                return (
+            return (
                     <div class={this.to.className || ''}>
                     {this.to.buttonOpt.map((item) => {
                         let props = item;
@@ -16,29 +15,15 @@
                             }
                         };
                         let vNode = h('el-button', {props, on}, [item.value]);
-                        return vNode;
-                    })}
-                    </div>
-                )
-            } else {
-                return (
-                    <div class={this.to.className || ''}>
-                    {this.to.buttonOpt.map((item) => {
-                        let props = item;
-                        let on = {
-                            click: () => {
-                                this.eventBus.$emit(item.onClick, item, this.field);
-                            }
-                        };
-                        let vNode = h('el-button', {props, on}, [item.value]);
+                        if (this.to.inline) {
+                            return vNode
+                        }
                         return (
                             <div>{vNode}</div>
                         );
                     })}
                     </div>
                 )
-            }
-
         }
     };
 </script>

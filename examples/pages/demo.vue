@@ -3,7 +3,7 @@
         <auto-form ref="tagForm" :model="model1" :fields="fields1" :layout="layout">
             <el-form-item>
                 <el-button type="primary">立即创建</el-button>
-                <el-button>取消</el-button>
+                <el-button @click="reset">取消</el-button>
             </el-form-item>
         </auto-form>
     </el-card>
@@ -27,7 +27,8 @@
                     labelWidth: "100px",
                     inline: false,
                     span: 8,
-                    gutter: 50
+                    gutter: 50,
+                    cache: true
                 },
                 fields1: [
                     [
@@ -229,6 +230,9 @@
         methods: {
             handleChange() {
                 console.log(1111111);
+            },
+            reset () {
+                this.$refs.tagForm.resetForm();
             }
         },
         mounted() {

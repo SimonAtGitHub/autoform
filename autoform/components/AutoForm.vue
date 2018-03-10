@@ -4,7 +4,7 @@
 }
 </style>
 <script>
-import { typeCheck } from "../utils";
+import { typeCheck, setCache } from "../utils";
 import EventBus from "../utils/eventBus";
 
 export default {
@@ -19,6 +19,9 @@ export default {
     },
     resetForm() {
       this.$refs.form.resetFields();
+        if (this.layout.cache) {
+            sessionStorage.removeItem(this.$vnode.tag);
+        }
     },
     getComponents() {
       let result = Object.keys(this.$refs).reduce((res, item) => {
@@ -133,6 +136,22 @@ export default {
         result = this.fields.find(item => item.key === key);
       }
       return result;
+    },
+    __setModel () {
+      if (!this.layout.cache) {
+        return;
+      }
+      const vInstance = this.$vnode.componentInstance;
+      let queryStr = sessionStorage.getItem(this.$vnode.tag);
+      if (!queryStr) {
+        return;
+      }
+      const query = JSON.parse(queryStr);
+      for (let ele in query) {
+            if (ele && query.hasOwnProperty(ele) && query[ele]) {
+                vInstance.$set(vInstance.model, ele, query[ele]);
+            }
+      }
     }
   },
   //props: ["model", "fields", "layout"],
@@ -188,6 +207,7 @@ export default {
     },
     model: {
       handler(val, oldVal) {
+        sessionStorage.setItem(this.$vnode.tag, JSON.stringify(val));
         clearTimeout(this.update_model_timer);
         this.update_model_timer = setTimeout(function() {
           window.postMessage(
@@ -258,6 +278,9 @@ export default {
       });
     }
     this.__DEV_TOOL__();
+  },
+  mounted () {
+    this.__setModel();
   },
   render(h) {
     return (

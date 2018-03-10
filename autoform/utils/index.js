@@ -79,3 +79,9 @@ export const typeCheck = ['Function', 'Object', 'Array', 'Number', 'String']
         }
         return result;
     }, {})
+
+export function setCache (component) {
+    let vNode = component.$vnode;
+    let model = component.model;
+    sessionStorage.setItem(vNode.tag, JSON.stringify(model));
+}
