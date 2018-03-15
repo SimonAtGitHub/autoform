@@ -132,6 +132,9 @@ export default {
   },
   mounted() {
     this._dealDisplay();
+    if (typeof this.field.templateOptions.initDisplay === "string") {
+        this.eventBus.$on(this.field.templateOptions.initDisplay, this.__judgeDisplay);
+    }
   }
 };
 </script>

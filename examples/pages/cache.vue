@@ -55,7 +55,8 @@
                                 optionKey: "value",
                                 multiple: false,
                                 initOptionsKey: 'initSelectOpt',
-                                options: []
+                                options: [],
+                                initDisplay: 'handleInit'
                             },
                             isWatch: true
                         }
@@ -198,7 +199,10 @@
             ];
             this.$nextTick(()=> {
                 this.query$.eventBus.$emit('initSelectOpt', opt);
-            })
+            });
+            setTimeout(()=> {
+                this.query$.eventBus.$emit('handleInit', true);
+            }, 3000);
         }
     };
 </script>
