@@ -18,7 +18,9 @@ export default {
   watch: {
     model: {
       handler: function(val, oldVal) {
-        this._dealDisplay();
+        if (this.field.templateOptions && !this.field.templateOptions.initDisplay) {
+            this._dealDisplay();
+        }
         this.field["value"] = val[this.field.key];
       },
       deep: true
@@ -132,7 +134,7 @@ export default {
   },
   mounted() {
     this._dealDisplay();
-    if (typeof this.field.templateOptions.initDisplay === "string") {
+    if (this.field.templateOptions && typeof this.field.templateOptions.initDisplay === "string") {
         this.eventBus.$on(this.field.templateOptions.initDisplay, this.__judgeDisplay);
     }
   }
