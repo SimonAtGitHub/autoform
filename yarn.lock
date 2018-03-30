@@ -4622,6 +4622,10 @@ vuedraggable@^2.16.0:
   dependencies:
     sortablejs "^1.7.0"
 
+vuex@^3.0.1:
+  version "3.0.1"
+  resolved "http://r.npm.sankuai.com/vuex/download/vuex-3.0.1.tgz#e761352ebe0af537d4bb755a9b9dc4be3df7efd2"
+
 watchpack@^1.4.0:
   version "1.4.0"
   resolved "http://r.npm.sankuai.com/watchpack/download/watchpack-1.4.0.tgz#4a1472bcbb952bd0a9bb4036801f954dfb39faac"

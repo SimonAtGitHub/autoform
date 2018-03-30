@@ -50,6 +50,7 @@
     "element-ui": "^2.0.5",
     "vue": "2.5.3",
     "vue-router": "^3.0.1",
-    "vuedraggable": "^2.16.0"
+    "vuedraggable": "^2.16.0",
+    "vuex": "^3.0.1"
   }
 }

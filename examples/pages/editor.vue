@@ -1,5 +1,9 @@
 <template>
-    <div>editor</div>
+    <div>
+
+        <autoform-editor></autoform-editor>
+
+    </div>
 </template>
 <script>
     export default {
