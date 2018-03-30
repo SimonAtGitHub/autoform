@@ -37,6 +37,7 @@
     "postcss-loader": "^2.0.8",
     "rimraf": "^2.6.2",
     "sass-loader": "^6.0.6",
+    "sortablejs": "^1.7.0",
     "url-loader": "^0.6.2",
     "vue-loader": "^13.5.0",
     "vue-template-compiler": "2.5.3",
@@ -48,6 +49,7 @@
     "@hfe/autoform_component_lib": "0.0.48",
     "element-ui": "^2.0.5",
     "vue": "2.5.3",
-    "vue-router": "^3.0.1"
+    "vue-router": "^3.0.1",
+    "vuedraggable": "^2.16.0"
   }
 }
