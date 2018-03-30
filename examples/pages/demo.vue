@@ -46,7 +46,7 @@
                         },
                         {
                             key: "name",
-                            type: "hello",
+                            type: "baifang_input",
                             templateOptions: {
                                 span: 8,
                                 label: "活动名称",

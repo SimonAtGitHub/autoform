@@ -1,17 +1,13 @@
 <template>
     <div>
-
-        <autoform-editor :config="config"></autoform-editor>
-
+        <el-input v-model="input" placeholder="请输入内容"></el-input>
     </div>
 </template>
 <script>
     export default {
         data () {
             return {
-                config: {
-                    name: 'baifang'
-                }
+                input: ''
             };
         },
         methods: {}

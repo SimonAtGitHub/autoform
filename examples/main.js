@@ -22,6 +22,7 @@ Vue.use(AutoForm);
 Vue.use(AutoForm_component_lib);
 
 Vue.use(AutoForm_Editor, {store})
+Vue.$autoform.registerDirWithConfig(()=>require.context('./components/custom'), 'baifang');
 
 // Vue.$autoform.RegisterDir(()=>require.context('./components'))
 Vue

@@ -13,7 +13,8 @@ import {
 import Directives from './directives/index';
 import {
   Register,
-  RegisterDir
+  RegisterDir,
+    registerDirWithConfig
 } from "./register/index";
 
 
@@ -39,7 +40,8 @@ let AutoForm = {
       addType,
       addValidationMessage,
       Register,
-      RegisterDir
+      RegisterDir,
+        registerDirWithConfig
     };
     window.__AUTOFORM_DEVTOOLS_GLOBAL_HOOK__=Vue.$autoform;
   }
@@ -56,7 +58,8 @@ if (typeof window !== 'undefined' && window.Vue) {
     addType,
     addValidationMessage,
     Register,
-    RegisterDir
+    RegisterDir,
+      registerDirWithConfig
   };
   window.__AUTOFORM_DEVTOOLS_GLOBAL_HOOK__=Vue.$autoform;
 }

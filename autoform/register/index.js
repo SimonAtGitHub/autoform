@@ -5,9 +5,6 @@ import {
     getFileName
 } from "../utils";
 
-
-
-
 export const Register = (Vue, registerComponents, options = {
     prefix: "c"
 }) => {
@@ -71,5 +68,30 @@ export const RegisterDir = (callback, options = {
             addType(cc, component);
             addType(ml, component);
         }
+    });
+}
+
+export const registerDirWithConfig = (callback, name) => {
+
+    if (typeof callback !== 'function') {
+        return;
+    }
+    let fields = callback();
+
+    let regex = new RegExp('/', 'g');
+    let fieldskey = fields.keys().filter(key => {
+        return key.match(regex) && key.match(regex).length === 1;
+    });
+
+    fieldskey.forEach(key => {
+        let component = fields(key);
+        let config = fields(`${key}/description`).config;
+        let keyName = key.replace('./', '');
+        let componentName = `${name}_${keyName}`;
+        if (component.default) {
+            component = component.default;
+        }
+        component.__CONFIG__ = config;
+        addType(componentName, component);
     });
 }
