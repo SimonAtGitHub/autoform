@@ -24,11 +24,15 @@ export default {
     },
     methods: {
         ...mapActions('gallery', [
-            'updateComponents'
+            'handleComponents'
         ]),
+        ...mapActions('viewport', [
+            'getLayoutTree'
+        ])
     },
     mounted () {
-        this.updateComponents({data: getTypes()});
+        this.handleComponents({data: getTypes()});
+        this.getLayoutTree({data: this.config.schema});
     },
     components: {
     Gallery,

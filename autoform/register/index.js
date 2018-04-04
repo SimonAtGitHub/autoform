@@ -87,7 +87,7 @@ export const registerDirWithConfig = (callback, name) => {
         let component = fields(key);
         let config = fields(`${key}/description`).config;
         let keyName = key.replace('./', '');
-        let componentName = `${name}_${keyName}`;
+        let componentName = config.type;
         if (component.default) {
             component = component.default;
         }

@@ -1,9 +1,15 @@
 <template>
     <div class="gallery-container">
         <div class="gallery-wrap">
-            <ul id="list">
-                <li v-for="item in componentTree">{{item.name}}</li>
-            </ul>
+            <p>基础组件库</p>
+            <div id="list" class="tag-list">
+                <el-tag v-for="item in componentConfigGetter.basic" :key="item.type" size="small" type="success">{{item.name}}</el-tag>
+            </div>
+
+            <p>自定义组件库</p>
+            <div id="left-custom-list" class="tag-list">
+                <el-tag v-for="item in componentConfigGetter[config.name]" :key="item.type" size="small">{{item.name}}</el-tag>
+            </div>
         </div>
     </div>
 </template>
@@ -22,31 +28,44 @@
         },
         computed: {
             ...mapGetters('gallery', [
-                'componentGetter'
+                'componentConfigGetter'
             ])
         },
         methods: {
             sort () {
                 let target = document.getElementById('list');
-                let sortable = Sortable.create(target);
+                let sortable = Sortable.create(target, {
+                    group: {
+                        name: 'left-list',
+                        pull: 'clone',
+                        put: false
+                    },
+                    animation: 120,
+                    ghostClass: 'placeholder-style',
+                    onEnd (event) {
+                        console.log(event);
+                    }
+                });
             }
         },
         watch: {
-            componentData (val) {
-                this.componentTree = val[this.config.name];
-            }
         },
         mounted () {
-            this.componentData = this.componentGetter;
             this.sort();
         },
     }
 </script>
 
-<style scoped>
+<style scoped lang="less">
 .gallery-container{
     flex: 1;
 }
     .gallery-wrap {
+    }
+
+    .tag-list {
+        > span {
+            margin-right: 10px;
+        }
     }
 </style>

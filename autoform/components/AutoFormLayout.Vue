@@ -52,7 +52,7 @@ export default {
       }
       return (
         <div>
-          <el-row gutter={this.layout.gutter}>
+          <el-row gutter={this.layout.gutter} id="viewport-list">
             {fields.map((field, fIndex) => {
               return (
                 <auto-form-field
@@ -146,7 +146,7 @@ export default {
         );
       }
       return (
-        <span>
+        <span id="viewport-list">
           {fields.map((field, index) => {
             return (
               <auto-form-field

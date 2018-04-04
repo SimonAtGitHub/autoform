@@ -1,30 +1,33 @@
 const gallery = {
     namespaced: true,
     state: {
-        componentTree: {}
+        componentTree: {},
+        componentConfig: {}
     },
     getters: {
         componentGetter: state => {
             return state.componentTree;
+        },
+        componentConfigGetter: state => {
+            return state.componentConfig;
         }
     },
     mutations: {
-
+        updateConfig (state, {config = {}}) {
+            state.componentConfig = config;
+        }
     },
     actions: {
-        updateComponents ({ state }, { data }) {
+        handleComponents ({ commit }, { data }) {
+            let config = {};
             let componentKeys = Object.keys(data);
             componentKeys.forEach(key => {
-                let keyName = key.match(/form_(\S*)_/) ? key.match(/form_(\S*)_/)[1] : '';
-                if (keyName && data[key].__CONFIG__) {
-                    !state.componentTree[keyName] ? state.componentTree[keyName] = [] : '';
-                    state.componentTree[keyName].push({
-                        name: data[key].__CONFIG__.name,
-                        component: data[key],
-                        config: data[key].__CONFIG__
-                    });
+                if (data[key].__CONFIG__ && data[key].__CONFIG__.tag) {
+                    !config[data[key].__CONFIG__.tag] ? config[data[key].__CONFIG__.tag] = [] : '';
+                    config[data[key].__CONFIG__.tag].push(data[key].__CONFIG__);
                 }
             });
+            commit('updateConfig', { config });
         },
     }
 };
