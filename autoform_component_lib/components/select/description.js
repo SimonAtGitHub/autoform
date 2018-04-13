@@ -1,11 +1,11 @@
 export default {
-    name: '多选框',
-    type: 'checkbox',
+    name: '下拉框',
+    type: 'select',
     tag: 'basic',
     config: [],
     default:  {
-        key: 'checkbox',
-        type: 'checkbox',
+        key: 'select',
+        type: 'select',
         templateOptions: {
             label: 'label',
             options: [

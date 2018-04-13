@@ -35,5 +35,12 @@ export const config = {
             path: 'onChange',
             default: 'handleChange1'
         }
-    ]
+    ],
+    default:  {
+        key: "baifangName",
+        type: "input",
+        templateOptions: {
+            label: "拜访人员"
+        }
+    },
 }

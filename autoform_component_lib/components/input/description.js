@@ -10,5 +10,13 @@ export default {
             path: 'templateOptions.label',
             placeholder: '请输入活动名称的label'
         }
-    ]
+    ],
+    default:  {
+        key: "input",
+        type: "input",
+        templateOptions: {
+            label: "label"
+        },
+        value: 'hahah'
+    },
 };

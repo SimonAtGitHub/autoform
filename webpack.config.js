@@ -17,6 +17,9 @@ switch (env) {
     case 'lib':
         config = require('./build/webpack.autoformlib.build.config');
         break;
+    case 'editor':
+        config = require('./build/webpack.autoformEdit.build.config');
+        break;
     default:
         break;
 }

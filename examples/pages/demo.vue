@@ -1,3 +1,4 @@
+<!--尽可能的包含更多情况-->
 <template>
     <el-card>
         <auto-form ref="tagForm" :model="model1" :fields="fields1" :layout="layout">
@@ -33,7 +34,7 @@
                 fields1: [
                     [
                         {
-                            key: "name",
+                            key: "name2",
                             type: "input",
                             templateOptions: {
                                 span: 8,

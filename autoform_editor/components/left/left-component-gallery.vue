@@ -1,71 +1,69 @@
 <template>
-    <div class="gallery-container">
+    <div class="gallery-container" :style="{ flex: config.style.left || 1 }">
         <div class="gallery-wrap">
             <p>基础组件库</p>
-            <div id="list" class="tag-list">
-                <el-tag v-for="item in componentConfigGetter.basic" :key="item.type" size="small" type="success">{{item.name}}</el-tag>
+            <div class="tag-list" v-for="item in componentConfigGetter.basic" :key="item.type">
+                <div>{{item.name}}</div>
+                <el-tag size="small" type="danger" style="cursor: pointer;">
+                    <i class="el-icon-circle-plus-outline" @click="handleAddField(item)"></i>
+                </el-tag>
             </div>
 
             <p>自定义组件库</p>
-            <div id="left-custom-list" class="tag-list">
-                <el-tag v-for="item in componentConfigGetter[config.name]" :key="item.type" size="small">{{item.name}}</el-tag>
+            <div class="tag-list" v-for="item in componentConfigGetter[config.name]" :key="item.type">
+                <div>{{item.name}}</div>
+                <el-tag size="small" type="danger" style="cursor: pointer;">
+                    <i class="el-icon-circle-plus-outline" @click="handleAddField(item)"></i>
+                </el-tag>
             </div>
         </div>
     </div>
 </template>
 
 <script>
-    import {mapGetters} from 'vuex';
+    import {mapGetters, mapActions} from 'vuex';
     import basicConfig from 'autoform_editor/components/mixin';
     import Sortable from 'sortablejs';
+
     export default {
         mixins: [basicConfig],
-        data () {
+        data() {
             return {
-                componentData: {},
                 componentTree: {}
             }
         },
         computed: {
-            ...mapGetters('gallery', [
+            ...mapGetters('viewport', [
                 'componentConfigGetter'
             ])
         },
         methods: {
-            sort () {
-                let target = document.getElementById('list');
-                let sortable = Sortable.create(target, {
-                    group: {
-                        name: 'left-list',
-                        pull: 'clone',
-                        put: false
-                    },
-                    animation: 120,
-                    ghostClass: 'placeholder-style',
-                    onEnd (event) {
-                        console.log(event);
-                    }
-                });
+            ...mapActions('viewport', [
+                'addLayoutTree'
+            ]),
+            handleAddField(item) {
+                this.addLayoutTree({data: item.default});
             }
-        },
-        watch: {
-        },
-        mounted () {
-            this.sort();
-        },
+        }
     }
 </script>
 
 <style scoped lang="less">
-.gallery-container{
-    flex: 1;
-}
-    .gallery-wrap {
+    .gallery-container {
+        flex: 1;
     }
 
     .tag-list {
-        > span {
-            margin-right: 10px;
+        display: flex;
+        > div {
+            flex: 1;
+            padding-bottom: 5px;
+            &:first-child {
+                flex: 0 0 50%;
+            }
+            > span {
+                cursor: pointer;
+            }
         }
     }
 </style>

@@ -3,7 +3,7 @@
     <div class="editor-container">
         <gallery :config="config"></gallery>
         <viewport :config="config"></viewport>
-        <props-editor :config="config"></props-editor>
+        <!--<props-editor :config="config"></props-editor>-->
     </div>
 
 </template>
@@ -18,21 +18,31 @@ import basicConfig from 'autoform_editor/components/mixin'
 export default {
     mixins: [basicConfig],
     computed: {
-        ...mapState('gallery', [
-            'componentTree'
+        ...mapGetters('viewport', [
+            'componentConfigGetter'
         ])
     },
     methods: {
-        ...mapActions('gallery', [
+        ...mapActions('viewport', [
             'handleComponents'
         ]),
         ...mapActions('viewport', [
-            'getLayoutTree'
-        ])
+            'getLayoutTree',
+            'editLayoutTree'
+        ]),
+        updateForm (field, isLayout) {
+            this.editLayoutTree({field, isLayout});
+        }
+    },
+    watch: {
+        componentConfigGetter (val) {
+            this.config.getConfig(this.componentConfigGetter);
+        }
     },
     mounted () {
         this.handleComponents({data: getTypes()});
         this.getLayoutTree({data: this.config.schema});
+        this.config.getConfig(this.componentConfigGetter);
     },
     components: {
     Gallery,
@@ -52,7 +62,7 @@ export default {
         padding: 20px;
         margin: 10px;
         border: 1px solid #ccc;
-        height: 80vh;
+        min-height: 50vh;
     }
 
 </style>

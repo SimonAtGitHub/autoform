@@ -7,6 +7,7 @@ import Remote from '../pages/remote.vue'
 import Tab1 from '../pages/tab1.vue'
 import Cache from '../pages/cache.vue'
 import Editor from '../pages/editor.vue'
+import Linshi from '../pages/linshi.vue'
 
 Vue.use(Router)
 
@@ -51,6 +52,11 @@ export default new Router({
             path: '/editor',
             name: 'Editor',
             component: Editor
+        },
+        {
+            path: '/linshi',
+            name: 'Linshi',
+            component: Linshi
         }
     ]
 })

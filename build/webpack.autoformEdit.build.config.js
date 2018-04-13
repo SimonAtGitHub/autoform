@@ -6,10 +6,10 @@ const publicPath = ''
 
 module.exports = (options = {}) => ({
     entry: {
-        index: './autoform/index.js'
+        index: './autoform_editor/index.js'
     },
     output: {
-        path: resolve(__dirname, '../autoform/dist/lib'),
+        path: resolve(__dirname, '../autoform_editor/dist/lib'),
         filename: options.dev ? '[name].js' : '[name].js?[chunkhash]',
         chunkFilename: '[id].js?[chunkhash]',
         publicPath: options.dev ? '/assets/' : publicPath,
@@ -55,10 +55,9 @@ module.exports = (options = {}) => ({
     resolve: {
         extensions: ['.js', '.vue', '.json'],
         alias: {
-            '~': resolve(__dirname, 'src'),
             'autoform_editor': resolve(__dirname, '../autoform_editor'),
             'autoform': resolve(__dirname, '../autoform'),
-            'autoform_component_lib': resolve(__dirname, '../autoform_component_lib')
+            'autoform_component_lib': resolve(__dirname, '../autoform_component_lib'),
         }
     },
     devtool: options.dev ? '#eval-source-map' : '#source-map'

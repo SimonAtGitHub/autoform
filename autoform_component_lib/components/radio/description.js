@@ -1,11 +1,11 @@
 export default {
-    name: '多选框',
-    type: 'checkbox',
+    name: '单选框',
+    type: 'radio',
     tag: 'basic',
     config: [],
     default:  {
-        key: 'checkbox',
-        type: 'checkbox',
+        key: 'radio',
+        type: 'radio',
         templateOptions: {
             label: 'label',
             options: [
