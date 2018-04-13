@@ -113,6 +113,7 @@ export default {
     if (!this.display || !this.field.type) {
       return "";
     }
+
     let vNode = h(this.type, {
       props
     });

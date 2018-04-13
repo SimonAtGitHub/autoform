@@ -14,7 +14,6 @@ export function addType(id, options) {
 }
 
 export function getTypes() {
-    console.log(exports.fields);
     return exports.fields;
 }
 

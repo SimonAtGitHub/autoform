@@ -5,6 +5,9 @@ import {
     getFileName
 } from "../utils";
 
+
+
+
 export const Register = (Vue, registerComponents, options = {
     prefix: "c"
 }) => {

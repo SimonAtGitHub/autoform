@@ -11,13 +11,6 @@ export default {
         if (!store.state.viewport) {
             store.registerModule('viewport', viewport);
         }
-        // Vue.$autoformEditor = {
-        //     registerPlugins: Utils.registerPlugins
-        // };
-
-        // store.registerModule(['nested', 'myModule'], {
-        //     // ...
-        //   })
    }
 
 }
