@@ -241,20 +241,23 @@
             let opt = [
                         {
                             label: "区域一",
-                            value: "1"
+                            value: 0
                         },
                         {
                             label: "区域二",
-                            value: "2"
+                            value: 1
                         },
                         {
                             label: "区域三",
-                            value: "3"
+                            value: 2
                         }
-                    ]
-            this.$nextTick(()=> {
+                    ];
+//            this.$nextTick(()=> {
+//                this.query$.eventBus.$emit('initSelectOpt', opt);
+//            })
+            setTimeout(() => {
                 this.query$.eventBus.$emit('initSelectOpt', opt);
-            })
+            }, 1000)
         }
     };
 </script>

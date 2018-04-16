@@ -1,6 +1,6 @@
 {
   "name": "@hfe/autoform_component_lib",
-  "version": "0.0.48",
+  "version": "0.0.49",
   "description": "autoform component lib",
   "main": "lib/index.js",
   "scripts": {},
@@ -17,6 +17,6 @@
   "license": "ISC",
   "dependencies": {
     "@hfe/autoform": "^1.1.49",
-    "@hfe/autoform_component_lib": "^0.0.29"
+    "@hfe/autoform_component_lib": "0.0.49"
   }
 }

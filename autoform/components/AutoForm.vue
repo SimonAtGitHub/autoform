@@ -148,7 +148,7 @@ export default {
       }
       const query = JSON.parse(queryStr);
       for (let ele in query) {
-            if (ele && query.hasOwnProperty(ele) && query[ele]) {
+            if (ele && query.hasOwnProperty(ele) && typeof query[ele] !== 'undefined') {
                 vInstance.$set(vInstance.model, ele, query[ele]);
             }
       }
