@@ -5,6 +5,7 @@
             <el-form-item>
                 <el-button type="primary">立即创建</el-button>
                 <el-button @click="reset">取消</el-button>
+                <el-button @click="clear">清除</el-button>
             </el-form-item>
         </auto-form>
     </el-card>
@@ -234,6 +235,9 @@
             },
             reset () {
                 this.$refs.tagForm.resetForm();
+            },
+            clear () {
+                this.$refs.tagForm.clearForm();
             }
         },
         mounted() {
