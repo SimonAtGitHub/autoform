@@ -73,6 +73,8 @@ if (typeof window !== 'undefined' && window.Vue) {
     };
     window.__AUTOFORM_DEVTOOLS_GLOBAL_HOOK__ = Vue.$autoform;
 }
+
+
 export default AutoForm;
 
 export const baseField = abstractComponent;

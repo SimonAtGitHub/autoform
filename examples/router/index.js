@@ -8,7 +8,7 @@ import Tab1 from '../pages/tab1.vue'
 import Cache from '../pages/cache.vue'
 import Editor from '../pages/editor.vue'
 import Linshi from '../pages/linshi.vue'
-
+import  CustomLayout  from   '../pages/customlayout'
 Vue.use(Router)
 
 export default new Router({
@@ -57,6 +57,11 @@ export default new Router({
             path: '/linshi',
             name: 'Linshi',
             component: Linshi
+        },
+        {
+            path: '/customlayout',
+            name: 'customlayout',
+            component: CustomLayout
         }
     ]
 })

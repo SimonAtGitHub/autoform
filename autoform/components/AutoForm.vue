@@ -309,6 +309,7 @@
                                     eventBus={this.eventBus}
                                     tabs={this.tabs}
                             >
+                                {this.$scopedSlots.default}
                                 {this.$slots.default}
                             </auto-form-layout>
                         </el-form>

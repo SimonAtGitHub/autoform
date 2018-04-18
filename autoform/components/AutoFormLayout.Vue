@@ -5,6 +5,9 @@ import { typeCheck } from "../utils";
 export default {
   render(h) {
     let resultFn = null;
+    if (this.layout.custom) {
+      return (resultFn = this.jsx_custom(h));
+    }
     if (this.tabs) {
       resultFn = this.jsx_tab();
     } else {
@@ -13,7 +16,12 @@ export default {
 
     return resultFn;
   },
-  computed: {},
+  computed: {
+    keys() {
+      let keys = this.fields.map(item => `form_${item.type}`);
+      return keys;
+    }
+  },
   methods: {
     isFieldArray2d(fields) {
       return fields[0] && typeCheck.isArray(fields[0]);
@@ -181,6 +189,23 @@ export default {
           })}
         </el-tabs>
       );
+    },
+    jsx_custom(h) {
+      let children = [];
+      if ("default" in this.$scopedSlots) {
+        let props = {
+          model: this.model,
+          fields: this.fields,
+          layout: this.layout,
+          eventBus: this.eventBus
+        };
+
+        children.push(this.$scopedSlots.default({ ...props }));
+      }
+      if ("default" in this.$slots) {
+        children.push(this.$slots.default);
+      }
+      return h("div", children);
     },
     tabClick(component) {
       this.tabs.active = component.name;
