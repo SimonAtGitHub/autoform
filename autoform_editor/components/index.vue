@@ -28,10 +28,16 @@ export default {
         ]),
         ...mapActions('viewport', [
             'getLayoutTree',
-            'editLayoutTree'
+            'editLayoutTree',
+            'handleBasicConfig'
         ]),
+        //更新表单某项field
         updateForm (field, isLayout) {
             this.editLayoutTree({field, isLayout});
+        },
+        //设置基础组件自定义选项
+        setBasicConfig (config) {
+            this.handleBasicConfig({config});
         }
     },
     watch: {

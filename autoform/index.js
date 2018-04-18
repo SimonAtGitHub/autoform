@@ -9,7 +9,8 @@ import viewport from 'autoform_editor/store/viewport'
 import {
     getTypes,
     addType,
-    addValidationMessage
+    addValidationMessage,
+    registerStore
 } from './utils';
 import Directives from './directives/index';
 import {
@@ -31,6 +32,10 @@ let AutoForm = {
         Filters(Vue);
         EventBus(Vue);
 
+        if (store && store.state && store.state.viewport) {
+            store.registerModule('viewport', viewport);
+        }
+
         // Register(Vue, components, options)
 
         Vue.mixin(AutoFormMixin);
@@ -42,7 +47,9 @@ let AutoForm = {
             addValidationMessage,
             Register,
             RegisterDir,
-            registerDirWithConfig
+            registerDirWithConfig,
+            registerStore
+
         };
         if (store && !store.state.viewport) {
             store.registerModule('viewport', viewport);
@@ -61,7 +68,8 @@ if (typeof window !== 'undefined' && window.Vue) {
         addValidationMessage,
         Register,
         RegisterDir,
-        registerDirWithConfig
+        registerDirWithConfig,
+        registerStore
     };
     window.__AUTOFORM_DEVTOOLS_GLOBAL_HOOK__ = Vue.$autoform;
 }

@@ -5,3 +5,9 @@
 "@hfe/autoform@1.1.70":
   version "1.1.70"
   resolved "http://r.npm.sankuai.com/@hfe/autoform/download/@hfe/autoform-1.1.70.tgz#a288ff9fff7832871f80aa118a81e41056e716c5"
+
+"@hfe/autoform@1.1.77":
+  version "1.1.77"
+  resolved "http://r.npm.sankuai.com/@hfe/autoform/download/@hfe/autoform-1.1.77.tgz#87681b97c48bf66e6b02221ae7ea469d2b844283"
+  dependencies:
+    "@hfe/autoform" "1.1.70"

@@ -105,6 +105,32 @@
                 this.$refs['formEditor'].updateForm(layout, true);
             }
         },
+        mounted() {
+            let config = [
+                {
+                    name: '测测单选',
+                    tag: 'baifang',
+                    default: {
+                        key: 'radio',
+                        type: 'radio',
+                        templateOptions: {
+                            label: '测测单选',
+                            options: [
+                                {
+                                    label: '拜访小A',
+                                    value: 1
+                                },
+                                {
+                                    label: '拜访小B',
+                                    value: 0
+                                }
+                            ]
+                        }
+                    }
+                }
+            ];
+            this.$refs['formEditor'].setBasicConfig(config);
+        },
         autoform: {
             eventBus: {
                 displayFn(model, field, cb) {

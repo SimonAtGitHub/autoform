@@ -1,4 +1,4 @@
-/*eslint-disable */
+import viewport from 'autoform_editor/store/viewport';
 const exports = {
     fields: {},
     validationMessages: {}
@@ -84,4 +84,14 @@ export function setCache (component) {
     let vNode = component.$vnode;
     let model = component.model;
     sessionStorage.setItem(vNode.tag, JSON.stringify(model));
+}
+
+export function registerStore (store) {
+    if (!store) {
+        console.error('autoform editor 需要 vuex');
+        return;
+    }
+    if (!store.state.viewport) {
+        store.registerModule('viewport', viewport);
+    }
 }

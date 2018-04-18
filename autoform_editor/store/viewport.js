@@ -23,7 +23,7 @@ const viewport = {
     },
     mutations: {
         UpdateLayoutTree (state, {data = {}}) {
-            state.layoutTree = {};
+            state.layoutTree = null;
             state.layoutTree = data;
         },
         UpdateModel (state, {data = {}}) {
@@ -101,6 +101,13 @@ const viewport = {
                 }
             });
             commit('UpdateConfig', { config });
+        },
+        handleBasicConfig ({commit, state}, {config}) {
+            let _config = state.componentConfig;
+            config.forEach(item => {
+                _config[item.tag] ? _config[item.tag].push(item) : _config[item.tag] = [];
+            });
+            commit('UpdateConfig', { config: _config });
         }
     }
 };

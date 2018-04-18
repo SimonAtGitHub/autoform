@@ -80,16 +80,18 @@ export const registerDirWithConfig = (callback, name) => {
         return;
     }
     let fields = callback();
-
-    let regex = new RegExp('/', 'g');
-    let fieldskey = fields.keys().filter(key => {
-        return key.match(regex) && key.match(regex).length === 1;
+    let fieldskey = [];
+    fields.keys().forEach(key => {
+        if (key.match(/\/(\S*)\//) && key.match(/\/(\S*)\//)[1]) {
+            let dir = key.match(/\/(\S*)\//)[1];
+            if (fieldskey.indexOf(dir) === -1) {
+                fieldskey.push(dir);
+            }
+        }
     });
-
     fieldskey.forEach(key => {
-        let component = fields(key);
-        let config = fields(`${key}/description`).config;
-        let keyName = key.replace('./', '');
+        let component = fields(`./${key}/index`);
+        let config = fields(`./${key}/description`).config;
         let componentName = config.type;
         if (component.default) {
             component = component.default;

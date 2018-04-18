@@ -9,8 +9,10 @@
                     <component :is='`form_${field.type}`' :field="field" :to="field.templateOptions" :model="modelGetter"></component>
                 </el-form-item>
                 <div class="button-wrap">
-                    <el-button type="primary" icon="el-icon-edit" size="mini" @click="handleEdit(field)"></el-button>
-                    <el-button type="danger" icon="el-icon-delete" size="mini" @click="handleRemove(field.id)"></el-button>
+                    <el-button type="primary" size="small" @click="handleEdit(field)">编辑</el-button>
+                    <el-button type="danger" size="small" @click="handleRemove(field.id)">删除</el-button>
+                    <!--<el-button type="primary" icon="el-icon-edit" size="mini" @click="handleEdit(field)"></el-button>-->
+                    <!--<el-button type="danger" icon="el-icon-delete" size="mini" @click="handleRemove(field.id)"></el-button>-->
                 </div>
             </div>
         </el-form>
@@ -55,17 +57,20 @@
                 'sortLayoutTree',
                 'removeLayoutTree'
             ]),
+            //点击编辑，将field传入回调函数（editCb）
             handleEdit (field) {
                 this.config.editCb(field);
             },
+            //删除field
             handleRemove (id) {
-                this.removeLayoutTree({id})
+                this.removeLayoutTree({id});
             },
+            //保存时，通过回调函数（getSchemaCb）获取
             getSchema () {
                 let data = service.formatSchema(this.LayoutTreeGetter);
-                let config = this.componentConfigGetter;
                 this.config.getSchemaCb(data);
             },
+            //点击基础设置，将layout传入回调函数（editCb）
             layoutSet () {
                 this.config.editCb(this.LayoutTreeGetter.layout, true);
             }

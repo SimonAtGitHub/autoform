@@ -1,6 +1,6 @@
 {
   "name": "@hfe/autoform",
-  "version": "1.1.73",
+  "version": "1.1.77",
   "description": "",
   "main": "dist/lib/index.js",
   "scripts": {},
@@ -11,6 +11,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@hfe/autoform": "1.1.70"
+    "@hfe/autoform": "1.1.77"
   }
 }

@@ -6,6 +6,12 @@
   version "1.1.70"
   resolved "http://r.npm.sankuai.com/@hfe/autoform/download/@hfe/autoform-1.1.70.tgz#a288ff9fff7832871f80aa118a81e41056e716c5"
 
+"@hfe/autoform@1.1.77":
+  version "1.1.77"
+  resolved "http://r.npm.sankuai.com/@hfe/autoform/download/@hfe/autoform-1.1.77.tgz#87681b97c48bf66e6b02221ae7ea469d2b844283"
+  dependencies:
+    "@hfe/autoform" "1.1.70"
+
 "@hfe/autoform@^1.1.49":
   version "1.1.65"
   resolved "http://r.npm.sankuai.com/@hfe/autoform/download/@hfe/autoform-1.1.65.tgz#9cd038ba6ead31ecdda329444c146310a35bbdb2"
@@ -1598,9 +1604,9 @@ electron-to-chromium@^1.2.7, electron-to-chromium@^1.3.27:
   version "1.3.27"
   resolved "http://r.npm.sankuai.com/electron-to-chromium/download/electron-to-chromium-1.3.27.tgz#78ecb8a399066187bb374eede35d9c70565a803d"
 
-element-ui@^2.0.5:
-  version "2.0.11"
-  resolved "http://r.npm.sankuai.com/element-ui/download/element-ui-2.0.11.tgz#efc19d10270c13aa2b235f65bcb6ced3226550b8"
+element-ui@1.4.13:
+  version "1.4.13"
+  resolved "http://r.npm.sankuai.com/element-ui/download/element-ui-1.4.13.tgz#d0b055987af0cb937a1135babf4360ae80d4a121"
   dependencies:
     async-validator "~1.8.1"
     babel-helper-vue-jsx-merge-props "^2.0.0"

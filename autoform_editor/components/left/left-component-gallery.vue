@@ -2,19 +2,19 @@
     <div class="gallery-container" :style="{ flex: config.style.left || 1 }">
         <div class="gallery-wrap">
             <p>基础组件库</p>
-            <div class="tag-list" v-for="item in componentConfigGetter.basic" :key="item.type">
+            <div class="tag-list" v-for="item in componentConfigGetter.basic" :key="item.type" v-if="componentConfigGetter">
                 <div>{{item.name}}</div>
-                <el-tag size="small" type="danger" style="cursor: pointer;">
-                    <i class="el-icon-circle-plus-outline" @click="handleAddField(item)"></i>
-                </el-tag>
+                <el-button type="primary" size="mini" @click="handleAddField(item)">
+                    <i class="el-icon-plus"></i>
+                </el-button>
             </div>
 
             <p>自定义组件库</p>
-            <div class="tag-list" v-for="item in componentConfigGetter[config.name]" :key="item.type">
+            <div class="tag-list" v-for="item in componentConfigGetter[config.name]" :key="item.type" v-if="componentConfigGetter">
                 <div>{{item.name}}</div>
-                <el-tag size="small" type="danger" style="cursor: pointer;">
-                    <i class="el-icon-circle-plus-outline" @click="handleAddField(item)"></i>
-                </el-tag>
+                <el-button type="primary" size="mini" @click="handleAddField(item)">
+                    <i class="el-icon-plus"></i>
+                </el-button>
             </div>
         </div>
     </div>
