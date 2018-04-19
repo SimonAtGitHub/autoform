@@ -5,6 +5,10 @@ import abstractComponent from './utils/baseField';
 import AutoFormMixin from './utils/autoformMixin';
 import EventBus from './utils/eventBus';
 import registerCmp from 'autoform_editor/components/index'
+
+import validators, {registerValidators} from   './utils/validator'
+
+
 import viewport from 'autoform_editor/store/viewport'
 import {
     getTypes,
@@ -25,6 +29,7 @@ let AutoForm = {
     addType,
     addValidationMessage,
     abstractComponent,
+    registerValidators,
     install(Vue, store) {
         Directives(Vue);
         Components(Vue);
@@ -48,8 +53,8 @@ let AutoForm = {
             Register,
             RegisterDir,
             registerDirWithConfig,
-            registerStore
-
+            registerStore,
+            registerValidators
         };
         if (store && !store.state.viewport) {
             store.registerModule('viewport', viewport);
@@ -69,7 +74,8 @@ if (typeof window !== 'undefined' && window.Vue) {
         Register,
         RegisterDir,
         registerDirWithConfig,
-        registerStore
+        registerStore,
+        registerValidators
     };
     window.__AUTOFORM_DEVTOOLS_GLOBAL_HOOK__ = Vue.$autoform;
 }

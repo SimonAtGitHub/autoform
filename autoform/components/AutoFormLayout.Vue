@@ -46,6 +46,7 @@ export default {
                 <auto-form-field
                   ref={"form_" + field.key}
                   event-bus={this.eventBus}
+                  valid-lib={this.validLib}
                   model={this.model}
                   field={field}
                   key={"form_" + field.key}
@@ -66,6 +67,7 @@ export default {
                 <auto-form-field
                   ref={"form_" + field.key}
                   event-bus={this.eventBus}
+                  valid-lib={this.validLib}
                   model={this.model}
                   field={field}
                   key={"form_" + field.key}
@@ -92,6 +94,7 @@ export default {
                       <auto-form-field
                         ref={"form_" + field.key}
                         event-bus={this.eventBus}
+                        valid-lib={this.validLib}
                         model={this.model}
                         field={field}
                         key={"form_" + field.key}
@@ -117,6 +120,7 @@ export default {
                     <auto-form-field
                       ref={"form_" + field.key}
                       event-bus={this.eventBus}
+                      valid-lib={this.validLib}
                       model={this.model}
                       field={field}
                       key={"form_" + field.key}
@@ -147,6 +151,7 @@ export default {
                   span={this.layout.span}
                   inline={this.layout.inline}
                   event-bus={this.eventBus}
+                  valid-lib={this.validLib}
                 />
               );
             })}
@@ -165,6 +170,7 @@ export default {
                 span={this.layout.span}
                 inline={this.layout.inline}
                 event-bus={this.eventBus}
+                valid-lib={this.validLib}
               />
             );
           })}
@@ -197,7 +203,8 @@ export default {
           model: this.model,
           fields: this.fields,
           layout: this.layout,
-          eventBus: this.eventBus
+          eventBus: this.eventBus,
+          validLib: this.validLib
         };
 
         children.push(this.$scopedSlots.default({ ...props }));
@@ -231,6 +238,9 @@ export default {
     },
     eventBus: {
       default: null
+    },
+    validLib: {
+      default: {}
     }
   }
 };

@@ -17,15 +17,36 @@ export default {
     const vm = this
     const autoform = vm.$options.autoform;
     if (autoform) {
+      let c_autoform = [];
+      _deepChildren(vm, c_autoform);
+      //eventBus
       if (autoform.eventBus && typeof autoform.eventBus === 'object') {
-
-        let c_autoform = [];
-        _deepChildren(vm, c_autoform);
         //event  keys
-        Object.keys(autoform.eventBus).forEach(eventKey => {
-          c_autoform.forEach(item => {
-            item.eventBus.$on(eventKey, autoform.eventBus[eventKey].bind(vm));
+        Object
+          .keys(autoform.eventBus)
+          .forEach(eventKey => {
+            c_autoform.forEach(item => {
+              item
+                .eventBus
+                .$on(eventKey, autoform.eventBus[eventKey].bind(vm));
+            });
           });
+      }
+      //校验
+      if (autoform.validators && typeof autoform.validators === 'object') {
+        c_autoform.forEach(item => {
+          let format_validators = Object
+            .keys(autoform.validators)
+            .reduce((prev, nxt) => {
+              prev[nxt] = (str)=>{
+                return  {
+                  validator: autoform.validators[nxt],
+                  trigger: 'blur'
+                };
+              }
+              return prev;
+            }, {})
+          item.validLib = format_validators
         });
       }
     }

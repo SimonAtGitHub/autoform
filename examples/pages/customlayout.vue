@@ -4,7 +4,8 @@
     <auto-form ref="tagForm" :model="model1" :fields="fields1" :layout="layout">
      <template slot-scope="ops">
         <autoform-custom-field  :options.sync="ops" :field-key="'region'"></autoform-custom-field>
-        <autoform-custom-field  :options.sync="ops" :field-key="'name1'"></autoform-custom-field>
+        <autoform-custom-field  :options.sync="ops" :field-key="'name2'"></autoform-custom-field>
+         <autoform-custom-field  :options.sync="ops" :field-key="'name5'"></autoform-custom-field>
         <el-form-item style="float:right">
             <el-button type="primary">立即创建</el-button>
             <el-button @click="reset">取消</el-button>
@@ -20,6 +21,7 @@
 </template>
 
 <script>
+import Vue from "vue";
 export default {
   data() {
     return {
@@ -51,6 +53,19 @@ export default {
               readonly: false,
               onChange: "keyUpFn"
             },
+            validators: ["required:change:请选择活动名称"],
+            isWatch: true,
+            value: ""
+          },
+          {
+            key: "name5",
+            type: "input",
+            templateOptions: {
+              span: 8,
+              label: "自定义校验测试",
+              readonly: false,
+            },
+            validators: ["chkAge"],
             isWatch: true,
             value: ""
           },
@@ -218,6 +233,31 @@ export default {
       ],
       query$: {}
     };
+  },
+  autoform: {
+    eventBus: {
+      keyUpFn() {
+        console.log(11);
+      }
+    },
+    validators: {
+      chkAge(rule, value, callback) {
+        if (!value) {
+          return callback(new Error("年龄不能为空"));
+        }
+        setTimeout(() => {
+          if (!Number.isInteger(value)) {
+            callback(new Error("请输入数字值"));
+          } else {
+            if (value < 18) {
+              callback(new Error("必须年满18岁"));
+            } else {
+              callback();
+            }
+          }
+        }, 1000);
+      }
+    }
   },
   methods: {
     handleChange() {

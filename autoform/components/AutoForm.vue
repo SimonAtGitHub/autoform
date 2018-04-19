@@ -187,7 +187,8 @@
                 eventBus: null,
                 vModel: this.model,
                 vFields: this.fields,
-                vLayout: this.layout
+                vLayout: this.layout,
+                validLib:{}
             };
         },
         computed: {
@@ -307,6 +308,7 @@
                                     layout={this.vLayout}
                                     fields={this.vFields}
                                     eventBus={this.eventBus}
+                                    validLib={this.validLib}
                                     tabs={this.tabs}
                             >
                                 {this.$scopedSlots.default}
