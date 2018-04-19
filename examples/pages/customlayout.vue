@@ -5,7 +5,7 @@
      <template slot-scope="ops">
         <autoform-custom-field  :options.sync="ops" :field-key="'region'"></autoform-custom-field>
         <autoform-custom-field  :options.sync="ops" :field-key="'name2'"></autoform-custom-field>
-         <autoform-custom-field  :options.sync="ops" :field-key="'name5'"></autoform-custom-field>
+        <autoform-custom-field  :options.sync="ops" :field-key="'name5'"></autoform-custom-field>
         <el-form-item style="float:right">
             <el-button type="primary">立即创建</el-button>
             <el-button @click="reset">取消</el-button>
@@ -65,7 +65,7 @@ export default {
               label: "自定义校验测试",
               readonly: false,
             },
-            validators: ["chkAge"],
+            validators: ["chkAge:change"],
             isWatch: true,
             value: ""
           },
