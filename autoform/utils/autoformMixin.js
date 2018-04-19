@@ -24,7 +24,6 @@ export default {
       mountedEventBus(autoform, c_autoform, vm);
       mountedValidators(autoform, c_autoform, vm)
     }
-
   }
 }
 
@@ -46,7 +45,7 @@ function mountedEventBus(autoform, c_autoform, vm) {
   }
 }
 
-function mountedValidators(autoForm, c_autoform, vm) {
+function mountedValidators(autoform, c_autoform, vm) {
   //校验
   if (autoform.validators && typeof autoform.validators === 'object') {
     c_autoform.forEach(item => {
