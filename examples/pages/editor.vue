@@ -108,21 +108,51 @@
         mounted() {
             let config = [
                 {
-                    name: '测测单选',
+                    name: '拜访对象',
                     tag: 'baifang',
                     default: {
-                        key: 'radio',
+                        key: 'visit_object',
+                        type: 'input',
+                        templateOptions: {
+                            label: '拜访对象'
+                        }
+                    }
+                },
+                {
+                    name: '拜访对象2',
+                    tag: 'baifang',
+                    default: {
+                        key: 'visit_object2',
+                        type: 'input',
+                        templateOptions: {
+                            label: '拜访对象2'
+                        }
+                    }
+                },
+                {
+                    name: '拜访方式',
+                    tag: 'baifang',
+                    default: {
+                        key: 'visit_mode',
                         type: 'radio',
                         templateOptions: {
-                            label: '测测单选',
+                            label: '拜访方式',
                             options: [
                                 {
-                                    label: '拜访小A',
+                                    label: '电话',
                                     value: 1
                                 },
                                 {
-                                    label: '拜访小B',
-                                    value: 0
+                                    label: '上门',
+                                    value: 2
+                                },
+                                {
+                                    label: 'QQ',
+                                    value: 3
+                                },
+                                {
+                                    label: '邮件',
+                                    value: 4
                                 }
                             ]
                         }

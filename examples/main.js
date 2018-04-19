@@ -7,8 +7,8 @@ import 'element-ui/lib/theme-default/index.css';
 
 import store from './store'
 
-import AutoForm from 'autoform/dist/lib';
-// import AutoForm from 'autoform/index';
+// import AutoForm from 'autoform/dist/lib';
+import AutoForm from 'autoform/index';
 // import AutoForm from '@hfe/autoform';
 // import AutoForm_component_lib from
 // '../autoform_component_lib/index';
