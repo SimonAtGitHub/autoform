@@ -9,7 +9,7 @@ import store from './store'
 
 // import AutoForm from 'autoform/dist/lib';
 import AutoForm from 'autoform/index';
-// import AutoForm from '@hfe/autoform'; import AutoForm_component_lib from
+
 // '../autoform_component_lib/index';
 import AutoForm_component_lib from '@hfe/autoform_component_lib';
 // import AutoForm_component_lib from 'autoform_component_lib';

@@ -105,7 +105,7 @@ const viewport = {
         handleBasicConfig ({commit, state}, {config}) {
             let _config = state.componentConfig;
             config.forEach(item => {
-                _config[item.tag] ? _config[item.tag].push(item) : _config[item.tag] = [];
+                _config[item.tag] ? _config[item.tag].push(item) : _config[item.tag] = [item];
             });
             commit('UpdateConfig', { config: _config });
         }
