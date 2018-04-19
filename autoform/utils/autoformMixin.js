@@ -38,10 +38,11 @@ export default {
           let format_validators = Object
             .keys(autoform.validators)
             .reduce((prev, nxt) => {
+              //chkAge:change
               prev[nxt] = (str)=>{
                 return  {
                   validator: autoform.validators[nxt],
-                  trigger: 'blur'
+                  trigger: str.split(':')[1]|'change'
                 };
               }
               return prev;
