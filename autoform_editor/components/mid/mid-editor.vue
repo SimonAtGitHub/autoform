@@ -1,25 +1,15 @@
 <template>
-    <div class="viewport-container" :style="{ flex: config.style.right || 2}">
-        <div class="save-wrap">
-            <span>预览：<el-switch v-model="preview"></el-switch></span>
+    <div class="viewport-container">
+        <!--树展示-->
+        <div class="tree-wrap">
+            <tree :root="true" :config="config"></tree>
         </div>
-        <el-form id="viewport-list" v-show="LayoutTreeGetter.fields && !preview" :label-position="LayoutTreeGetter.layout.align||'left'" :label-width="LayoutTreeGetter.layout.labelWidth">
-            <div class="item-hover" v-for="field in LayoutTreeGetter.fields" :key="field.id" :data-id="field.id">
-                <el-form-item :label="field.templateOptions.label" :prop="field.key" :rules="field.validators">
-                    <component :is='`form_${field.type}`' :field="field" :to="field.templateOptions" :model="modelGetter"></component>
-                </el-form-item>
-                <div class="button-wrap">
-                    <el-button type="primary" size="small" @click="handleEdit(field)">编辑</el-button>
-                    <el-button type="danger" size="small" @click="handleRemove(field.id)">删除</el-button>
-                    <!--<el-button type="primary" icon="el-icon-edit" size="mini" @click="handleEdit(field)"></el-button>-->
-                    <!--<el-button type="danger" icon="el-icon-delete" size="mini" @click="handleRemove(field.id)"></el-button>-->
-                </div>
+        <!--预览模式-->
+        <div class="preview">
+            <div class="save-wrap">
+                <el-button type="default" @click="getSchema" size="small"><i class="el-icon-document"></i>保存</el-button>
             </div>
-        </el-form>
-        <auto-form ref="tagForm1" :model="LayoutTreeGetter.model" :fields="LayoutTreeGetter.fields" :layout="LayoutTreeGetter.layout" v-if="preview"></auto-form>
-        <div class="save-wrap">
-            <el-button type="primary" @click="layoutSet" size="mini">基础设置</el-button>
-            <el-button type="primary" @click="getSchema" size="mini">保存</el-button>
+            <auto-form ref="tagForm1" :model="model" :fields="fields" :layout="layoutGetter"></auto-form>
         </div>
     </div>
 </template>
@@ -27,72 +17,44 @@
 <script>
     import {mapGetters, mapActions} from 'vuex';
     import basicConfig from 'autoform_editor/components/mixin';
-    import { getTypes } from "autoform/utils";
-    import Sortable from 'sortablejs';
-    import service from '../service'
+    import service from '../service';
+    import tree from './tree';
     export default {
         data () {
             return {
-                model: {
-                    name: '123'
-                },
-                preview: false
+                model: {},
+                fields: [],
+                layout: {}
             }
         },
         mixins: [basicConfig],
         computed: {
             ...mapGetters('viewport', [
-                'LayoutTreeGetter',
+                'layoutGetter',
                 'modelGetter',
-                'componentConfigGetter'
+                'fieldsGetter'
             ])
         },
         watch: {
-//            LayoutTreeGetter (val) {
-//                console.log('LayoutTreeGetter', val);
-//            }
-        },
-        methods: {
-            ...mapActions('viewport', [
-                'sortLayoutTree',
-                'removeLayoutTree'
-            ]),
-            //点击编辑，将field传入回调函数（editCb）
-            handleEdit (field) {
-                this.config.editCb(field);
+            fieldsGetter (val) {
+                this.fields = JSON.parse(JSON.stringify(val));
             },
-            //删除field
-            handleRemove (id) {
-                this.removeLayoutTree({id});
-            },
-            //保存时，通过回调函数（getSchemaCb）获取
-            getSchema () {
-                let data = service.formatSchema(this.LayoutTreeGetter);
-                this.config.getSchemaCb(data);
-            },
-            //点击基础设置，将layout传入回调函数（editCb）
-            layoutSet () {
-                this.config.editCb(this.LayoutTreeGetter.layout, true);
+            modelGetter (val) {
+                this.model = JSON.parse(JSON.stringify(val));
             }
         },
-        components: getTypes(),
-        updated () {
-            let target = document.getElementById('viewport-list');
-            let sortbale = () => {
-                let order = sortable.toArray();
-                this.sortLayoutTree({order});
-            };
-            let sortable = Sortable.create(target, {
-                group: {
-                    name: 'mid-list',
-                    pull: false
-                },
-                dataIdAttr: 'data-id',
-                onEnd (event) {
-                    sortbale();
-                }
-            });
-        }
+        methods: {
+            //保存时，通过回调函数（getSchemaCb）获取
+            getSchema () {
+                let result = {
+                    model: this.modelGetter,
+                    fields: service.formatSchema(this.fieldsGetter),
+                    layout: this.layoutGetter,
+                };
+                this.config.getSchemaCb(result);
+            }
+        },
+        components: { tree }
     }
 </script>
 
@@ -100,16 +62,31 @@
     .viewport-container {
         flex: 2;
         position: relative;
+        font-size: 14px;
+        color: #48576a;
+        display: flex;
+        > div {
+            padding: 10px;
+            flex: 1;
+            &.tree-wrap {
+                flex: 0 0 150px;
+                background-color: #F7F7F7;
+                padding-left: 30px;
+                border-right: 1px solid #ccc;
+            }
+        }
     }
     .item-hover {
 
         display: flex;
         justify-content: space-between;
         .el-form-item {
-            flex: 0 0 80%;
+            flex: 1;
+            padding-right: 30px;
         }
         .button-wrap {
-            flex: 1;
+            flex: 0 0 100px;
+            padding: 5px;
         }
 
     }
@@ -117,5 +94,6 @@
         display: flex;
         justify-content: flex-end;
         padding-bottom: 10px;
+        border-bottom: 1px;
     }
 </style>

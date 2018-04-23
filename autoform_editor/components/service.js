@@ -1,10 +1,10 @@
 let fn = {
-    formatSchema (data) {
-        let _data = JSON.parse(JSON.stringify(data));
-        _data.fields.forEach(field => {
+    formatSchema (fields) {
+        let _fields = JSON.parse(JSON.stringify(fields));
+        _fields.forEach(field => {
             delete field.id
         });
-        return _data;
+        return _fields;
     }
 };
 
