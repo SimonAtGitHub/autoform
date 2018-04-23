@@ -11,8 +11,7 @@
 <script>
 import Gallery from "./left/left-component-gallery";
 import Viewport from "./mid/mid-editor";
-import PropsEditor from "./right/right-prop-editor";
-import {mapState, mapActions, mapGetters} from 'vuex';
+import {mapActions, mapGetters} from 'vuex';
 import { getTypes } from "autoform/utils";
 import basicConfig from 'autoform_editor/components/mixin'
 export default {
@@ -24,9 +23,7 @@ export default {
     },
     methods: {
         ...mapActions('viewport', [
-            'handleComponents'
-        ]),
-        ...mapActions('viewport', [
+            'handleComponents',
             'getLayoutTree',
             'editLayoutTree',
             'handleBasicConfig'
@@ -38,23 +35,17 @@ export default {
         //设置基础组件自定义选项
         setBasicConfig (config) {
             this.handleBasicConfig({config});
-        }
-    },
-    watch: {
-        componentConfigGetter (val) {
+        },
+        //设置基础组件自定义选项
+        getConfig () {
             this.config.getConfig(this.componentConfigGetter);
         }
     },
     mounted () {
         this.handleComponents({data: getTypes()});
         this.getLayoutTree({data: this.config.schema});
-        this.config.getConfig(this.componentConfigGetter);
     },
-    components: {
-    Gallery,
-    Viewport,
-    PropsEditor
-  }
+    components: { Gallery, Viewport }
 };
 </script>
 
@@ -62,13 +53,11 @@ export default {
 
     .editor-container{
         display: flex;
+        border: 1px solid #bfcbd9;
     }
 
     .editor-container > div {
-        padding: 20px;
-        margin: 10px;
-        border: 1px solid #ccc;
-        min-height: 50vh;
+        min-height: 80vh;
     }
 
 </style>

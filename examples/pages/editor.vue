@@ -3,7 +3,7 @@
     <div>
         <div class="edit-wrap">
             <autoform-editor ref="formEditor" :config="config"></autoform-editor>
-            <div>
+            <div style="padding: 10px;">
                 <el-input type="textarea" v-model="itemData" :rows="20"></el-input>
                 <el-button @click="changeField()">测试filed</el-button>
                 <el-button @click="changeLayout()">测试layout</el-button>
@@ -33,11 +33,7 @@
                                 type: 'input',
                                 templateOptions: {
                                     label: 'label名称'
-                                },
-                                validators: [
-                                    {required: true, message: '请输入活动名称', trigger: 'blur'},
-                                    {min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur'}
-                                ]
+                                }
                             },
                             {
                                 key: 'region',
@@ -70,10 +66,6 @@
                             region: 'beijing'
                         }
                     },
-                    style: {
-                        left: 1,
-                        right: 3
-                    },
                     editCb: callback,
                     getSchemaCb: getSchemaCb,
                     getConfig: getConfig
@@ -85,7 +77,7 @@
             changeField() {
                 let field = {
                     key: "name",
-                    id: 0,
+                    id: 2,
                     type: "baifang_input",
                     templateOptions: {
                         span: 8,

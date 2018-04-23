@@ -1,96 +1,122 @@
 const viewport = {
     namespaced: true,
     state: {
-        layoutTree: {
-            layout: {},
-            fields: [],
-            model: {}
-        },
+        layout: {},
+        fields: [],
         model: {},
         componentConfig: {},
-        index: 0
+        index: 0,
+        fieldId: 0 //暂存拖拽id
     },
     getters: {
-        LayoutTreeGetter (state) {
-            return state.layoutTree;
+        componentConfigGetter (state) {
+            return state.componentConfig;
+        },
+        layoutGetter (state) {
+            return state.layout;
+        },
+        fieldsGetter (state) {
+            return state.fields;
         },
         modelGetter (state) {
             return state.model;
-        },
-        componentConfigGetter (state) {
-            return state.componentConfig;
         }
     },
     mutations: {
-        UpdateLayoutTree (state, {data = {}}) {
-            state.layoutTree = null;
-            state.layoutTree = data;
-        },
-        UpdateModel (state, {data = {}}) {
-            state.model = data;
-        },
         UpdateConfig (state, {config = {}}) {
             state.componentConfig = null;
             state.componentConfig = config;
+        },
+        updateFieldId (state, {fieldId = 0}) {
+            state.fieldId = fieldId;
+        },
+        updateModel (state, {model = {}}) {
+            state.model = null;
+            state.model = model;
+        },
+        updateLayout (state, {layout = {}}) {
+            state.layout = null;
+            state.layout = layout;
+        },
+        updateField (state, {fields = []}) {
+            state.fields = null;
+            state.fields = fields;
         }
     },
     actions: {
+        //获取field，model，layout
         getLayoutTree ({commit, state}, {data}) {
             data.fields.map((item, index) => {
                 item['id'] = index;
                 state.index = index;
             });
-            commit('UpdateLayoutTree', { data });
-            commit('UpdateModel', { data: data.model });
+            commit('updateField', { fields: data.fields});
+            commit('updateModel', { model: data.model });
+            commit('updateLayout', { layout: data.layout });
         },
-        sortLayoutTree ({state, commit}, {order}) {
-            let result = [];
-            let data = state.layoutTree;
-            order.map(item => {
-                result.push(data.fields.find(field => field.id === Number(item)))
-            });
-            data.fields = result;
-            commit('UpdateLayoutTree', { data });
-        },
+        //新增fields和model
         addLayoutTree ({state, commit}, {data}) {
-            let _layoutTree = state.layoutTree;
             let _data = JSON.parse(JSON.stringify(data));
+            //id递增
             state.index ++;
             _data.id = state.index;
-            let modelList = Object.keys(_layoutTree.model);
+            //避免field重复key
+            let modelList = Object.keys(state.model);
             if(modelList.indexOf(data.key) > -1) {
                 _data.key = `${_data.key}${_data.id}`;
             }
-            _layoutTree.model[_data.key] = data.value || null;
-            _layoutTree.fields.push(_data);
-
-            commit('UpdateLayoutTree', { data: _layoutTree });
+            //改变fields和model
+            state.fields.push(_data);
+            state.model[_data.key] = data.value || null;
         },
+        //删除fields和model中的某一项
         removeLayoutTree ({state, commit}, {id}) {
-            let _layoutTree = state.layoutTree;
-            let spliceIndex = -1;
-            _layoutTree.fields.forEach((item, index) => {
+            let removeFileds = {};
+            //根据id 删除fields
+            state.fields.forEach((item, index) => {
                 if ( Number(item.id) === Number(id)) {
-                    spliceIndex = index;
+                    removeFileds = item;
+                    state.fields.splice(index, 1);
                 }
             });
-            delete _layoutTree.model[_layoutTree.fields[spliceIndex].key];
-            _layoutTree.fields.splice(spliceIndex, 1);
-            commit('UpdateLayoutTree', { data: _layoutTree });
+            //删除model对应的key
+            delete state.model[removeFileds.key];
         },
+        //更新layout 或者 fields的某一项
         editLayoutTree ({state, commit}, {field, isLayout}) {
-            let _layoutTree = state.layoutTree;
             if (!isLayout) {
-                _layoutTree.fields.forEach((item, index) => {
+                state.fields.forEach((item, index) => {
                     if (item.id === field.id) {
-                        _layoutTree.fields[index] = field;
+                        state.fields[index] = field;
                     }
                 });
             } else {
-                _layoutTree.layout = field;
+                state.layout = field;
             }
-            commit('UpdateLayoutTree', { data: _layoutTree });
+            commit('updateField', {fields: state.fields});
         },
+        //拖拽后重新排序(fileds)
+        reSortLayoutTree ({state}, {fieldId = 0, end = false}) {
+            let dragItem = {};
+            let index = 0;
+            state.fields.forEach((item, index) => {
+                if (item.id === state.fieldId) {
+                    dragItem = item;
+                    state.fields.splice(index, 1);
+                }
+            });
+            state.fields.forEach((item, idx) => {
+                if (item.id === fieldId) {
+                    index = idx;
+                }
+            });
+            if (end) {
+                state.fields.push(dragItem);
+            } else {
+                state.fields.splice(index, 0, dragItem);
+            }
+        },
+        //组装左侧组件库需要的config
         handleComponents ({ commit }, { data }) {
             let config = {};
             let componentKeys = Object.keys(data);
@@ -102,6 +128,7 @@ const viewport = {
             });
             commit('UpdateConfig', { config });
         },
+        //自定义基础组件配置
         handleBasicConfig ({commit, state}, {config}) {
             let _config = state.componentConfig;
             config.forEach(item => {
