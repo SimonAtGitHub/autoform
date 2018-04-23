@@ -4,20 +4,33 @@
 import Util, { getTypes, setError, parseValidationString } from "../utils";
 import validators from "../utils/validator/index";
 export default {
-  props: ["layout", "model", "field", "to", "span", "inline", "eventBus","validLib"],
+  props: [
+    "layout",
+    "model",
+    "field",
+    "to",
+    "span",
+    "inline",
+    "eventBus",
+    "validLib"
+  ],
   computed: {
     type: function() {
       return "form_" + this.field.type;
     },
-    rules: function() {  //校验过滤
+    rules: function() {
+      //校验过滤
       let rules = [];
-    
-      let _validLib=Object.assign(validators,this.validLib)
-      
+      let _validLib = Object.assign(validators, this.validLib);
+
       rules = (this.field.validators || []).map(item => {
-        let valid_name = item.split(":")[0];
-        return _validLib[valid_name](item);
+        if (typeof item === "string") {  //如果是 string 就是校验库
+          let valid_name = item.split(":")[0];
+          return _validLib[valid_name](item);
+        }
+        return item;
       });
+
       return rules;
     }
   },

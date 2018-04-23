@@ -68,59 +68,59 @@
                 return !!window.__AUTOFORM_DEVTOOLS_GLOBAL_HOOK__;
             },
             __DEV_TOOL__() {
-                let self = this;
-                window.addEventListener("message", e => {
-                    if (e.source === window && e.data.type === "devtool-data-update") {
-                        if (!this._q(self.vModel, e.data.data.model)) {
-                            self.vModel = e.data.data.model;
-                        }
-                        if (!this._q(self.vFields, e.data.data.fields)) {
-                            self.vFields = e.data.data.fields;
-                        }
+                // let self = this;
+                // window.addEventListener("message", e => {
+                //     if (e.source === window && e.data.type === "devtool-data-update") {
+                //         if (!this._q(self.vModel, e.data.data.model)) {
+                //             self.vModel = e.data.data.model;
+                //         }
+                //         if (!this._q(self.vFields, e.data.data.fields)) {
+                //             self.vFields = e.data.data.fields;
+                //         }
 
-                        if (!this._q(self.vLayout, e.data.data.layout)) {
-                            //如果是inline并且为二维数组要变回来
-                            if (
-                                e.data.data.layout.inline !== self.vLayout.inline &&
-                                e.data.data.layout.inline === false &&
-                                self.___oldFields
-                            ) {
-                                self.vFields = self.___oldFields;
-                            } else if (
-                                e.data.data.layout.inline !== self.vLayout.inline &&
-                                e.data.data.layout.inline === true
-                            ) {
-                                self.vLayout.inline = true;
-                                self._inline_flat_FieldArray();
-                            }
-                            self.vLayout = e.data.data.layout;
-                        }
-                    }
-                });
+                //         if (!this._q(self.vLayout, e.data.data.layout)) {
+                //             //如果是inline并且为二维数组要变回来
+                //             if (
+                //                 e.data.data.layout.inline !== self.vLayout.inline &&
+                //                 e.data.data.layout.inline === false &&
+                //                 self.___oldFields
+                //             ) {
+                //                 self.vFields = self.___oldFields;
+                //             } else if (
+                //                 e.data.data.layout.inline !== self.vLayout.inline &&
+                //                 e.data.data.layout.inline === true
+                //             ) {
+                //                 self.vLayout.inline = true;
+                //                 self._inline_flat_FieldArray();
+                //             }
+                //             self.vLayout = e.data.data.layout;
+                //         }
+                //     }
+                // });
 
-                setTimeout(function () {
-                    const $autoForm = self.___IS__DEV__();
-                    if ($autoForm) {
-                        let data = {
-                            model: self.model,
-                            layout: self.layout,
-                            fields: self.fields
-                        };
-                        try {
-                            window.postMessage(
-                                {
-                                    type: "init",
-                                    data
-                                },
-                                "*"
-                            );
-                        } catch (e) {
-                            console.warn("devTool参数传递出错(window.postMessage)", e);
-                        }
-                    } else {
-                        console.log("未安装devtool");
-                    }
-                }, 500);
+                // setTimeout(function () {
+                //     const $autoForm = self.___IS__DEV__();
+                //     if ($autoForm) {
+                //         let data = {
+                //             model: self.model,
+                //             layout: self.layout,
+                //             fields: self.fields
+                //         };
+                //         try {
+                //             window.postMessage(
+                //                 {
+                //                     type: "init",
+                //                     data
+                //                 },
+                //                 "*"
+                //             );
+                //         } catch (e) {
+                //             console.warn("devTool参数传递出错(window.postMessage)", e);
+                //         }
+                //     } else {
+                //         console.log("未安装devtool");
+                //     }
+                // }, 500);
             },
             _inline_flat_FieldArray() {
                 if (this.vLayout.inline && this.isFieldArray2d) {
