@@ -7,6 +7,7 @@
                 <el-input type="textarea" v-model="itemData" :rows="20"></el-input>
                 <el-button @click="changeField()">测试filed</el-button>
                 <el-button @click="changeLayout()">测试layout</el-button>
+                <el-button @click="getFields()">获取fields</el-button>
             </div>
         </div>
     </div>
@@ -95,6 +96,9 @@
                     span: 24
                 };
                 this.$refs['formEditor'].updateForm(layout, true);
+            },
+            getFields () {
+                console.log(this.$refs['formEditor'].getFields());
             }
         },
         mounted() {

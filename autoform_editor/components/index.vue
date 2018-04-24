@@ -18,7 +18,10 @@ export default {
     mixins: [basicConfig],
     computed: {
         ...mapGetters('viewport', [
-            'componentConfigGetter'
+            'componentConfigGetter',
+            'layoutGetter',
+            'modelGetter',
+            'fieldsGetter'
         ])
     },
     methods: {
@@ -36,9 +39,13 @@ export default {
         setBasicConfig (config) {
             this.handleBasicConfig({config});
         },
-        //设置基础组件自定义选项
+        //【用户】获取config
         getConfig () {
             this.config.getConfig(this.componentConfigGetter);
+        },
+        //【用户】获取fields
+        getFields () {
+            return this.fieldsGetter;
         }
     },
     mounted () {
