@@ -28,7 +28,7 @@
                         <p v-text="field.templateOptions.label"></p>
                         <input type="text" v-model="field.templateOptions.label">
                     </div>
-                    <div class="remove" @click.stop="_remove(field.id)">
+                    <div class="remove" @click.stop="_remove(field)">
                         <a>×</a>
                     </div>
                 </div>
@@ -40,7 +40,7 @@
                                 <div class="slot-end-point"></div>
                                 <div class="slot-drag-area drag-area">
                                     <tree :root="false" v-for="(field, index) in fieldsGetter" :key="field.id"
-                                          :field="field" :index="index" :config="config"></tree>
+                                          :field="field" :index="index" :config="config" :eventBus="eventBus"></tree>
                                 </div>
                             </div>
                         </div>
@@ -114,6 +114,7 @@
                     e.target.classList.remove('dragstop');
                 }
             },
+            /* 拖拽释放 */
             _drop(e, fieldId, end) {
                 // 拖拽效果
                 e.dataTransfer.dropEffect = "move";
@@ -132,12 +133,21 @@
                 this.updateFieldId({fieldId: fieldId});
             },
             /* 删除节点 */
-            _remove(id) {
-                this.removeLayoutTree({id});
+            _remove(item) {
+                let cb = (status) => {
+                    if (status) {
+                        this.removeLayoutTree({id: item.id});
+                    }
+                };
+                if (this.eventBus._events.handleChangeField) {
+                    this.eventBus.$emit('handleChangeField', item, this.fieldsGetter, 2, cb);
+                } else {
+                    this.removeLayoutTree({id: item.id});
+                }
             },
             /* 选择节点 */
             _select(e, field) {
-                this.config.editCb(field);
+                this.eventBus.$emit('handleEditField', field);
             },
             //点击基础设置，将layout传入回调函数（editCb）
             _layoutSet() {

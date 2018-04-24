@@ -2,12 +2,17 @@
 <template>
     <div>
         <div class="edit-wrap">
-            <autoform-editor ref="formEditor" :config="config"></autoform-editor>
+            <autoform-editor ref="formEditor"
+                             :config="config"
+                             @handleSave="handleSave"
+                             @handleEditField="handleEditField">
+            </autoform-editor>
             <div style="padding: 10px;">
                 <el-input type="textarea" v-model="itemData" :rows="20"></el-input>
                 <el-button @click="changeField()">测试filed</el-button>
                 <el-button @click="changeLayout()">测试layout</el-button>
                 <el-button @click="getFields()">获取fields</el-button>
+                <el-button @click="handleConfig()">获取config</el-button>
             </div>
         </div>
     </div>
@@ -15,15 +20,6 @@
 <script>
     export default {
         data() {
-            let callback = (data) => {
-                this.itemData = JSON.stringify(data);
-            };
-            let getSchemaCb = (data) => {
-                console.log('getSchemaCb', data);
-            };
-            let getConfig = (data) => {
-                console.log('getConfig', data);
-            };
             return {
                 config: {
                     name: 'baifang',
@@ -66,15 +62,30 @@
                             name: '拜访人员',
                             region: 'beijing'
                         }
-                    },
-                    editCb: callback,
-                    getSchemaCb: getSchemaCb,
-                    getConfig: getConfig
+                    }
                 },
                 itemData: ''
             };
         },
         methods: {
+            /* 保存 */
+            handleSave (data) {
+                console.log('handleSave', data);
+            },
+            /* 获取config */
+            handleConfig () {
+                console.log('handleConfig', this.$refs['formEditor'].getConfig());
+            },
+            /* 改变field */
+            handleEditField (data) {
+                console.log('handleEditField', data);
+            },
+            /* 新增或删除field */
+            handleChangeField (field, fields, type, cb) {
+                console.log(field, fields, type);
+                //cb:true 可以添加
+                cb(1);
+            },
             changeField() {
                 let field = {
                     key: "name",
@@ -156,17 +167,6 @@
                 }
             ];
             this.$refs['formEditor'].setBasicConfig(config);
-        },
-        autoform: {
-            eventBus: {
-                displayFn(model, field, cb) {
-                    if (model.status) {
-                        cb(true);
-                    } else {
-                        cb(false);
-                    }
-                }
-            }
         }
     };
 </script>
