@@ -1,8 +1,8 @@
 <template>
   
     <div class="editor-container">
-        <gallery :config="config"></gallery>
-        <viewport :config="config"></viewport>
+        <gallery :config="config" :eventBus="eventBus"></gallery>
+        <viewport :config="config" :eventBus="eventBus"></viewport>
         <!--<props-editor :config="config"></props-editor>-->
     </div>
 
@@ -13,9 +13,9 @@ import Gallery from "./left/left-component-gallery";
 import Viewport from "./mid/mid-editor";
 import {mapActions, mapGetters} from 'vuex';
 import { getTypes } from "autoform/utils";
-import basicConfig from 'autoform_editor/components/mixin'
+import EventBus from "autoform/utils/eventBus";
 export default {
-    mixins: [basicConfig],
+    props: ['config'],
     computed: {
         ...mapGetters('viewport', [
             'componentConfigGetter',
@@ -23,6 +23,11 @@ export default {
             'modelGetter',
             'fieldsGetter'
         ])
+    },
+    data () {
+        return {
+            eventBus: null
+        }
     },
     methods: {
         ...mapActions('viewport', [
@@ -41,7 +46,7 @@ export default {
         },
         //【用户】获取config
         getConfig () {
-            this.config.getConfig(this.componentConfigGetter);
+            return this.componentConfigGetter;
         },
         //【用户】获取fields
         getFields () {
@@ -51,6 +56,23 @@ export default {
     mounted () {
         this.handleComponents({data: getTypes()});
         this.getLayoutTree({data: this.config.schema});
+    },
+    created () {
+        this.eventBus = EventBus();
+        // 【注册】保存
+        this.eventBus.$on('handleSave', (data) => {
+            this.$emit('handleSave', data);
+        });
+        // 【注册】修改获取field
+        this.eventBus.$on('handleEditField', (data) => {
+            this.$emit('handleEditField', data);
+        });
+        // 【注册】新增或删除field
+        if (this._events.handleChangeField) {
+            this.eventBus.$on('handleChangeField', (field, fields, type, cb) => {
+                this.$emit('handleChangeField', field, fields, type, cb);
+            });
+        }
     },
     components: { Gallery, Viewport }
 };

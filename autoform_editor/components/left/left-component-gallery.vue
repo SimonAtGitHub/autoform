@@ -42,7 +42,8 @@
         },
         computed: {
             ...mapGetters('viewport', [
-                'componentConfigGetter'
+                'componentConfigGetter',
+                'fieldsGetter'
             ])
         },
         methods: {
@@ -50,7 +51,16 @@
                 'addLayoutTree'
             ]),
             handleAddField(item) {
-                this.addLayoutTree({data: item.default});
+                let cb = (status) => {
+                    if (status) {
+                        this.addLayoutTree({data: item.default});
+                    }
+                };
+                if (this.eventBus._events.handleChangeField) {
+                    this.eventBus.$emit('handleChangeField', item, this.fieldsGetter, 1, cb);
+                } else {
+                    this.addLayoutTree({data: item.default});
+                }
             },
             handleOpen (item) {
                 this.openStatus[item] = !this.openStatus[item];

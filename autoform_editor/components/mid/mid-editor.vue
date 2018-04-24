@@ -2,7 +2,7 @@
     <div class="viewport-container">
         <!--树展示-->
         <div class="tree-wrap">
-            <tree :root="true" :config="config"></tree>
+            <tree :root="true" :config="config" :eventBus="eventBus"></tree>
         </div>
         <!--预览模式-->
         <div class="preview">
@@ -44,14 +44,14 @@
             }
         },
         methods: {
-            //保存时，通过回调函数（getSchemaCb）获取
+            //保存时，通过事件（handleSave）获取
             getSchema () {
                 let result = {
                     model: this.modelGetter,
                     fields: service.formatSchema(this.fieldsGetter),
-                    layout: this.layoutGetter,
+                    layout: this.layoutGetter
                 };
-                this.config.getSchemaCb(result);
+                this.eventBus.$emit('handleSave', result);
             }
         },
         components: { tree }

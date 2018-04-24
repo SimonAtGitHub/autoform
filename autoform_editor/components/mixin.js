@@ -1,3 +1,3 @@
 export default {
-    props: ['config']
+    props: ['config', 'eventBus']
 }
