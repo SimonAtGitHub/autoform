@@ -5,7 +5,8 @@
             <autoform-editor ref="formEditor"
                              :config="config"
                              @handleSave="handleSave"
-                             @handleChangeField="handleChangeField"
+                             @handleBeforeChangeField="handleBeforeChangeField"
+                             @handleAfterChangeField="handleAfterChangeField"
                              @handleEditField="handleEditField">
             </autoform-editor>
             <div style="padding: 10px;">
@@ -35,7 +36,7 @@
                             },
                             {
                                 key: 'region',
-                                type: 'select',
+                                type: 'checkbox',
                                 templateOptions: {
                                     label: '活动区域',
                                     placeholder: '请选择活动区域',
@@ -50,7 +51,7 @@
                                         }
                                     ]
                                 },
-                                value: ''
+                                value: []
                             },
                         ],
                         layout: {
@@ -61,7 +62,7 @@
                         },
                         model: {
                             name: '拜访人员',
-                            region: 'beijing'
+                            region: []
                         }
                     }
                 },
@@ -82,16 +83,20 @@
                 console.log('handleEditField', data);
             },
             /* 新增或删除field */
-            handleChangeField (field, fields, type, cb) {
-                console.log(field, fields, type);
+            handleBeforeChangeField (field, fields, type, cb) {
+                console.log('handleBeforeChangeField', field, fields, type);
                 //cb:true 可以添加
                 cb(1);
+            },
+            /* 新增field之后 */
+            handleAfterChangeField (field) {
+                console.log('handleAfterChangeField', field);
             },
             /* 改变field */
             changeField() {
                 let field = {
                     key: 'visit_mode',
-                    type: 'radio',
+                    type: 'checkbox',
                     id: 2,
                     templateOptions: {
                         label: 'hello',
@@ -131,7 +136,7 @@
                     tag: 'baifang',
                     default: {
                         key: 'visit_mode',
-                        type: 'radio',
+                        type: 'checkbox',
                         templateOptions: {
                             label: '拜访方式',
                             options: [
@@ -152,11 +157,53 @@
                                     value: 4
                                 }
                             ]
-                        }
+                        },
+                        value: []
+                    }
+                },
+                {
+                    name: 'checkboxLabel',
+                    tag: 'baifang',
+                    default: {
+                        key: 'ccc',
+                        type: 'checkbox',
+                        templateOptions: {
+                            label: '活动性质',
+                            options: [
+                                {
+                                    label: '美食/餐厅线上活动',
+                                    value: '美食/餐厅线上活动'
+                                },
+                                {
+                                    label: '地推活动',
+                                    value: '地推活动'
+                                },
+                                {
+                                    label: '线下主题活动',
+                                    value: '线下主题活动'
+                                },
+                                {
+                                    label: '单纯品牌曝光',
+                                    value: '单纯品牌曝光'
+                                }
+                            ],
+                            onChange: 'handleChange2'
+                        },
+                        value: []
                     }
                 }
             ];
             this.$refs['formEditor'].setBasicConfig(config);
+        },
+        autoform: {
+            eventBus: {
+                handleChange1(value, options, field) {
+                    console.log(value, options, field);
+                },
+                handleChange2(value, options, field) {
+                    console.log(value, options, field);
+                }
+            }
         }
     };
 </script>

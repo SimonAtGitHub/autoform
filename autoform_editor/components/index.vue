@@ -68,9 +68,15 @@ export default {
             this.$emit('handleEditField', data);
         });
         // 【注册】新增或删除field
-        if (this._events.handleChangeField) {
-            this.eventBus.$on('handleChangeField', (field, fields, type, cb) => {
-                this.$emit('handleChangeField', field, fields, type, cb);
+        if (this._events.handleBeforeChangeField) {
+            this.eventBus.$on('handleBeforeChangeField', (field, fields, type, cb) => {
+                this.$emit('handleBeforeChangeField', field, fields, type, cb);
+            });
+        }
+        // 【注册】新增field 之后触发
+        if (this._events.handleAfterChangeField) {
+            this.eventBus.$on('handleAfterChangeField', (field) => {
+                this.$emit('handleAfterChangeField', field);
             });
         }
     },
