@@ -68,6 +68,9 @@ const viewport = {
             //改变fields和model
             state.fields.push(_data);
             state.model[_data.key] = data.value || null;
+            commit('updateModel', {model: state.model});
+
+            return _data;
         },
         //删除fields和model中的某一项
         removeLayoutTree ({state, commit}, {id}) {

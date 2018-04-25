@@ -4,15 +4,14 @@ import App from './App';
 import ElementUI from 'element-ui';
 // import 'element-ui/lib/theme-chalk/index.css';
 import 'element-ui/lib/theme-default/index.css';
-
-import store from './store'
+import store from './store';
 
 // import AutoForm from 'autoform/dist/lib';
 import AutoForm from 'autoform/index';
 
 // '../autoform_component_lib/index';
-import AutoForm_component_lib from '@hfe/autoform_component_lib';
-// import AutoForm_component_lib from 'autoform_component_lib';
+// import AutoForm_component_lib from '@hfe/autoform_component_lib';
+import AutoForm_component_lib from 'autoform_component_lib';
 
 import router from './router'
 import Hello from './components/cHello.vue';

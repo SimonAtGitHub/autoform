@@ -24,7 +24,35 @@
     export default {
         mixins: [basicComponent],
         name: 'cCheckbox',
-        icon: 'el-icon-edit'
+        icon: 'el-icon-edit',
+        data() {
+            return {
+                options: []
+            };
+        },
+        created() {
+            if (this.to.options) {
+                this.options = this.to.options;
+            }
+        },
+        watch: {
+            to(val) {
+                if (val.options) {
+                    this.options = val.options;
+                }
+            }
+        },
+        methods: {
+            //label  value
+            initOptions(ds) {
+                this.options = ds;
+            }
+        },
+        mounted() {
+            if (typeof this.to.initOptionsKey === "string") {
+                this.eventBus.$on(this.to.initOptionsKey, this.initOptions);
+            }
+        }
     };
 </script>
 

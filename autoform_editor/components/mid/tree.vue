@@ -139,8 +139,8 @@
                         this.removeLayoutTree({id: item.id});
                     }
                 };
-                if (this.eventBus._events.handleChangeField) {
-                    this.eventBus.$emit('handleChangeField', item, this.fieldsGetter, 2, cb);
+                if (this.eventBus._events.handleBeforeChangeField) {
+                    this.eventBus.$emit('handleBeforeChangeField', item, this.fieldsGetter, 2, cb);
                 } else {
                     this.removeLayoutTree({id: item.id});
                 }
@@ -151,7 +151,7 @@
             },
             //点击基础设置，将layout传入回调函数（editCb）
             _layoutSet() {
-                this.config.editCb(this.layoutGetter, true);
+                this.eventBus.$emit('handleEditField', this.layoutGetter, true);
             }
         }
     }

@@ -53,14 +53,23 @@
             handleAddField(item) {
                 let cb = (status) => {
                     if (status) {
-                        this.addLayoutTree({data: item.default});
+                        this._handleAddField(item);
                     }
                 };
-                if (this.eventBus._events.handleChangeField) {
-                    this.eventBus.$emit('handleChangeField', item, this.fieldsGetter, 1, cb);
+                if (this.eventBus._events.handleBeforeChangeField) {
+                    this.eventBus.$emit('handleBeforeChangeField', item, this.fieldsGetter, 1, cb);
                 } else {
-                    this.addLayoutTree({data: item.default});
+                    this._handleAddField(item);
                 }
+
+            },
+            _handleAddField (item) {
+                this.addLayoutTree({data: item.default})
+                    .then(res => {
+                        if (this.eventBus._events.handleAfterChangeField) {
+                            this.eventBus.$emit('handleAfterChangeField', res);
+                        }
+                    })
             },
             handleOpen (item) {
                 this.openStatus[item] = !this.openStatus[item];
