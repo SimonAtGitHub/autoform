@@ -42,6 +42,13 @@ export default {
       this.options = this.to.options;
     }
   },
+//    watch: {
+//        to (val) {
+//            if (val.options) {
+//                this.options = val.options;
+//            }
+//        }
+//    },
   methods: {
     //label  value
     initOptions(ds) {

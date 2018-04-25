@@ -5,6 +5,7 @@
             <autoform-editor ref="formEditor"
                              :config="config"
                              @handleSave="handleSave"
+                             @handleChangeField="handleChangeField"
                              @handleEditField="handleEditField">
             </autoform-editor>
             <div style="padding: 10px;">
@@ -76,7 +77,7 @@
             handleConfig () {
                 console.log('handleConfig', this.$refs['formEditor'].getConfig());
             },
-            /* 改变field */
+            /* 获取需要改变的field */
             handleEditField (data) {
                 console.log('handleEditField', data);
             },
@@ -86,19 +87,29 @@
                 //cb:true 可以添加
                 cb(1);
             },
+            /* 改变field */
             changeField() {
                 let field = {
-                    key: "name",
+                    key: 'visit_mode',
+                    type: 'radio',
                     id: 2,
-                    type: "baifang_input",
                     templateOptions: {
-                        span: 8,
-                        label: "活动名称",
-                        onChange: 'keyUpFn'
+                        label: 'hello',
+                        options: [
+                            {
+                                label: '电话',
+                                value: 1
+                            },
+                            {
+                                label: '上门',
+                                value: 2
+                            }
+                        ]
                     }
                 };
                 this.$refs['formEditor'].updateForm(field);
             },
+            /* 改变layout */
             changeLayout() {
                 let layout = {
                     align: "right",
@@ -108,34 +119,13 @@
                 };
                 this.$refs['formEditor'].updateForm(layout, true);
             },
+            /* 获取全部fields */
             getFields () {
                 console.log(this.$refs['formEditor'].getFields());
             }
         },
         mounted() {
             let config = [
-                {
-                    name: '拜访对象',
-                    tag: 'baifang',
-                    default: {
-                        key: 'visit_object',
-                        type: 'input',
-                        templateOptions: {
-                            label: '拜访对象'
-                        }
-                    }
-                },
-                {
-                    name: '拜访对象2',
-                    tag: 'baifang',
-                    default: {
-                        key: 'visit_object2',
-                        type: 'input',
-                        templateOptions: {
-                            label: '拜访对象2'
-                        }
-                    }
-                },
                 {
                     name: '拜访方式',
                     tag: 'baifang',

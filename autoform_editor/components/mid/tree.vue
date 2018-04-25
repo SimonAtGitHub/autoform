@@ -151,7 +151,7 @@
             },
             //点击基础设置，将layout传入回调函数（editCb）
             _layoutSet() {
-                this.config.editCb(this.layoutGetter, true);
+                this.eventBus.$emit('handleEditField', this.layoutGetter, true);
             }
         }
     }
