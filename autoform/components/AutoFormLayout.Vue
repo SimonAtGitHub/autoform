@@ -1,5 +1,5 @@
 
-<script>
+<script type="text/jsx">
 import { typeCheck } from "../utils";
 
 export default {

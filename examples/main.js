@@ -26,7 +26,7 @@ Vue.use(AutoForm_component_lib);
 // Vue.use(AutoForm_Editor, store);
 Vue
     .$autoform
-    .registerDirWithConfig(() => require.context('./components/custom'));
+    .RegisterDir(() => require.context('./components/custom'), 'c');
 
 // Vue.$autoform.RegisterDir(()=>require.context('./components'))
 Vue
