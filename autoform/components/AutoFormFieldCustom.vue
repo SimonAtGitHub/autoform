@@ -1,7 +1,7 @@
-<script>
+<script type="text/jsx">
 import * as _ from "lodash";
 export default {
-  props: ["options", "fieldKey"],
+  props: ["options", "fieldKey", "layout"],
   mounted() {},
   methods: {},
   render(h) {
@@ -28,6 +28,7 @@ export default {
                 inline={this.options.layout.inline}
                 validLib={this.options.validLib}
                 event-bus={this.options.eventBus}
+                layout={this.options.layout}
             />
 }
 };
