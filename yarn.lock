@@ -2,6 +2,7 @@
 # yarn lockfile v1
 
 
+<<<<<<< HEAD
 "@hfe/autoform@1.1.83":
   version "1.1.83"
   resolved "http://r.npm.sankuai.com/@hfe/autoform/download/@hfe/autoform-1.1.83.tgz#39b581c031b9639097eb9cbb1d4266137eb8713b"
@@ -21,6 +22,8 @@
   version "0.0.29"
   resolved "http://r.npm.sankuai.com/@hfe/autoform_component_lib/download/@hfe/autoform_component_lib-0.0.29.tgz#846f5485b912b341506889169d1d9f96e589a65d"
 
+=======
+>>>>>>> caf3e57f85ce76010fa4ac4f44188ff9ff2c131a
 abbrev@1:
   version "1.1.1"
   resolved "http://r.npm.sankuai.com/abbrev/download/abbrev-1.1.1.tgz#f8f2c887ad10bf67f634f005b6987fed3179aac8"
@@ -167,10 +170,13 @@ array-unique@^0.2.1:
   version "0.2.1"
   resolved "http://r.npm.sankuai.com/array-unique/download/array-unique-0.2.1.tgz#a1d97ccafcbc2625cc70fadceb36a50c58b01a53"
 
+<<<<<<< HEAD
 asap@~2.0.3:
   version "2.0.6"
   resolved "http://r.npm.sankuai.com/asap/download/asap-2.0.6.tgz#e50347611d7e690943208bbdafebcbc2fb866d46"
 
+=======
+>>>>>>> caf3e57f85ce76010fa4ac4f44188ff9ff2c131a
 asn1.js@^4.0.0:
   version "4.9.2"
   resolved "http://r.npm.sankuai.com/asn1.js/download/asn1.js-4.9.2.tgz#8117ef4f7ed87cd8f89044b5bff97ac243a16c9a"
@@ -202,8 +208,13 @@ async-each@^1.0.0:
   resolved "http://r.npm.sankuai.com/async-each/download/async-each-1.0.1.tgz#19d386a1d9edc6e7c1c85d388aedbcc56d33602d"
 
 async-validator@~1.8.1:
+<<<<<<< HEAD
   version "1.8.2"
   resolved "http://r.npm.sankuai.com/async-validator/download/async-validator-1.8.2.tgz#b77597226e96242f8d531c0d46ae295f62422ba4"
+=======
+  version "1.8.1"
+  resolved "http://r.npm.sankuai.com/async-validator/download/async-validator-1.8.1.tgz#6665788ca39269af770e5ee02f0e557f2438d2ca"
+>>>>>>> caf3e57f85ce76010fa4ac4f44188ff9ff2c131a
   dependencies:
     babel-runtime "6.x"
 
@@ -390,11 +401,15 @@ babel-helper-replace-supers@^6.24.1:
     babel-traverse "^6.24.1"
     babel-types "^6.24.1"
 
+<<<<<<< HEAD
 babel-helper-vue-jsx-merge-props@^2.0.0:
   version "2.0.3"
   resolved "http://r.npm.sankuai.com/babel-helper-vue-jsx-merge-props/download/babel-helper-vue-jsx-merge-props-2.0.3.tgz#22aebd3b33902328e513293a8e4992b384f9f1b6"
 
 babel-helper-vue-jsx-merge-props@^2.0.2:
+=======
+babel-helper-vue-jsx-merge-props@^2.0.0, babel-helper-vue-jsx-merge-props@^2.0.2:
+>>>>>>> caf3e57f85ce76010fa4ac4f44188ff9ff2c131a
   version "2.0.2"
   resolved "http://r.npm.sankuai.com/babel-helper-vue-jsx-merge-props/download/babel-helper-vue-jsx-merge-props-2.0.2.tgz#aceb1c373588279e2755ea1cfd35c22394fd33f8"
 
@@ -425,6 +440,7 @@ babel-plugin-check-es2015-constants@^6.22.0:
   dependencies:
     babel-runtime "^6.22.0"
 
+<<<<<<< HEAD
 babel-plugin-jsx-v-model@^2.0.3:
   version "2.0.3"
   resolved "http://r.npm.sankuai.com/babel-plugin-jsx-v-model/download/babel-plugin-jsx-v-model-2.0.3.tgz#c396416b99cb1af782087315ae1d3e62e070f47d"
@@ -433,6 +449,8 @@ babel-plugin-jsx-v-model@^2.0.3:
     html-tags "^2.0.0"
     svg-tags "^1.0.0"
 
+=======
+>>>>>>> caf3e57f85ce76010fa4ac4f44188ff9ff2c131a
 babel-plugin-syntax-async-functions@^6.8.0:
   version "6.13.0"
   resolved "http://r.npm.sankuai.com/babel-plugin-syntax-async-functions/download/babel-plugin-syntax-async-functions-6.13.0.tgz#cad9cad1191b5ad634bf30ae0872391e0647be95"
@@ -1092,10 +1110,13 @@ clone@^1.0.2:
   version "1.0.3"
   resolved "http://r.npm.sankuai.com/clone/download/clone-1.0.3.tgz#298d7e2231660f40c003c2ed3140decf3f53085f"
 
+<<<<<<< HEAD
 clone@^2.1.1:
   version "2.1.2"
   resolved "http://r.npm.sankuai.com/clone/download/clone-2.1.2.tgz#1b7f4b9f591f1e8f83670401600345a02887435f"
 
+=======
+>>>>>>> caf3e57f85ce76010fa4ac4f44188ff9ff2c131a
 co@^4.6.0:
   version "4.6.0"
   resolved "http://r.npm.sankuai.com/co/download/co-4.6.0.tgz#6ea6bdf3d853ae54ccb8e47bfa0bf3f9031fb184"
@@ -1598,9 +1619,15 @@ electron-to-chromium@^1.2.7, electron-to-chromium@^1.3.27:
   version "1.3.27"
   resolved "http://r.npm.sankuai.com/electron-to-chromium/download/electron-to-chromium-1.3.27.tgz#78ecb8a399066187bb374eede35d9c70565a803d"
 
+<<<<<<< HEAD
 element-ui@1.4.13:
   version "1.4.13"
   resolved "http://r.npm.sankuai.com/element-ui/download/element-ui-1.4.13.tgz#d0b055987af0cb937a1135babf4360ae80d4a121"
+=======
+element-ui@^2.0.5:
+  version "2.0.5"
+  resolved "http://r.npm.sankuai.com/element-ui/download/element-ui-2.0.5.tgz#e001cb3514d8303a54f2b7d893b916acfc9ac57d"
+>>>>>>> caf3e57f85ce76010fa4ac4f44188ff9ff2c131a
   dependencies:
     async-validator "~1.8.1"
     babel-helper-vue-jsx-merge-props "^2.0.0"
@@ -1640,12 +1667,15 @@ entities@~1.1.1:
   version "1.1.1"
   resolved "http://r.npm.sankuai.com/entities/download/entities-1.1.1.tgz#6e5c2d0a5621b5dadaecef80b90edfb5cd7772f0"
 
+<<<<<<< HEAD
 errno@^0.1.1:
   version "0.1.7"
   resolved "http://r.npm.sankuai.com/errno/download/errno-0.1.7.tgz#4684d71779ad39af177e3f007996f7c67c852618"
   dependencies:
     prr "~1.0.1"
 
+=======
+>>>>>>> caf3e57f85ce76010fa4ac4f44188ff9ff2c131a
 errno@^0.1.3:
   version "0.1.4"
   resolved "http://r.npm.sankuai.com/errno/download/errno-0.1.4.tgz#b896e23a9e5e8ba33871fc996abd3635fc9a1c7d"
@@ -2242,10 +2272,13 @@ html-minifier@^3.2.3:
     relateurl "0.2.x"
     uglify-js "3.1.x"
 
+<<<<<<< HEAD
 html-tags@^2.0.0:
   version "2.0.0"
   resolved "http://r.npm.sankuai.com/html-tags/download/html-tags-2.0.0.tgz#10b30a386085f43cede353cc8fa7cb0deeea668b"
 
+=======
+>>>>>>> caf3e57f85ce76010fa4ac4f44188ff9ff2c131a
 html-webpack-plugin@^2.30.1:
   version "2.30.1"
   resolved "http://r.npm.sankuai.com/html-webpack-plugin/download/html-webpack-plugin-2.30.1.tgz#7f9c421b7ea91ec460f56527d78df484ee7537d5"
@@ -2329,10 +2362,13 @@ ieee754@^1.1.4:
   version "1.1.8"
   resolved "http://r.npm.sankuai.com/ieee754/download/ieee754-1.1.8.tgz#be33d40ac10ef1926701f6f08a2d86fbfd1ad3e4"
 
+<<<<<<< HEAD
 image-size@~0.5.0:
   version "0.5.5"
   resolved "http://r.npm.sankuai.com/image-size/download/image-size-0.5.5.tgz#09dfd4ab9d20e29eb1c3e80b8990378df9e3cb9c"
 
+=======
+>>>>>>> caf3e57f85ce76010fa4ac4f44188ff9ff2c131a
 import-local@^0.1.1:
   version "0.1.1"
   resolved "http://r.npm.sankuai.com/import-local/download/import-local-0.1.1.tgz#b1179572aacdc11c6a91009fb430dbcab5f668a8"
@@ -2708,6 +2744,7 @@ lcid@^1.0.0:
   dependencies:
     invert-kv "^1.0.0"
 
+<<<<<<< HEAD
 less-loader@^4.1.0:
   version "4.1.0"
   resolved "http://r.npm.sankuai.com/less-loader/download/less-loader-4.1.0.tgz#2c1352c5b09a4f84101490274fd51674de41363e"
@@ -2729,6 +2766,8 @@ less@^3.0.1:
     request "2.81.0"
     source-map "^0.5.3"
 
+=======
+>>>>>>> caf3e57f85ce76010fa4ac4f44188ff9ff2c131a
 load-json-file@^1.0.0:
   version "1.1.0"
   resolved "http://r.npm.sankuai.com/load-json-file/download/load-json-file-1.1.0.tgz#956905708d58b4bab4c2261b04f59f31c99374c0"
@@ -2969,7 +3008,11 @@ mixin-object@^2.0.1:
     for-in "^0.1.3"
     is-extendable "^0.1.1"
 
+<<<<<<< HEAD
 mkdirp@0.5.x, "mkdirp@>=0.5 0", mkdirp@^0.5.0, mkdirp@^0.5.1, mkdirp@~0.5.0, mkdirp@~0.5.1:
+=======
+mkdirp@0.5.x, "mkdirp@>=0.5 0", mkdirp@^0.5.1, mkdirp@~0.5.0, mkdirp@~0.5.1:
+>>>>>>> caf3e57f85ce76010fa4ac4f44188ff9ff2c131a
   version "0.5.1"
   resolved "http://r.npm.sankuai.com/mkdirp/download/mkdirp-0.5.1.tgz#30057438eac6cf7f8c4767f38648d6697d75c903"
   dependencies:
@@ -3666,12 +3709,15 @@ process@^0.11.10:
   version "0.11.10"
   resolved "http://r.npm.sankuai.com/process/download/process-0.11.10.tgz#7332300e840161bda3e69a1d1d91a7d4bc16f182"
 
+<<<<<<< HEAD
 promise@^7.1.1:
   version "7.3.1"
   resolved "http://r.npm.sankuai.com/promise/download/promise-7.3.1.tgz#064b72602b18f90f29192b8b1bc418ffd1ebd3bf"
   dependencies:
     asap "~2.0.3"
 
+=======
+>>>>>>> caf3e57f85ce76010fa4ac4f44188ff9ff2c131a
 proxy-addr@~2.0.2:
   version "2.0.2"
   resolved "http://r.npm.sankuai.com/proxy-addr/download/proxy-addr-2.0.2.tgz#6571504f47bb988ec8180253f85dd7e14952bdec"
@@ -3683,10 +3729,13 @@ prr@~0.0.0:
   version "0.0.0"
   resolved "http://r.npm.sankuai.com/prr/download/prr-0.0.0.tgz#1a84b85908325501411853d0081ee3fa86e2926a"
 
+<<<<<<< HEAD
 prr@~1.0.1:
   version "1.0.1"
   resolved "http://r.npm.sankuai.com/prr/download/prr-1.0.1.tgz#d3fc114ba06995a45ec6893f484ceb1d78f5f476"
 
+=======
+>>>>>>> caf3e57f85ce76010fa4ac4f44188ff9ff2c131a
 pseudomap@^1.0.2:
   version "1.0.2"
   resolved "http://r.npm.sankuai.com/pseudomap/download/pseudomap-1.0.2.tgz#f052a28da70e618917ef0a8ac34c1ae5a68286b3"
@@ -4186,10 +4235,13 @@ sort-keys@^1.0.0:
   dependencies:
     is-plain-obj "^1.0.0"
 
+<<<<<<< HEAD
 sortablejs@^1.7.0:
   version "1.7.0"
   resolved "http://r.npm.sankuai.com/sortablejs/download/sortablejs-1.7.0.tgz#80a2b2370abd568e1cec8c271131ef30a904fa28"
 
+=======
+>>>>>>> caf3e57f85ce76010fa4ac4f44188ff9ff2c131a
 source-list-map@^2.0.0:
   version "2.0.0"
   resolved "http://r.npm.sankuai.com/source-list-map/download/source-list-map-2.0.0.tgz#aaa47403f7b245a92fbc97ea08f250d6087ed085"
@@ -4369,10 +4421,13 @@ supports-color@^4.0.0, supports-color@^4.2.1, supports-color@^4.4.0:
   dependencies:
     has-flag "^2.0.0"
 
+<<<<<<< HEAD
 svg-tags@^1.0.0:
   version "1.0.0"
   resolved "http://r.npm.sankuai.com/svg-tags/download/svg-tags-1.0.0.tgz#58f71cee3bd519b59d4b2a843b6c7de64ac04764"
 
+=======
+>>>>>>> caf3e57f85ce76010fa4ac4f44188ff9ff2c131a
 svgo@^0.7.0:
   version "0.7.2"
   resolved "http://r.npm.sankuai.com/svgo/download/svgo-0.7.2.tgz#9f5772413952135c6fefbf40afe6a4faa88b4bb5"
@@ -4665,6 +4720,7 @@ vue@2.5.3:
   version "2.5.3"
   resolved "http://r.npm.sankuai.com/vue/download/vue-2.5.3.tgz#e1a3b1f49b6e93e574ce040b95cbc873912fecc1"
 
+<<<<<<< HEAD
 vuedraggable@^2.16.0:
   version "2.16.0"
   resolved "http://r.npm.sankuai.com/vuedraggable/download/vuedraggable-2.16.0.tgz#52127081a2adb3de5fabd214d404ff3eee63575a"
@@ -4675,6 +4731,8 @@ vuex@^3.0.1:
   version "3.0.1"
   resolved "http://r.npm.sankuai.com/vuex/download/vuex-3.0.1.tgz#e761352ebe0af537d4bb755a9b9dc4be3df7efd2"
 
+=======
+>>>>>>> caf3e57f85ce76010fa4ac4f44188ff9ff2c131a
 watchpack@^1.4.0:
   version "1.4.0"
   resolved "http://r.npm.sankuai.com/watchpack/download/watchpack-1.4.0.tgz#4a1472bcbb952bd0a9bb4036801f954dfb39faac"
