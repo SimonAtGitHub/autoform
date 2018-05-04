@@ -12,7 +12,6 @@ function _deepChildren(components, result = []) {
   });
 }
 
-
 export default {
   mounted() {
     const vm = this
