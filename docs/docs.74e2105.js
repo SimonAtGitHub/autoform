@@ -86,7 +86,7 @@
 /******/ 		if (__webpack_require__.nc) {
 /******/ 			script.setAttribute("nonce", __webpack_require__.nc);
 /******/ 		}
-/******/ 		script.src = __webpack_require__.p + "" + ({"0":"map","1":"doc-autoform-install","2":"doc-map"}[chunkId]||chunkId) + "." + {"0":"ed8035f","1":"d995e35","2":"5abe783"}[chunkId] + ".js";
+/******/ 		script.src = __webpack_require__.p + "" + ({"0":"map","1":"doc-autoform-install","2":"doc-map"}[chunkId]||chunkId) + "." + {"0":"a3adc33","1":"e1a130d","2":"47bb734"}[chunkId] + ".js";
 /******/ 		var timeout = setTimeout(onScriptComplete, 120000);
 /******/ 		script.onerror = script.onload = onScriptComplete;
 /******/ 		function onScriptComplete() {
@@ -25684,7 +25684,7 @@ exports.default = route;
 /* 176 */
 /***/ (function(module, exports) {
 
-module.exports = {"groups":[{"groupName":"autoform","list":[{"path":"/autoform-install","title":"Guide"},{"path":"/autoform","title":"示例"},{"path":"/autoform-child","title":"自定义子组件"},{"path":"/autoform-tabs","title":"Tabs"},{"path":"/autoform-cache","title":"Cache"},{"path":"/autoform-editor","title":"表单编辑器"},{"path":"/autoform-custom","title":"自定义表单样式"}]}]}
+module.exports = {"groups":[{"groupName":"autoform","list":[{"path":"/autoform-install","title":"安装"},{"path":"/autoform-props","title":"参数说明"},{"path":"/autoform","title":"示例"},{"path":"/autoform-child","title":"自定义子组件"},{"path":"/autoform-tabs","title":"Tabs布局"},{"path":"/autoform-cache","title":"Cache-缓存"},{"path":"/autoform-editor","title":"表单编辑器"},{"path":"/autoform-custom","title":"自定义表单样式"},{"path":"/autoform-validator","title":"自定义校验"}]}]}
 
 /***/ }),
 /* 177 */
