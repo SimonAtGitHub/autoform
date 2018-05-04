@@ -6,7 +6,7 @@
   "scripts": {},
   "repository": {
     "type": "git",
-    "url": "ssh://git@git.sankuai.com/hfe/charlielau.autoform.git"
+    "url": "git@github.com:CharlieLau/autoform.git"
   },
   "author": "",
   "license": "ISC"

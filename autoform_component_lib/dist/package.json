@@ -6,17 +6,15 @@
   "scripts": {},
   "repository": {
     "type": "git",
-    "url": "ssh://git@git.sankuai.com/hfe/autoform_component_lib.git"
+    "url": "git@github.com:CharlieLau/autoform.git"
   },
   "keywords": [
     "vue",
     "component",
     "lib"
   ],
-  "author": "maominfang",
+  "author": "charlie_lau",
   "license": "ISC",
   "dependencies": {
-    "@hfe/autoform": "^1.1.49",
-    "@hfe/autoform_component_lib": "0.0.49"
   }
 }
