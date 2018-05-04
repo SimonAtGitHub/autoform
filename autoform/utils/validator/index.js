@@ -1,6 +1,7 @@
-let Validators = {};
 
 import * as basicValidators from './basicValidators'
+
+let Validators = {};
 
 Validators =Object.assign(Validators,basicValidators)
 

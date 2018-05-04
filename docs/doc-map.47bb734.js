@@ -4,7 +4,7 @@ webpackJsonp([2],{
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
-	"./installation.md": 246
+	"./installation.md": 247
 };
 function webpackContext(req) {
 	return __webpack_require__(webpackContextResolve(req));
@@ -24,19 +24,19 @@ webpackContext.id = 234;
 
 /***/ }),
 
-/***/ 246:
+/***/ 247:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(247);
+module.exports = __webpack_require__(248);
 
 /***/ }),
 
-/***/ 247:
+/***/ 248:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__vue_loader_lib_template_compiler_index_id_data_v_387ddf2a_hasScoped_false_preserveWhitespace_false_buble_transforms_vue_loader_lib_selector_type_template_index_0_vue_markdown_loader_lib_markdown_compiler_js_raw_installation_md__ = __webpack_require__(248);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__vue_loader_lib_template_compiler_index_id_data_v_387ddf2a_hasScoped_false_preserveWhitespace_false_buble_transforms_vue_loader_lib_selector_type_template_index_0_vue_markdown_loader_lib_markdown_compiler_js_raw_installation_md__ = __webpack_require__(249);
 var normalizeComponent = __webpack_require__(4)
 /* script */
 var __vue_script__ = null
@@ -64,7 +64,7 @@ var Component = normalizeComponent(
 
 /***/ }),
 
-/***/ 248:
+/***/ 249:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
