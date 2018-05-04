@@ -4,7 +4,7 @@
 
 ### npm 安装
 
-```shell
+```shell  
 npm i @hfe/autoform @hfe/autoform_component_lib -S
 ```
 
