@@ -33,7 +33,79 @@ export default {
         gutter: 50,
       },
       fields1: [
-        [
+        
+      ],
+      query$: {}
+    };
+  },
+  autoform: {
+    eventBus: {
+      sortChange(e, item, th) {
+        console.log(this);
+        console.log(e, item, th);
+      },
+      keyUpFn(e, item) {
+        console.log(e, item);
+      },
+      ssssss(model, field, cb) {
+        //          console.log(111,model,field);
+        cb(false);
+      },
+      watch(keys, fields, model) {
+        console.log(111, keys, fields, model);
+      },
+      displayFn(field,model , cb){
+        console.log(model)
+        if(model.name2==='hello'){
+           cb(false)
+        }
+       else{
+         cb(true)
+       }
+      }
+    }
+  },
+  methods: {
+    submit() {
+      this.$refs["tagForm"].validate(res => {
+          console.log(res)
+
+      });
+    },
+    handleChange() {
+      console.log(1111111);
+    },
+    reset() {
+      this.$refs.tagForm.resetForm();
+    },
+    clear() {
+      this.$refs.tagForm.clearForm();
+    }
+  },
+  mounted() {
+    this.query$.eventBus = this.$refs.tagForm.eventBus;
+    let opt = [
+      {
+        label: "区域一",
+        value: 0
+      },
+      {
+        label: "区域二",
+        value: 1
+      },
+      {
+        label: "区域三",
+        value: 2
+      }
+    ];
+    //            this.$nextTick(()=> {
+    //                this.query$.eventBus.$emit('initSelectOpt', opt);
+    //            })
+
+
+
+    setTimeout(()=>{
+        this.fields1=[[
           {
             key: "name2",
             type: "input",
@@ -54,7 +126,8 @@ export default {
               label: "活动名称",
               onChange: "keyUpFn"
             },
-            validators: [{ required: true, message: "text", trigger: "blur" }]
+            validators: [{ required: true, message: "text", trigger: "blur" }],
+            display:'displayFn'
           },
           {
             key: "name",
@@ -208,68 +281,19 @@ export default {
               ]
             }
           }
-        ]
-      ],
-      query$: {}
-    };
-  },
-  autoform: {
-    eventBus: {
-      sortChange(e, item, th) {
-        console.log(this);
-        console.log(e, item, th);
-      },
-      keyUpFn(e, item) {
-        console.log(e, item);
-      },
-      ssssss(model, field, cb) {
-        //          console.log(111,model,field);
-        cb(false);
-      },
-      watch(keys, fields, model) {
-        console.log(111, keys, fields, model);
-      }
-    }
-  },
-  methods: {
-    submit() {
-      this.$refs["tagForm"].validate(res => {
-          console.log(res)
+        ]]
 
-      });
-    },
-    handleChange() {
-      console.log(1111111);
-    },
-    reset() {
-      this.$refs.tagForm.resetForm();
-    },
-    clear() {
-      this.$refs.tagForm.clearForm();
-    }
-  },
-  mounted() {
-    this.query$.eventBus = this.$refs.tagForm.eventBus;
-    let opt = [
-      {
-        label: "区域一",
-        value: 0
-      },
-      {
-        label: "区域二",
-        value: 1
-      },
-      {
-        label: "区域三",
-        value: 2
-      }
-    ];
-    //            this.$nextTick(()=> {
-    //                this.query$.eventBus.$emit('initSelectOpt', opt);
-    //            })
+    },0)
     setTimeout(() => {
       this.query$.eventBus.$emit("initSelectOpt", opt);
     }, 1000);
+
+
+
+
+
+
+
   }
 };
 </script>

@@ -9,7 +9,7 @@
 ### npm 安装
 
 ```shell  
-npm i @hfe/autoform @hfe/autoform_component_lib -S
+npm install charlie-autoform  charlie-autoform_component_lib
 ```
 
 
@@ -17,8 +17,8 @@ npm i @hfe/autoform @hfe/autoform_component_lib -S
 在VUE的入口文件，添加如下配置：
 
 ```js
-import AutoForm from '@hfe/autoform';
-import AutoForm_component_lib from '@hfe/autoform_component_lib';
+import AutoForm from 'charlie-autoform';
+import AutoForm_component_lib from 'charlie-autoform_component_lib';
 
 Vue.use(AutoForm);
 Vue.use(AutoForm_component_lib);
